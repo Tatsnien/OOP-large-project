@@ -6,10 +6,14 @@ public class PaymentMethod {
 	private double balance;
 	private String issuer;
 
-	public PaymentMethod() {
-		// TODO Auto-generated constructor stub
+public PaymentMethod(String ownername, long number, double balance,String issuer) {
+		
+	this.ownername = ownername;
+	this.number = number;
+	this.balance = balance;
+	this.issuer = issuer;
+	
 	}
-
 	public String getOwnername() {
 		return ownername;
 	}
