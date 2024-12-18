@@ -26,4 +26,3 @@ New classes:
 * **Director**: the one who manage all stores \
 ... \
 The "system" package is now in a mess so I will update it later.
-
