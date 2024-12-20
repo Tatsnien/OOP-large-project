@@ -9,5 +9,7 @@ public SalaryExpense(String expenseName, double expenseValue, Personnel personne
     this.personnel = personnel;
     this.salary = salary  
   }
-
+public void SalaryExpense(Personnel personnel) {
+		this.personnel= personnel;
+	}  
 }
