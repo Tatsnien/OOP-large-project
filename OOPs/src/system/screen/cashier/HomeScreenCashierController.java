@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.swing.JFrame;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -48,11 +49,13 @@ public class HomeScreenCashierController {
 			if (i != 0)
 				createSeparator();
 			createNoticeLabel(notice, i + 1);
+			System.out.println("Notice " + (i + 1) + " added.");
 		}
 	}
 	
 	private void createSeparator() {
 		Separator sep = new Separator();
+		vbNotice.getChildren().add(sep);
 	}
 	
 	private void createNoticeLabel(Notice notice, int nb) {
@@ -63,6 +66,7 @@ public class HomeScreenCashierController {
 		Label lbTitle = new Label();
 		lbTitle.setText(notice.getTitle());
 		lbTitle.setFont(new Font("Arial", 16));
+		lbTitle.setStyle("-fx-font-weight: bold;");
 		
 		Label lbDate = new Label();
 		lbDate.setText(notice.printDate());
@@ -72,5 +76,20 @@ public class HomeScreenCashierController {
 		
 		vbNotice.getChildren().add(label_date);
 	}
+	
+	@FXML
+    void mnHomePressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mnProfilePressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mnWorkPressed(ActionEvent event) {
+
+    }
 
 }

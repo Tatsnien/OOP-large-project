@@ -29,10 +29,10 @@ public class SystemTest {
 		Personnel staff2 = new Staff("Hoang Thi D");
 		
 		// Id should be sequential to reduce duplicated
-		cashier1.setAccount(new Account("01", "miumiu"));
-		staff1.setAccount(new Account("02", "654321"));
-		manager1.setAccount(new Account("03", "123456"));
-		staff2.setAccount(new Account("04", "abcdef"));
+		cashier1.setAccount(new Account("01", ""));
+		staff1.setAccount(new Account("02", "2"));
+		manager1.setAccount(new Account("03", "3"));
+		staff2.setAccount(new Account("04", "4"));
 		
 		branch1.addPersonnel(cashier1);
 		branch1.addPersonnel(staff1);

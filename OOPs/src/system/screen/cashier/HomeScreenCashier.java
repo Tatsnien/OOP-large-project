@@ -29,11 +29,12 @@ public class HomeScreenCashier extends JFrame{
 			public void run() {
 				try {							
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("homecashier.fxml"));
-					Parent root = loader.load();
-					Scene scene = new Scene(root);
 					
 					HomeScreenCashierController controller = new HomeScreenCashierController(cashier);
 					loader.setController(controller);
+					
+					Parent root = loader.load();
+					Scene scene = new Scene(root);
 					fxPanel.setScene(scene);
 					
 					controller.setFrame(frame);

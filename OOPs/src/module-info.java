@@ -19,4 +19,8 @@ module OOPs {
 	requires javafx.swing;
 	
 	opens system to javafx.fxml;
+	opens system.screen.cashier to javafx.fxml;
+	opens system.screen.director to javafx.fxml;
+	opens system.screen.manager to javafx.fxml;
+	opens system.screen.staff to javafx.fxml;
 }
