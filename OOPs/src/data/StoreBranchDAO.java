@@ -1,6 +1,7 @@
 package data;
 
 import personnel.*;
+import Customer.*;
 
 public class StoreBranchDAO {
     private StoreBranch branch;
