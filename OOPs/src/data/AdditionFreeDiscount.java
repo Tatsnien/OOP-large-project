@@ -1,6 +1,6 @@
 package data;
 
-class AdditionalFreeDiscount extends Discount {
+class AdditionFreeDiscount extends Discount {
 	private int boughtNumber;
 	private int additionNumber;
 
