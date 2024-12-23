@@ -52,16 +52,16 @@ public class StoreBranchDAO {
 
     public void setItems(ArrayList<Item> items) {
         
-        branch.setItems(items);
+       
     }
 
     public void setMemberCustomer(ArrayList<MemberCustomer> members) {
         
-        branch.setMemberCustomers(members);
+
     }
 
     public void setBasicSalary(float salary) {
        
-        branch.setBasicSalary(salary);
+
     }
 }
