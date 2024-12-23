@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="75.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+         <items>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="1024.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label fx:id="lbName" style="-fx-font-weight: bold;" text="Someone Name">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Cashier" textFill="GRAY">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="30.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/hust_bookstore_logo.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Home">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#mnHomePressed" text="Home" />
+                     </items></Menu>
+                <Menu mnemonicParsing="false" text="Work">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#mnWorkPressed" text="Work" />
+                     </items></Menu>
+                <Menu mnemonicParsing="false" text="Profile">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile" />
+                     </items></Menu>
+              </menus>
+            </MenuBar>
+         </items>
+      </SplitPane>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+         <children>
+            <HBox prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Name:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileName" text="Label">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="290.0" prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="ID:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileId" text="Label">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="240.0" prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Position:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfilePosition" text="Label">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="190.0" prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Salary:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileSalary" text="Label">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="450.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

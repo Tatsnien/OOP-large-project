@@ -4,7 +4,6 @@ import data.*;
 import personnel.*;
 import system.LoginScreen;
 import system.notice.Notice;
-import system.service.StoreBranchManagerService;
 
 public class SystemTest {
 	
@@ -48,7 +47,7 @@ public class SystemTest {
 		cashier1.getAccount().addNotice(notice2);
 		cashier1.getAccount().addNotice(notice3);
 		
-		LoginScreen.main(args);;
+		LoginScreen.main(args);
 	}
 	
 }

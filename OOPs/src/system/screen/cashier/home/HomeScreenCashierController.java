@@ -1,6 +1,6 @@
-package system.screen.cashier;
+package system.screen.cashier.home;
 
-import java.util.*;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -13,14 +13,15 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import personnel.*;
+import personnel.Cashier;
 import system.notice.Notice;
+import system.screen.cashier.profile.ProfileScreenCashier;
+import system.screen.cashier.work.WorkScreenCashier;
 
 public class HomeScreenCashierController {
-	
+
 	private Cashier cashier;
 	private JFrame frame;
-	private Scene scene;
 	
 	@FXML
     private Label lbName;
@@ -34,10 +35,6 @@ public class HomeScreenCashierController {
 	
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
-	}
-
-	public void setScene(Scene scene) {
-		this.scene = scene;
 	}
 	
 	public void initialize() {
@@ -77,19 +74,23 @@ public class HomeScreenCashierController {
 		vbNotice.getChildren().add(label_date);
 	}
 	
-	@FXML
+	 @FXML
     void mnHomePressed(ActionEvent event) {
 
     }
 
     @FXML
-    void mnProfilePressed(ActionEvent event) {
-
-    }
-
-    @FXML
     void mnWorkPressed(ActionEvent event) {
-
+    	System.out.println("Home -> Work");
+    	this.frame.setVisible(false);
+		new WorkScreenCashier(this.cashier);
+    }
+    
+    @FXML
+    void mnProfilePressed(ActionEvent event) {
+    	System.out.println("Home -> Profile");
+    	this.frame.setVisible(false);
+		new ProfileScreenCashier(this.cashier);
     }
 
 }

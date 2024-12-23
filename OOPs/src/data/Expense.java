@@ -1,12 +1,8 @@
-package Data;
+package data;
 
 public class Expense {
 	private String expenseName;
 	private double expenseValue;
-	
-	
-	
-
 
 	public Expense(String expenseName, double expenseValue) {
 		this.expenseName= expenseName;

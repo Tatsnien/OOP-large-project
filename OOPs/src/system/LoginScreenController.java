@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import personnel.*;
-import system.screen.cashier.HomeScreenCashier;
+import system.screen.cashier.home.HomeScreenCashier;
 import system.screen.director.HomeScreenDirector;
 import system.screen.manager.HomeScreenManager;
 import system.screen.staff.HomeScreenStaff;
