@@ -1,9 +1,10 @@
 package data;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Date {
+public class CustomDate {
     private int day;
     private int month;
     private int year;
@@ -25,14 +26,21 @@ public class Date {
         monthMap.put("november", 11);
         monthMap.put("december", 12);
     }
+    
+    public CustomDate() {
+    	LocalDateTime localDate = LocalDateTime.now();
+    	day = localDate.getDayOfMonth();
+    	month = localDate.getMonthValue();
+    	year = localDate.getYear();
+    }
 
-    public Date(int day, int month, int year) {
+    public CustomDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
-    public Date(int day, String mth, int year) {
+    public CustomDate(int day, String mth, int year) {
         this.day = day;
         this.mth = mth;
         this.year = year;
@@ -62,8 +70,6 @@ public class Date {
 
     @Override
     public String toString() {
-        return "Day " + this.getDay() +
-                " - Month: " + this.getMonth() +
-                " - Year: " + this.getYear();
+        return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
     }
 }

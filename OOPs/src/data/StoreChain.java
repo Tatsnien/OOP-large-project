@@ -60,13 +60,5 @@ public class StoreChain extends StoreEntity{
 			items.addAll(branch.getItems());
 		return items;
 	}
-
-	@Override
-	public List<MemberCustomer> getMemberCustomers() {
-		List<MemberCustomer> memberCustomers = new ArrayList<>();
-		for (StoreBranch branch : branchs)
-			memberCustomers.addAll(branch.getMemberCustomers());
-		return memberCustomers;
-	}
 	
 }

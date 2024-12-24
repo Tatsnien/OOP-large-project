@@ -5,7 +5,7 @@ class GiftDiscount extends Discount {
 	private int additionNumber;
 	private Item[] additionItem;
 
-	public GiftDiscount(Date startDate, Date endDate, Item[] appliedItem, int boughtNumber, int additionNumber, Item[] additionItem) {
+	public GiftDiscount(CustomDate startDate, CustomDate endDate, Item[] appliedItem, int boughtNumber, int additionNumber, Item[] additionItem) {
 		super(startDate, endDate,appliedItem);
 		this.boughtNumber=boughtNumber;
 		this.additionNumber=additionNumber; 

@@ -12,7 +12,7 @@ class Stationery extends Item {
     @Override
     public String getItemInfo() {
         return "Stationery: " + name + ", Type: " + type + ", Barcode: " + barcode + 
-               ", Price: " + sellingPrice + ", Available: " + availability;
+               ", Price: " + sellingPrice;
     }
 }
 

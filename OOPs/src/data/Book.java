@@ -16,7 +16,7 @@ class Book extends Item {
     @Override
     public String getItemInfo() {
         return "Book: " + name + " by " + author + ", Publisher: " + publisher + ", ISBN: " + isbn + 
-               ", Price: " + sellingPrice + ", Available: " + availability;
+               ", Price: " + sellingPrice;
     }
 }
 

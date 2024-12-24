@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import personnel.Cashier;
-import system.screen.cashier.work.WorkScreenCashierController;
 
 public class WorkScreenCashier extends JFrame{
 	

@@ -11,11 +11,11 @@ module OOPs {
 	exports customer;
 
 	requires java.desktop;
-	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.swing;
+	requires transitive javafx.base;
 	
 	opens system to javafx.fxml;
 	opens system.screen.director to javafx.fxml;

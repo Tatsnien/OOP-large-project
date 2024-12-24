@@ -6,7 +6,6 @@ public abstract class Item {
     protected float purchasePrice;  // Purchase price of the item
     protected int quantity;         // Quantity in stock
     protected float sellingPrice;    // Selling price of the item
-    protected boolean availability;  // Availability status of the item
 
     public Item(String name, int barcode, float purchasePrice, int quantity, float sellingPrice) {
         this.name = name;
@@ -14,7 +13,6 @@ public abstract class Item {
         this.purchasePrice = purchasePrice;
         this.quantity = quantity;
         this.sellingPrice = sellingPrice;
-        this.availability = quantity > 0; // Set availability based on quantity
     }
 
     // Abstract method to get item information
@@ -26,7 +24,6 @@ public abstract class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        this.availability = quantity > 0; // Update availability
     }
 
     public float getSellingPrice() {
@@ -37,9 +34,33 @@ public abstract class Item {
         return purchasePrice;
     }
 
-    public boolean isAvailable() {
-        return availability;
-    } 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getBarcode() {
+		return barcode;
+	}
+	
+	public float getTotalPrice() {
+		return this.purchasePrice * this.quantity;
+	}
+
+	public void setBarcode(int barcode) {
+		this.barcode = barcode;
+	}
+
+	public void setPurchasePrice(float purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+
+	public void setSellingPrice(float sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
     
 }  
 

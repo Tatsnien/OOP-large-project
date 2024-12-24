@@ -16,7 +16,7 @@ class Toy extends Item {
     public String getItemInfo() {
         return "Toy: " + name + ", Suitable Ages: " + suitableAges[0] + "-" + suitableAges[1] + 
                ", Age Type: " + type + ", Barcode: " + barcode + 
-               ", Price: " + sellingPrice + ", Available: " + availability;
+               ", Price: " + sellingPrice;
     }
 
     // Method to check if a specific age is suitable

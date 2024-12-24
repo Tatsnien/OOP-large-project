@@ -9,8 +9,16 @@ public class StoreEntity {
 	
 	private List<Personnel> personnels = new ArrayList<>();
 	private List<Item> items = new ArrayList<>();
-	private List<MemberCustomer> memberCustomers = new ArrayList<>();
 	private float basicSalary;
+	private static List<MemberCustomer> memberCustomers;
+	private static List<Discount> discounts;
+	
+	public StoreEntity() {
+		if (discounts == null)
+			discounts = new ArrayList<>();
+		if (memberCustomers == null)
+			memberCustomers = new ArrayList<>();
+	}
 	
 	public List<Personnel> getPersonnels() {
 		return personnels;
@@ -20,7 +28,7 @@ public class StoreEntity {
 		return items;
 	}
 
-	public List<MemberCustomer> getMemberCustomers() {
+	public static List<MemberCustomer> getMemberCustomers() {
 		return memberCustomers;
 	}
 
@@ -34,10 +42,6 @@ public class StoreEntity {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
-	}
-
-	public void setMemberCustomers(List<MemberCustomer> memberCustomers) {
-		this.memberCustomers = memberCustomers;
 	}
 
 	public void setBasicSalary(float basicSalary) {
