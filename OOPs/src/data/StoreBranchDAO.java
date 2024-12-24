@@ -2,11 +2,7 @@ package data;
 
 import personnel.*;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*
 import java.util.ArrayList;
 
 import customer.MemberCustomer;
@@ -52,24 +48,18 @@ public class StoreBranchDAO {
         }
     }
 
-    public void setPersonnels(ArrayList<Personnel> personnels) {
-        for (Personnel personnel : personnels) {
-            branch.addPersonnel(personnel);
-        }
+   public void setPersonnels(ArrayList<Personnel> int) {
+        branch.setPersonnels(personnels); 
     }
 
-    public void setItems(ArrayList<Item> items) {
-        
-       
+    public void setItems(ArrayList<Item> int) {
+        branch.setItems(items); 
     }
 
-    public void setMemberCustomer(ArrayList<MemberCustomer> members) {
-        
-
+    public void setMemberCustomers(ArrayList<MemberCustomer> int) {
+        StoreEntity.setMemberCustomers(memberCustomer); 
     }
 
     public void setBasicSalary(float salary) {
-       
-
+        branch.setBasicSalary(salary);
     }
-}
