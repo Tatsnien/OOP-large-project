@@ -48,9 +48,7 @@ public class StoreEntity {
 		this.basicSalary = basicSalary;
 	}
 
-	public void setMemberCustomers(List<MemberCustomer> memberCustomers) {
-		this.memberCustomers= memberCustomers;
-	}
+	
 
 
 }
