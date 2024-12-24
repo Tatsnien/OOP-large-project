@@ -3,16 +3,26 @@ package data;
 import java.util.*;
 
 import customer.MemberCustomer;
+import personnel.Director;
 import personnel.Personnel;
 
 public class StoreChain extends StoreEntity{
 	private static List<StoreBranch> branchs;
+	private static Director director;
 	
 	public StoreChain() {
 		if (branchs == null)
 			branchs = new ArrayList<StoreBranch>();
 	}
 	
+	public static Director getDirector() {
+		return director;
+	}
+	
+	public static void setDirector(Director director) {
+		StoreChain.director = director;
+	}
+
 	public void addBranch(StoreBranch newBranch) {
 		boolean branchExisted = false;
 		for (StoreBranch branch : branchs)

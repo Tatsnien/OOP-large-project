@@ -1,13 +1,10 @@
 module OOPs {
 	exports system.service;
 	exports system;
-	exports system.screen.manager;
 	exports data;
 	exports test;
 	exports personnel;
 	exports system.notice;
-	exports system.screen.director;
-	exports system.screen.staff;
 	exports customer;
 
 	requires java.desktop;
@@ -18,9 +15,12 @@ module OOPs {
 	requires transitive javafx.base;
 	
 	opens system to javafx.fxml;
-	opens system.screen.director to javafx.fxml;
-	opens system.screen.manager to javafx.fxml;
-	opens system.screen.staff to javafx.fxml;
+	opens system.screen.director.home to javafx.fxml;
+	opens system.screen.director.profile to javafx.fxml;
+	opens system.screen.manager.home to javafx.fxml;
+	opens system.screen.manager.profile to javafx.fxml;
+	opens system.screen.staff.home to javafx.fxml;
+	opens system.screen.staff.profile to javafx.fxml;
 	opens system.screen.cashier.home to javafx.fxml;
 	opens system.screen.cashier.work to javafx.fxml;
 	opens system.screen.cashier.profile to javafx.fxml;

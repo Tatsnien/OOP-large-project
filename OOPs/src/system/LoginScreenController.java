@@ -8,9 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import personnel.*;
 import system.screen.cashier.home.HomeScreenCashier;
-import system.screen.director.HomeScreenDirector;
-import system.screen.manager.HomeScreenManager;
-import system.screen.staff.HomeScreenStaff;
+import system.screen.director.home.HomeScreenDirector;
+import system.screen.manager.home.HomeScreenManager;
+import system.screen.staff.home.HomeScreenStaff;
 
 public class LoginScreenController {
 
@@ -36,6 +36,8 @@ public class LoginScreenController {
     	
     	Account account = new Account(tfId.getText(), tfPassword.getText());
     	Personnel validPerson = null;
+    	if (account.equals(StoreChain.getDirector().getAccount()))
+    		validPerson = StoreChain.getDirector();
     	for (Personnel person : storeChain.getPersonnels()) {
     		if (account.equals(person.getAccount())) {
     			validPerson = person;
@@ -57,13 +59,13 @@ public class LoginScreenController {
     	stage.hide();
     	
     	if (validPerson instanceof Director)
-    		new HomeScreenDirector();
+    		new HomeScreenDirector((Director) validPerson);
     	else if (validPerson instanceof StoreBranchManager)
-    		new HomeScreenManager();
+    		new HomeScreenManager((StoreBranchManager) validPerson);
     	else if (validPerson instanceof Cashier)
     		new HomeScreenCashier((Cashier) validPerson);
     	else if (validPerson instanceof Staff)
-    		new HomeScreenStaff();
+    		new HomeScreenStaff((Staff) validPerson);
     }
 	
 }

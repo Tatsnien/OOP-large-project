@@ -27,17 +27,20 @@ public class SystemTest {
 		Personnel staff1 = new Staff("Tran Thi B");
 		Personnel manager1 = new StoreBranchManager("Le Van C");
 		Personnel staff2 = new Staff("Hoang Thi D");
+		Director director = new Director("Tran Binh E");
 		
 		// Id should be sequential to reduce duplicated
 		cashier1.setAccount(new Account("01", ""));
-		staff1.setAccount(new Account("02", "2"));
-		manager1.setAccount(new Account("03", "3"));
+		staff1.setAccount(new Account("02", ""));
+		manager1.setAccount(new Account("03", ""));
 		staff2.setAccount(new Account("04", "4"));
+		director.setAccount(new Account("05", ""));
 		
 		branch1.addPersonnel(cashier1);
 		branch1.addPersonnel(staff1);
 		branch1.addPersonnel(manager1);
 		branch2.addPersonnel(staff2);
+		StoreChain.setDirector(director);
 		
 		Notice notice1 = new Notice();
 		Notice notice2 = new Notice(staff1);

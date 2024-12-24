@@ -2,7 +2,7 @@ package data;
 
 import personnel.*;
 
-import java.io.*
+import java.io.*;
 import java.util.ArrayList;
 
 import customer.MemberCustomer;
@@ -57,9 +57,10 @@ public class StoreBranchDAO {
     }
 
     public void setMemberCustomers(ArrayList<MemberCustomer> memberCustomers) {
-        branch.setMemberCustomers(memberCustomers); //check it again if needed
+        StoreEntity.getMemberCustomers().addAll(memberCustomers);
     }
 
     public void setBasicSalary(float salary) {
         branch.setBasicSalary(salary);
     }
+}
