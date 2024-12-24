@@ -48,7 +48,5 @@ public class StoreEntity {
 		this.basicSalary = basicSalary;
 	}
 
-	
-
 
 }

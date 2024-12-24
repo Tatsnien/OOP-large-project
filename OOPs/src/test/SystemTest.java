@@ -1,5 +1,6 @@
 package test;
 
+import customer.MemberCustomer;
 import data.*;
 import personnel.*;
 import system.LoginScreen;
@@ -46,6 +47,9 @@ public class SystemTest {
 		cashier1.getAccount().addNotice(notice1);
 		cashier1.getAccount().addNotice(notice2);
 		cashier1.getAccount().addNotice(notice3);
+		
+		StoreEntity.getMemberCustomers().add(new MemberCustomer("0987987987", "Le Van Tu"));
+		StoreEntity.getMemberCustomers().add(new MemberCustomer("0123456789", "Do Van Cuong"));
 		
 		LoginScreen.main(args);
 	}

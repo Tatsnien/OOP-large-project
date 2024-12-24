@@ -3,8 +3,8 @@ package data;
 import java.util.Date;
 
 public class Discount {
-	private Date startDate;
-	private Date endDate;
+	private CustomDate startDate;
+	private CustomDate endDate;
 	private Item[] appliedItem;
 
 	public Discount(CustomDate startDate, CustomDate endDate, Item[] appliedItem) {

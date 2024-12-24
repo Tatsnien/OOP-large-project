@@ -1,6 +1,5 @@
 package system.screen.cashier.work;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
@@ -149,16 +148,7 @@ public class WorkScreenCashierController {
     
     @FXML
     void btnSearchPressed(ActionEvent event) {
-    	int phoneNumber = 0;
-    	try {
-    		phoneNumber = Integer.parseInt(tfPhoneNb.getText().strip());
-    	}
-    	catch (Exception e) {
-    		lbPhoneNbStatus.setText("Invalid phone number");
-    		tfPhoneNb.setText("");
-    		lbMemberName.setText("-");
-    	}
-    	
+    	 String phoneNumber = tfPhoneNb.getText().strip();
     	lbPhoneNbStatus.setText("");
     	MemberCustomer member = membershipService.searchMemberCustomer(phoneNumber);
     	
@@ -171,7 +161,7 @@ public class WorkScreenCashierController {
     		lbMemberName.setText("-");
     }
     
-    private String showInputDialog(int phoneNumber) {
+    private String showInputDialog(String phoneNumber) {
         JDialog inputDialog = new JDialog(this.frame, "Input Dialog", true);
         inputDialog.setSize(400, 150);
         inputDialog.setLayout(new BoxLayout(inputDialog.getContentPane(), BoxLayout.Y_AXIS));
@@ -209,7 +199,7 @@ public class WorkScreenCashierController {
     		return;
     	}
     	
-    	int phoneNumber = Integer.parseInt(tfPhoneNb.getText().strip());
+    	String phoneNumber = tfPhoneNb.getText().strip();
     	String memberName = showInputDialog(phoneNumber);
     	
     	MemberCustomer newMember = new MemberCustomer(phoneNumber, memberName);

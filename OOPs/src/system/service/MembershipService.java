@@ -12,9 +12,9 @@ public class MembershipService {
 		memberCustomers = StoreBranch.getMemberCustomers();
 	}
 	
-	public MemberCustomer searchMemberCustomer(int phoneNumber) {
+	public MemberCustomer searchMemberCustomer(String phoneNumber) {
 		for (MemberCustomer memberCustomer : memberCustomers)
-			if (memberCustomer.getPhoneNumber() == phoneNumber)
+			if (memberCustomer.getPhoneNumber().equals(phoneNumber))
 				return memberCustomer;
 		return null;
 	}

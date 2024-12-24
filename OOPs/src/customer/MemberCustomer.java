@@ -8,11 +8,11 @@ import data.Discount;
 
 public class MemberCustomer extends Customer {
 	private String name;
-	private int phoneNumber;
+	private String phoneNumber;
 	private List<Discount> discounts;
 	private CustomDate joinTime;
 	
-	public MemberCustomer(int phoneNumber, String name){
+	public MemberCustomer(String phoneNumber, String name){
 		this.phoneNumber = phoneNumber;
 		this.name = name;
 		discounts = new ArrayList<>();
@@ -23,7 +23,7 @@ public class MemberCustomer extends Customer {
 		return name;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -46,9 +46,8 @@ public class MemberCustomer extends Customer {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof MemberCustomer) {
-			return this.phoneNumber == ((MemberCustomer) obj).getPhoneNumber();
-		}
+		if (obj instanceof MemberCustomer) 
+			return this.phoneNumber.equals(((MemberCustomer) obj).getPhoneNumber());
 		return false;
 	}
 	
