@@ -57,7 +57,7 @@ public class StoreBranchDAO {
     }
 
     public void setMemberCustomers(ArrayList<MemberCustomer> int) {
-        StoreEntity.setMemberCustomers(memberCustomer); 
+        branch.setMemberCustomers(memberCustomer); 
     }
 
     public void setBasicSalary(float salary) {
