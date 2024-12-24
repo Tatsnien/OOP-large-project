@@ -52,24 +52,18 @@ public class StoreBranchDAO {
         }
     }
 
-    public void setPersonnels(ArrayList<Personnel> personnels) {
-        for (Personnel personnel : personnels) {
-            branch.addPersonnel(personnel);
-        }
+   public void setPersonnels(ArrayList<Personnel> personnels) {
+        branch.setPersonnels(personnels); 
     }
 
     public void setItems(ArrayList<Item> items) {
-        
-       
+        branch.setItems(items); 
     }
 
-    public void setMemberCustomer(ArrayList<MemberCustomer> members) {
-        
-
+    public void setMemberCustomers(ArrayList<Customer> members) {
+        StoreEntity.getMemberCustomers().addAll(members); t
     }
 
     public void setBasicSalary(float salary) {
-       
-
+        branch.setBasicSalary(salary);
     }
-}
