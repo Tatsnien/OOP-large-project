@@ -1,6 +1,6 @@
 package data;
 
-class Stationery extends Item {
+class Stationary extends Item {
     private String type; // Specific attribute for stationeries
     private String brand; // Specific attribute for stationeries
 
