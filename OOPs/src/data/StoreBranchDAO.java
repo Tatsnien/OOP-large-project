@@ -2,11 +2,7 @@ package data;
 
 import personnel.*;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*
 import java.util.ArrayList;
 
 import customer.MemberCustomer;
@@ -61,7 +57,7 @@ public class StoreBranchDAO {
     }
 
     public void setMemberCustomers(ArrayList<Customer> members) {
-        StoreEntity.getMemberCustomers().addAll(members); t
+        StoreEntity.getMemberCustomers(); //not too sure about this
     }
 
     public void setBasicSalary(float salary) {
