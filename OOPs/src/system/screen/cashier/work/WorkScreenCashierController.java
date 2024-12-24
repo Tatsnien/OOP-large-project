@@ -1,5 +1,6 @@
 package system.screen.cashier.work;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
@@ -44,6 +45,7 @@ public class WorkScreenCashierController {
 		this.cashier = cashier;
 		this.bill = new Bill();
 		this.customer = new Customer();
+		this.membershipService = new MembershipService();
 	}
 	
 	public void setFrame(JFrame frame) {
@@ -171,7 +173,7 @@ public class WorkScreenCashierController {
     
     private String showInputDialog(int phoneNumber) {
         JDialog inputDialog = new JDialog(this.frame, "Input Dialog", true);
-        inputDialog.setSize(400, 200);
+        inputDialog.setSize(400, 150);
         inputDialog.setLayout(new BoxLayout(inputDialog.getContentPane(), BoxLayout.Y_AXIS));
         inputDialog.setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
         
@@ -196,14 +198,13 @@ public class WorkScreenCashierController {
         return nameField.getText().strip();
     }
     
-    
     @FXML
     void btnAddPressed(ActionEvent event) {
     	if (tfPhoneNb.getText() == "") {
     		lbPhoneNbStatus.setText("Please enter phone number.");
     		return;
     	}
-    	if (lbMemberName.getText() == "-") {
+    	if (lbMemberName.getText().equals("-")) {
     		lbPhoneNbStatus.setText("Press \"Search\" first.");
     		return;
     	}
@@ -215,7 +216,7 @@ public class WorkScreenCashierController {
     	lbPhoneNbStatus.setText("Member \"" + phoneNumber + "\" added");
     	tfPhoneNb.setText("");
     	lbMemberName.setText("-");
-    	membershipService.addMemberCustomer((MemberCustomer) this.customer);
+    	membershipService.addMemberCustomer(newMember);
     }
     
     @FXML
@@ -224,7 +225,7 @@ public class WorkScreenCashierController {
     		lbPhoneNbStatus.setText("Please enter phone number.");
     		return;
     	}
-    	if (lbMemberName.getText() == "-") {
+    	if (lbMemberName.getText().equals("-")) {
     		lbPhoneNbStatus.setText("Press \"Search\" first.");
     		return;
     	}
