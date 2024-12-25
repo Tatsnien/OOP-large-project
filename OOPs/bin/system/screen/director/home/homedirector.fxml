@@ -50,10 +50,16 @@
                 <Menu mnemonicParsing="false" text="Home">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#mnHomePressed" text="Home" />
+                        <MenuItem mnemonicParsing="false" text="Log Out" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Work">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Work" />
+                        <MenuItem mnemonicParsing="false" text="View Reports" />
+                        <MenuItem mnemonicParsing="false" text="Timekeeping" />
+                        <MenuItem mnemonicParsing="false" text="View List of Employees" />
+                        <MenuItem mnemonicParsing="false" text="View Items in Store" />
+                        <MenuItem mnemonicParsing="false" text="Financial Status" />
+                        <MenuItem mnemonicParsing="false" text="Add discount" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Profile">
                      <items>
@@ -70,16 +76,6 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1024.0">
                <children>
                   <VBox fx:id="vbNotice" prefWidth="1024.0" spacing="10.0">
-                     <children>
-                        <Label text="Notice">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="30.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
                      <padding>
                         <Insets left="30.0" right="30.0" top="20.0" />
                      </padding>
