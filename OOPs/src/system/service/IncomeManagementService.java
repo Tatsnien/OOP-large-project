@@ -9,6 +9,12 @@ public class IncomeManagementService {
 	
 	StoreBranch branch;
 	
+	public IncomeManagementService() {}
+	
+	public IncomeManagementService(StoreBranch branch) {
+		this.branch = branch;
+	}
+	
 	public void setBranch(StoreBranch branch) {
 		this.branch = branch;
 	}

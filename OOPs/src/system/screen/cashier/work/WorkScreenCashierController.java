@@ -42,7 +42,6 @@ public class WorkScreenCashierController {
 	
 	public WorkScreenCashierController(Cashier cashier) {
 		this.cashier = cashier;
-		this.bill = new Bill();
 		this.customer = new Customer();
 		this.membershipService = new MembershipService();
 	}

@@ -1,11 +1,31 @@
 package system.service;
 
+import data.StoreBranch;
+
 public class StoreBranchManagerService {
 	
+	private StoreBranch storeBranch;
 	private ItemManagementService itemService;
 	private IncomeManagementService incomeService;
 	private PersonnelManagementService personnelService;
 	
+	public StoreBranchManagerService (){}
+	
+	public StoreBranchManagerService (StoreBranch storeBranch){
+		this.storeBranch = storeBranch;
+		this.itemService = new ItemManagementService(storeBranch.getItems());
+		this.incomeService = new IncomeManagementService(storeBranch);
+		this.personnelService = new PersonnelManagementService(storeBranch.getPersonnels(), storeBranch.getExpenses());
+	}
+	
+	public StoreBranch getBranch() {
+		return storeBranch;
+	}
+
+	public void setBranch(StoreBranch storeBranch) {
+		this.storeBranch = storeBranch;
+	}
+
 	public ItemManagementService getItemService() {
 		return itemService;
 	}
