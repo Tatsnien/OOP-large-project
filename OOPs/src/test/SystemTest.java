@@ -5,6 +5,7 @@ import data.*;
 import personnel.*;
 import system.LoginScreen;
 import system.notice.Notice;
+import system.service.ItemManagementService;
 
 public class SystemTest {
 	
@@ -51,8 +52,11 @@ public class SystemTest {
 		cashier1.getAccount().addNotice(notice2);
 		cashier1.getAccount().addNotice(notice3);
 		
-		StoreEntity.getMemberCustomers().add(new MemberCustomer("0987987987", "Le Van Tu"));
-		StoreEntity.getMemberCustomers().add(new MemberCustomer("0123456789", "Do Van Cuong"));
+		ItemManagementService itemService = new ItemManagementService(branch1.getItems(), branch1.getQty());
+		itemService.addBook("Calculus III", "0000", "Dao Tuan Anh", "NXB Bach Khoa", "0000", 100, 2);
+		itemService.addStationary("Staedtler 4H", "0001", "pencil", 3, 1);
+		itemService.addToy("Euler figure", "0002", "LoveMaths", new int[]{6, 18}, "figure", 10, 10);
+		itemService.addItem(new Book("Calculus: Early Transcendentals", "0003", "James Stewart", "Cengage Learning", "1285740629", 202), 15);		
 		
 		LoginScreen.main(args);
 	}

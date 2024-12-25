@@ -71,6 +71,22 @@ public class StoreChain extends StoreEntity{
 	@Override
 	public List<Item> getItems() {
 		this.items = new ArrayList<>();
+		this.qty = new ArrayList<>();
+		for (StoreBranch branch : branchs) {
+			List<Item> curItems = branch.getItems();
+			List<Integer> curQty = branch.getQty();
+			
+			for (int i = 0; i < curItems.size(); ++i)
+				if (items.contains(curItems.get(i))) {
+					int idx = items.indexOf(curItems.get(i));
+					qty.set(idx, qty.get(idx) + curQty.get(i));
+				}
+				else {
+					items.add(curItems.get(i));
+					qty.add(curQty.get(i));
+				}
+		}
+		
 		for (StoreBranch branch : branchs)
 			this.items.addAll(branch.getItems());
 		return this.items;

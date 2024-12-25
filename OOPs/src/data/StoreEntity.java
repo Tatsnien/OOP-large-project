@@ -10,6 +10,7 @@ public class StoreEntity {
 	
 	protected List<Personnel> personnels;
 	protected List<Item> items;
+	protected List<Integer> qty;
 	protected List<Bill> bills;
 	protected List<Expense> expenses;
 	protected float income;
@@ -20,6 +21,7 @@ public class StoreEntity {
 	public StoreEntity() {
 		personnels = new ArrayList<>();
 		items = new ArrayList<>();
+		qty = new ArrayList<>();
 		bills = new ArrayList<>();
 		expenses = new ArrayList<>();
 		income = 0;
@@ -35,6 +37,10 @@ public class StoreEntity {
 	
 	public List<Item> getItems() {
 		return items;
+	}
+	
+	public List<Integer> getQty() {
+		return qty;
 	}
 	
 	public List<Expense> getExpenses() {
@@ -63,6 +69,10 @@ public class StoreEntity {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
+	}
+	
+	public void setQty(List<Integer> qty) {
+		this.qty = qty;
 	}
 
 	public void setBasicSalary(float basicSalary) {

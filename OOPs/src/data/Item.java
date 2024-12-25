@@ -2,36 +2,20 @@ package data;
 // Abstract Item Class
 public abstract class Item {
     protected String name;          // Common attribute for all items
-    protected int barcode;          // Unique barcode for the item
-    protected float purchasePrice;  // Purchase price of the item
-    protected int quantity;         // Quantity in stock
-    protected float sellingPrice;    // Selling price of the item
+    protected String barcode;          // Unique barcode for the item
+    protected float price;  // Purchase price of the item
 
-    public Item(String name, int barcode, float purchasePrice, int quantity, float sellingPrice) {
+    public Item(String name, String barcode, float price) {
         this.name = name;
         this.barcode = barcode;
-        this.purchasePrice = purchasePrice;
-        this.quantity = quantity;
-        this.sellingPrice = sellingPrice;
+        this.price = price;
     }
 
     // Abstract method to get item information
     public abstract String getItemInfo();
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public float getPurchasePrice() {
-        return purchasePrice;
+    public float getPrice() {
+        return price;
     }
 
 	public String getName() {
@@ -42,25 +26,17 @@ public abstract class Item {
 		this.name = name;
 	}
 
-	public int getBarcode() {
+	public String getBarcode() {
 		return barcode;
 	}
-	
-	public float getTotalPrice() {
-		return this.purchasePrice * this.quantity;
-	}
 
-	public void setBarcode(int barcode) {
+	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
 
-	public void setPurchasePrice(float purchasePrice) {
-		this.purchasePrice = purchasePrice;
+	public void setPrice(float price) {
+		this.price = price;
 	}
-
-	public void setSellingPrice(float sellingPrice) {
-		this.sellingPrice = sellingPrice;
-	}
-    
+	
 }  
 

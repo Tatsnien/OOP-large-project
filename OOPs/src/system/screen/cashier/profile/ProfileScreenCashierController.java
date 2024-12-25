@@ -44,7 +44,7 @@ public class ProfileScreenCashierController{
 		lbProfileName.setText(cashier.getName());
 		lbProfileId.setText(cashier.getAccount().getId());
 		lbProfilePosition.setText(cashier.getPosition());
-		lbProfileSalary.setText(Math.round(cashier.getSalary() * 100) / 100.0 + " VNĐ");
+		lbProfileSalary.setText("$ " + Math.round(cashier.getSalary() * 100) / 100.0);
 	}
 	
 	@FXML

@@ -43,7 +43,7 @@ public class ProfileScreenStaffController{
 		lbProfileName.setText(staff.getName());
 		lbProfileId.setText(staff.getAccount().getId());
 		lbProfilePosition.setText(staff.getPosition());
-		lbProfileSalary.setText(Math.round(staff.getSalary() * 100) / 100.0 + " VNĐ");
+		lbProfileSalary.setText("$ " + Math.round(staff.getSalary() * 100) / 100.0);
 	}
 	
 	@FXML

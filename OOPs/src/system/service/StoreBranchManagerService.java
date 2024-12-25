@@ -13,7 +13,7 @@ public class StoreBranchManagerService {
 	
 	public StoreBranchManagerService (StoreBranch storeBranch){
 		this.storeBranch = storeBranch;
-		this.itemService = new ItemManagementService(storeBranch.getItems());
+		this.itemService = new ItemManagementService(storeBranch.getItems(), storeBranch.getQty());
 		this.incomeService = new IncomeManagementService(storeBranch);
 		this.personnelService = new PersonnelManagementService(storeBranch.getPersonnels(), storeBranch.getExpenses());
 	}

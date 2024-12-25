@@ -3,10 +3,10 @@ package data;
 public class Toy extends Item {
     private int[] suitableAges; // Array to represent suitable age range
     private String brand;
-    private int type; // Additional attribute for a specific age type
+    private String type; // Additional attribute for a specific age type
 
-    public Toy(String name, int barcode, String brand, int[] suitableAges, int type, int quantity, float purchasePrice, float sellingPrice) {
-        super(name, barcode, purchasePrice, quantity, sellingPrice);
+    public Toy(String name, String barcode, String brand, int[] suitableAges, String type, float price) {
+        super(name, barcode, price);
         this.brand = brand;
         this.suitableAges = suitableAges; // Expecting an array with two elements [minAge, maxAge]
         this.type = type; // A specific age value or category
@@ -16,7 +16,7 @@ public class Toy extends Item {
     public String getItemInfo() {
         return "Toy: " + name + ", Suitable Ages: " + suitableAges[0] + "-" + suitableAges[1] + 
                ", Age Type: " + type + ", Barcode: " + barcode + 
-               ", Price: " + sellingPrice;
+               ", Price: " + price;
     }
 
     // Method to check if a specific age is suitable

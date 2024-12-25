@@ -43,7 +43,7 @@ public class ProfileScreenDirectorController{
 		lbProfileName.setText(director.getName());
 		lbProfileId.setText(director.getAccount().getId());
 		lbProfilePosition.setText(director.getPosition());
-		lbProfileSalary.setText(Math.round(director.getSalary() * 100) / 100.0 + " VNĐ");
+		lbProfileSalary.setText("$ " + Math.round(director.getSalary() * 100) / 100.0);
 	}
 	
 	@FXML

@@ -11,29 +11,31 @@ import javafx.beans.property.StringProperty;
 public class ItemProperty{
 
 	Item item;
+	int qty;
 	
-	public ItemProperty(Item item) {
+	public ItemProperty(Item item, int qty) {
 		this.item = item;
+		this.qty = qty;
 	}
 	
 	public StringProperty nameProperty() {
 		return new SimpleStringProperty(item.name);
 	}
 	
-	public IntegerProperty barcodeProperty() {
-		return new SimpleIntegerProperty(item.barcode);
+	public StringProperty barcodeProperty() {
+		return new SimpleStringProperty(item.barcode);
 	}
 	
 	public FloatProperty purchasePriceProperty() {
-		return new SimpleFloatProperty(item.purchasePrice);
+		return new SimpleFloatProperty(item.price);
 	}
 	
 	public IntegerProperty quantity() {
-		return new SimpleIntegerProperty(item.quantity);
+		return new SimpleIntegerProperty(qty);
 	}
 	
 	public FloatProperty sellingPriceProperty() {
-		return new SimpleFloatProperty(item.sellingPrice);
+		return new SimpleFloatProperty(item.price);
 	}
 	
 }

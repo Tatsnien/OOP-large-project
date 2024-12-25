@@ -1,5 +1,7 @@
 package payment;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import customer.Cart;
@@ -46,25 +48,17 @@ public class PaymentService {
 		// to be overridden
 	}
 	
-	public void updateItemPurchasePrice() {
-		// update item.purchasePrice by subtract discounts
-		// we currently don't add tax for each item, but may charge 10% at a whole
-	}
-	
-	public float calculateItemDiscount() {
-		// calculate discount applied for item
-		return 0;
-	}
-	
 	public float calculateSubTotal() {
 		float subTotal = 0;
-		for (Item item: cart.getItemsOrdered())
-			subTotal += item.getPurchasePrice();
+		List<Item> items = cart.getItemsOrdered();
+		List<Integer> qty = cart.getQty();
+		for (int i = 0; i < items.size(); ++i)
+			subTotal += items.get(i).getPrice() * qty.get(i);
 		return subTotal;
 	}
 	
 	public float calculateTax() {
-		return this.calculateSubTotal() * 0.1f;
+		return formattedPrice(this.calculateSubTotal() * 0.1f);
 	}
 	
 	public float calculateDiscount() {
@@ -72,7 +66,11 @@ public class PaymentService {
 	}
 	
 	public float calculateTotal() {
-		return this.calculateSubTotal() + this.calculateTax() - this.calculateDiscount();
+		return formattedPrice(this.calculateSubTotal() + this.calculateTax() - this.calculateDiscount());
+	}
+	
+	public float formattedPrice(float price) {
+		return Math.round(price * 100) / 100.0f;
 	}
 	
 }

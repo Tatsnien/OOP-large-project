@@ -5,9 +5,9 @@ public class Book extends Item {
     private String publisher;   // Specific attribute for books
     private String isbn;        // Specific attribute for books
 
-    public Book(String name, int barcode, String author, String publisher, String isbn, int quantity, 
-    		float purchasePrice, float sellingPrice) {
-        super(name, barcode, purchasePrice, quantity, sellingPrice);
+    public Book(String name, String barcode, String author, String publisher, String isbn, 
+    		float price) {
+        super(name, barcode, price);
         this.author = author;
         this.publisher = publisher;
         this.isbn = isbn;
@@ -15,8 +15,11 @@ public class Book extends Item {
 
     @Override
     public String getItemInfo() {
-        return "Book: " + name + " by " + author + ", Publisher: " + publisher + ", ISBN: " + isbn + 
-               ", Price: " + sellingPrice;
+        return 	"Book: " + name + 
+        		" by " + author + 
+        		", Publisher: " + publisher + 
+        		", ISBN: " + isbn + 
+        		", Price: " + price;
     }
 }
 

@@ -13,6 +13,7 @@ import customer.Cart;
 import customer.Customer;
 import customer.MemberCustomer;
 import data.Item;
+import data.OrderedItemGroup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -28,67 +29,46 @@ import payment.*;
 import personnel.Cashier;
 import system.screen.cashier.home.HomeScreenCashier;
 import system.screen.cashier.profile.ProfileScreenCashier;
-import system.service.MembershipService;
+import system.service.ItemManagementService;
 
 public class WorkScreenCashierController {
 	
 	private JFrame frame;
 	private Cashier cashier;
-	private Customer customer;
 	private Cart cart;
-	private Bill bill;
 	private PaymentService paymentService;
-	private MembershipService membershipService;
+	private ItemManagementService itemBranchService;
+	private ItemManagementService itemCartService;
 	
 	public WorkScreenCashierController(Cashier cashier) {
 		this.cashier = cashier;
-		this.customer = new Customer();
-		this.membershipService = new MembershipService();
+		this.cart = new Cart();
+		this.paymentService = new CashPaymentService(cart);
+		this.itemBranchService = new ItemManagementService(cashier);
+		this.itemCartService = new ItemManagementService(cart.getItemsOrdered(), cart.getQty());
 	}
 	
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-	
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-		this.cart = customer.getCart();
-		this.paymentService = new CashPaymentService(customer.getCart());
-	}
-	
-	public String getPriceToString(float price) {
-		return Double.toString(Math.round(price * 100) / 100.0);
-	}
 
     @FXML
-    private TableColumn<Item, Integer> colBarcode;
+    private TableColumn<OrderedItemGroup, Integer> colBarcode;
 
     @FXML
-    private TableColumn<Item, String> colName;
+    private TableColumn<OrderedItemGroup, String> colName;
 
     @FXML
-    private TableColumn<Item, Integer> colQty;
+    private TableColumn<OrderedItemGroup, Integer> colQty;
     
     @FXML
-    private TableColumn<Item, Float> colSellingPrice;
+    private TableColumn<OrderedItemGroup, Float> colSellingPrice;
     
     @FXML
-    private TableColumn<Item, Float> colPurchasePrice;
+    private TableColumn<OrderedItemGroup, Float> colPurchasePrice;
 
     @FXML
-    private TableColumn<Item, Float> colItemTotal;
-    
-    @FXML
-    private Label lbPhoneNbStatus;
-
-    @FXML
-    private Label lbDiscount;
-
-    @FXML
-    private Label lbMemberName;
-
-    @FXML
-    private Label lbName;
+    private TableColumn<OrderedItemGroup, Float> colItemTotal;
 
     @FXML
     private Label lbPaymentStatus;
@@ -101,6 +81,9 @@ public class WorkScreenCashierController {
 
     @FXML
     private Label lbTotal;
+    
+    @FXML
+    private Label lbAddItemStatus;
 
     @FXML
     private ToggleGroup paymentMethods;
@@ -115,10 +98,13 @@ public class WorkScreenCashierController {
     private RadioButton rbOnline;
 
     @FXML
-    private TableView<Item> tblItem;
+    private TableView<OrderedItemGroup> tblItem;
+    
+    @FXML
+    private TextField tfBarcode;
 
     @FXML
-    private TextField tfPhoneNb;
+    private TextField tfQty;
 
     @FXML
     private TextField tfReceivedMoney;
@@ -131,98 +117,18 @@ public class WorkScreenCashierController {
 				new PropertyValueFactory<>("name"));
 		
 		colQty.setCellValueFactory(
-				new PropertyValueFactory<>("quantity"));
+				new PropertyValueFactory<>("qty"));
 		
 		colSellingPrice.setCellValueFactory(
-				new PropertyValueFactory<>("sellingPrice"));
+				new PropertyValueFactory<>("price"));
 		
 		colPurchasePrice.setCellValueFactory(
-				new PropertyValueFactory<>("purchasePrice"));
+				new PropertyValueFactory<>("price"));
 		
 		colItemTotal.setCellValueFactory(
-				new PropertyValueFactory<>("itemTotalPrice"));
+				new PropertyValueFactory<>("total"));
 		
-		tblItem.setItems(customer.getCart().getItemsOrdered());
-    }
-    
-    @FXML
-    void btnSearchPressed(ActionEvent event) {
-    	 String phoneNumber = tfPhoneNb.getText().strip();
-    	lbPhoneNbStatus.setText("");
-    	MemberCustomer member = membershipService.searchMemberCustomer(phoneNumber);
-    	
-    	if (member != null) {
-    		lbMemberName.setText(member.getName().toUpperCase());
-    		customer = member;
-    		customer.setCart(cart);
-    	}
-    	else
-    		lbMemberName.setText("-");
-    }
-    
-    private String showInputDialog(String phoneNumber) {
-        JDialog inputDialog = new JDialog(this.frame, "Input Dialog", true);
-        inputDialog.setSize(400, 150);
-        inputDialog.setLayout(new BoxLayout(inputDialog.getContentPane(), BoxLayout.Y_AXIS));
-        inputDialog.setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
-        
-        JTextField nameField = new JTextField(20);
-
-        inputDialog.add(new JLabel("Phone Number: " + phoneNumber));
-        inputDialog.add(new JLabel("Name: "));
-        inputDialog.add(nameField);
-
-        // Create and add a submit button
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-                inputDialog.dispose();
-			}
-        });
-        inputDialog.add(submitButton);
-
-        inputDialog.setVisible(true);
-        
-        return nameField.getText().strip();
-    }
-    
-    @FXML
-    void btnAddPressed(ActionEvent event) {
-    	if (tfPhoneNb.getText() == "") {
-    		lbPhoneNbStatus.setText("Please enter phone number.");
-    		return;
-    	}
-    	if (lbMemberName.getText().equals("-")) {
-    		lbPhoneNbStatus.setText("Press \"Search\" first.");
-    		return;
-    	}
-    	
-    	String phoneNumber = tfPhoneNb.getText().strip();
-    	String memberName = showInputDialog(phoneNumber);
-    	
-    	MemberCustomer newMember = new MemberCustomer(phoneNumber, memberName);
-    	lbPhoneNbStatus.setText("Member \"" + phoneNumber + "\" added");
-    	tfPhoneNb.setText("");
-    	lbMemberName.setText("-");
-    	membershipService.addMemberCustomer(newMember);
-    }
-    
-    @FXML
-    void btnRemovePressed(ActionEvent event) {
-    	if (tfPhoneNb.getText() == "") {
-    		lbPhoneNbStatus.setText("Please enter phone number.");
-    		return;
-    	}
-    	if (lbMemberName.getText().equals("-")) {
-    		lbPhoneNbStatus.setText("Press \"Search\" first.");
-    		return;
-    	}
-    	
-    	lbPhoneNbStatus.setText("Member \"" + ((MemberCustomer) this.customer).getPhoneNumber() + "\" deleted");
-    	tfPhoneNb.setText("");
-    	lbMemberName.setText("-");
-    	membershipService.removeMemberCustomer((MemberCustomer) this.customer);
+		tblItem.setItems(cart.getGroup());
     }
     
     @FXML
@@ -238,6 +144,48 @@ public class WorkScreenCashierController {
     @FXML
     void rbOnlinePressed(ActionEvent event) {
     	paymentService = new OnlinePaymentService(cart);
+    }
+    
+    @FXML
+    void btnUpdatePressed(ActionEvent event) {
+    	// Handle item not in branch
+    	int idxBranch = itemBranchService.searchItemIndex(tfBarcode.getText().strip());
+    	if (idxBranch == -1) {
+    		lbAddItemStatus.setText("Item not found.");
+    		return;
+    	}
+    	
+    	// Handle cashier makes an invalid input
+    	int qty = 0;
+    	Item item = itemBranchService.getItems().get(idxBranch);
+    	try {
+    		qty = Integer.parseInt(tfQty.getText());
+    	} catch (Exception e) {
+    		lbAddItemStatus.setText("Invalid quantity.");
+    		return;
+    	}
+    	
+    	// Handle quantity is larger than store capacity
+    	if (qty > itemBranchService.getQty().get(idxBranch)) {
+    		lbAddItemStatus.setText("Not enough items available.");
+    		return;
+    	}
+    	
+    	// Normal
+    	int idxCart = itemCartService.searchItemIndex(tfBarcode.getText().strip());
+    	if (idxCart == -1)
+    		cart.addItem(item, qty);
+    	else {
+    		itemCartService.getQty().set(idxCart, qty);
+    		cart.getGroup().set(idxCart, new OrderedItemGroup(item, qty));
+    	}
+    	
+    	tfBarcode.setText("");
+    	tfQty.setText("");
+    	lbSubTotal.setText(paymentService.calculateSubTotal() + "");
+		lbTax.setText(paymentService.calculateTax() + "");
+		lbTotal.setText(paymentService.calculateTotal() + "");
+		lbAddItemStatus.setText("");
     }
 
     @FXML
@@ -256,7 +204,16 @@ public class WorkScreenCashierController {
     		return;
     	}
     	else {
-    		// Make payment
+    		paymentService.makePayment();
+    		cart.clearCart();
+    		
+    		tfBarcode.setText("");
+        	tfQty.setText("");
+        	tfReceivedMoney.setText("");
+    		lbSubTotal.setText("-");
+    		lbTax.setText("-");
+    		lbTotal.setText("-");
+    		lbAddItemStatus.setText("");
     	}    	
     }
 
