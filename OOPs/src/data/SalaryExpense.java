@@ -20,5 +20,12 @@ public class SalaryExpense extends Expense {
 	public Personnel getPersonnel() {
 		return personnel;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof SalaryExpense)
+			return ((SalaryExpense) obj).getPersonnel().equals(personnel);
+		return false;
+	}
 	
 }

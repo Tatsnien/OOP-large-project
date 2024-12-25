@@ -92,4 +92,13 @@ public class StoreChain extends StoreEntity{
 		return this.income;
 	}
 	
+	@Override
+	public List<Expense> getExpenses(){
+		for (StoreBranch branch : branchs)
+			for (Expense expense : branch.getExpenses())
+				if (!this.expenses.contains(expense))
+					this.expenses.add(expense);
+		return this.expenses;
+	}
+	
 }

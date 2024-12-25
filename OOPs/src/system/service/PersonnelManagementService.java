@@ -5,12 +5,13 @@ import java.util.List;
 
 import data.Expense;
 import data.SalaryExpense;
+import personnel.Account;
 import personnel.Personnel;
 
 public class PersonnelManagementService {
 	
-	private List<Personnel> personnels;
-	private ExpenseManagementService expenseService;
+	protected List<Personnel> personnels;
+	protected ExpenseManagementService expenseService;
 	
 	public PersonnelManagementService() {
 		this.personnels = new ArrayList<>();
@@ -33,6 +34,13 @@ public class PersonnelManagementService {
 		this.expenseService = new ExpenseManagementService(expenses);
 	}
 	
+	public Personnel searchPersonnel(String id) {
+		for (Personnel personnel : personnels)
+			if (personnel.getAccount().getId().equals(id))
+				return personnel;
+		return null;
+	}
+	
 	public void addPersonnel(Personnel personnel) {
 		personnels.add(personnel);
 		this.expenseService.addExpense(new SalaryExpense(personnel));
@@ -40,12 +48,7 @@ public class PersonnelManagementService {
 	
 	public void removePersonnel(Personnel personnel) {
 		personnels.remove(personnel);
-		for (Expense expense : expenseService.getExpenses()) 
-			if (expense instanceof SalaryExpense && 
-					((SalaryExpense) expense).getPersonnel().equals(personnel)) {
-				expenseService.removeExpense(expense);
-				return;
-			}
+		this.expenseService.removeExpense(new SalaryExpense(personnel));
 	}
 	
 	public void updateBonus(Personnel personnel, float bonus) {

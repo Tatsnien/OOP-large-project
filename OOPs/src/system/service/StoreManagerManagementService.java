@@ -3,22 +3,31 @@ package system.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.Expense;
 import data.StoreBranch;
 import data.StoreChain;
+import personnel.Personnel;
 import personnel.StoreBranchManager;
 
-public class StoreManagerManagementService {
-
-	private List<StoreBranchManager> managers;
+public class StoreManagerManagementService extends PersonnelManagementService{
 	
 	public StoreManagerManagementService() {
-		this.managers = new ArrayList<>();
+		super();
 		for (StoreBranch branch : StoreChain.getBranchs())
-			this.managers.add(branch.getBranchManager());
+			this.personnels.add(branch.getBranchManager());
 	}
-
-	public List<StoreBranchManager> getManagers() {
-		return managers;
+	
+	public StoreManagerManagementService(List<Personnel> personnels, List<Expense> expenses) {
+		super();
+		setPersonnels(personnels);
+		expenseService = new ExpenseManagementService(expenses);
+	}
+	
+	public void setPersonnels(List<Personnel> personnels) {
+		this.personnels = new ArrayList<>();
+		for (Personnel personnel : personnels)
+			if (personnel instanceof StoreBranchManager)
+				this.personnels.add(personnel);
 	}
 	
 	public StoreBranchManager searchManager(int branchNumber) {
@@ -28,23 +37,4 @@ public class StoreManagerManagementService {
 		return null;
 	}
 	
-	public void addManager(StoreBranchManager manager) {
-		managers.add(manager);
-	}
-	
-	public void removeManager(StoreBranchManager manager) {
-		managers.remove(manager);
-	}
-	
-	public void updateBonus(StoreBranchManager manager, float bonus) {
-		// Update bonus
-	}
-	
-	public void salaryDeduction(StoreBranchManager manager, float deduction) {
-		manager.setSalary(manager.getSalary() - deduction);
-	}
-	
-	public void salaryDeductionByPercentage(StoreBranchManager manager, float deductionPercentage) {
-		manager.setSalary(manager.getSalary() * (1 - deductionPercentage));
-	}
 }

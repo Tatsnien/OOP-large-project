@@ -1,8 +1,6 @@
 package system.service;
 
-import java.util.List;
-
-import personnel.StoreBranchManager;
+import data.StoreChain;
 
 public class StoreChainDirectorService extends ManagerService{
 	
@@ -12,22 +10,25 @@ public class StoreChainDirectorService extends ManagerService{
 	public StoreChainDirectorService() {
 		this.branchService = new StoreBranchManagementService();
 		this.managerManagementService = new StoreManagerManagementService();
+		this.expenseService = new ExpenseManagementService((new StoreChain()).getExpenses());
+	}
+
+	public StoreBranchManagementService getBranchService() {
+		return branchService;
+	}
+
+	public StoreManagerManagementService getManagerManagementService() {
+		return managerManagementService;
 	}
 
 	@Override
-	public float viewRevenue() {
-		float revenue = 0;
-		List<StoreBranchManager> managers = managerManagementService.getManagers();
-		for (StoreBranchManager manager : managers) {
-			
-		}
-		return revenue;
+	public double getRevenue() {
+		return (new StoreChain()).getIncome();
 	}
 
 	@Override
-	public float viewProfit() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getProfit() {
+		return getRevenue() - this.expenseService.getTotalExpense();
 	}
 	
 }

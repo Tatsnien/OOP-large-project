@@ -1,9 +1,11 @@
 package system.service;
 
 public abstract class ManagerService {
-
-	public abstract float viewRevenue();
 	
-	public abstract float viewProfit();
+	protected ExpenseManagementService expenseService;
+
+	public abstract double getRevenue();
+	
+	public abstract double getProfit();
 	
 }
