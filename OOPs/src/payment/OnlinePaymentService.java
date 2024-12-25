@@ -8,4 +8,10 @@ public class OnlinePaymentService extends PaymentService {
 		super(cart);
 	}
 
+	public void makePayment() {
+		boolean validated = false;
+		while (validated == false) {
+			validated = checkValidation();
+		}
+	}
 }
