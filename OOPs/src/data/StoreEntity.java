@@ -3,17 +3,26 @@ package data;
 import java.util.*;
 
 import customer.*;
+import payment.Bill;
 import personnel.*;
 
 public class StoreEntity {
 	
-	private List<Personnel> personnels = new ArrayList<>();
-	private List<Item> items = new ArrayList<>();
+	protected List<Personnel> personnels;
+	protected List<Item> items;
+	protected List<Bill> bills;
+	protected List<Expense> expenses;
+	protected float income;
 	private float basicSalary;
 	private static List<MemberCustomer> memberCustomers;
 	private static List<Discount> discounts;
 	
 	public StoreEntity() {
+		personnels = new ArrayList<>();
+		items = new ArrayList<>();
+		bills = new ArrayList<>();
+		expenses = new ArrayList<>();
+		income = 0;
 		if (discounts == null)
 			discounts = new ArrayList<>();
 		if (memberCustomers == null)
@@ -26,6 +35,18 @@ public class StoreEntity {
 	
 	public List<Item> getItems() {
 		return items;
+	}
+	
+	public List<Expense> getExpenses() {
+		return expenses;
+	}
+
+	public List<Bill> getBills() {
+		return bills;
+	}
+	
+	public float getIncome() {
+		return income;
 	}
 
 	public static List<MemberCustomer> getMemberCustomers() {
@@ -47,6 +68,5 @@ public class StoreEntity {
 	public void setBasicSalary(float basicSalary) {
 		this.basicSalary = basicSalary;
 	}
-
 
 }

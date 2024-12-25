@@ -1,6 +1,6 @@
 package data;
 
-class Book extends Item {
+public class Book extends Item {
     private String author;      // Specific attribute for books
     private String publisher;   // Specific attribute for books
     private String isbn;        // Specific attribute for books

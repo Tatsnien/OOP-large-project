@@ -6,6 +6,7 @@ module OOPs {
 	exports personnel;
 	exports system.notice;
 	exports customer;
+	exports payment;
 
 	requires java.desktop;
 	requires javafx.controls;

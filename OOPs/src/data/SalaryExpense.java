@@ -4,14 +4,21 @@ import personnel.Personnel;
 
 public class SalaryExpense extends Expense {
     private Personnel personnel;
-    private float salary;
    
-public SalaryExpense(String expenseName, double expenseValue, Personnel personnel, float salary) {
-    super(expenseName, expenseValue);
-    this.personnel = personnel;
-    this.salary = salary;  
-  }
-public void SalaryExpense(Personnel personnel) {
-    this.personnel= personnel;
-  }  
+	public SalaryExpense(Personnel personnel) {
+	    super();
+	    this.expenseName = "Salary" + personnel.getAccount().getId();
+	    this.personnel = personnel;
+	    this.expenseValue = personnel.getSalary();
+	}
+
+	public void setSalary(float salary) {
+		this.personnel.setSalary(salary);
+		this.expenseValue = salary;
+	}
+
+	public Personnel getPersonnel() {
+		return personnel;
+	}
+	
 }

@@ -1,11 +1,11 @@
 package data;
 
-class Stationary extends Item {
+public class Stationary extends Item {
     private String type; // Specific attribute for stationeries
     private String brand; // Specific attribute for stationeries
 
-    public Stationery(String name, int barcode, String type, int quantity, float purchasePrice, float sellingPrice) {
-        super(name, barcode, purchasePrice, quantity, sellingPrice);
+    public Stationary (String name, int barcode, String type, int quantity, float purchasePrice, float sellingPrice) {
+    	super(name, barcode, purchasePrice, quantity, sellingPrice);
         this.type = type;
     }
 

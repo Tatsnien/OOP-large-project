@@ -1,5 +1,8 @@
 package data;
 
+import java.util.List;
+
+import payment.Bill;
 import personnel.Personnel;
 import personnel.StoreBranchManager;
 import system.service.StoreBranchManagerService;
@@ -8,7 +11,12 @@ public class StoreBranch extends StoreEntity {
 	private int branchNumber;
 	private String address;
 	private StoreBranchManager branchManager;
-	
+
+	public void addBill(Bill bill) {
+		this.bills.add(bill);
+		this.income += bill.getTotalAmount();
+	}
+
 	public int getBranchNumber() {
 		return branchNumber;
 	}
@@ -38,7 +46,7 @@ public class StoreBranch extends StoreEntity {
 		if (obj instanceof StoreBranch)
 			return this.branchNumber == ((StoreBranch) obj).branchNumber;
 		return false;
-	}
+	}	
 	
 	//Testing purpose: Deleted at final stage
 	public void addPersonnel(Personnel person) {

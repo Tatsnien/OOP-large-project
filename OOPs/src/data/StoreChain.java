@@ -3,6 +3,7 @@ package data;
 import java.util.*;
 
 import customer.MemberCustomer;
+import payment.Bill;
 import personnel.Director;
 import personnel.Personnel;
 
@@ -21,6 +22,10 @@ public class StoreChain extends StoreEntity{
 	
 	public static void setDirector(Director director) {
 		StoreChain.director = director;
+	}
+
+	public static List<StoreBranch> getBranchs() {
+		return branchs;
 	}
 
 	public void addBranch(StoreBranch newBranch) {
@@ -57,18 +62,34 @@ public class StoreChain extends StoreEntity{
 	
 	@Override
 	public List<Personnel> getPersonnels() {
-		List<Personnel> personnels = new ArrayList<>();
+		this.personnels = new ArrayList<>();
 		for (StoreBranch branch : branchs)
-			personnels.addAll(branch.getPersonnels());
-		return personnels;
+			this.personnels.addAll(branch.getPersonnels());
+		return this.personnels;
 	}
 	
 	@Override
 	public List<Item> getItems() {
-		List<Item> items = new ArrayList<>();
+		this.items = new ArrayList<>();
 		for (StoreBranch branch : branchs)
-			items.addAll(branch.getItems());
-		return items;
+			this.items.addAll(branch.getItems());
+		return this.items;
+	}
+
+	@Override
+	public List<Bill> getBills() {
+		this.bills = new ArrayList<>();
+		for (StoreBranch branch : branchs)
+			this.bills.addAll(branch.getBills());
+		return this.bills;
+	}
+
+	@Override
+	public float getIncome() {
+		this.income = 0;
+		for (StoreBranch branch : branchs)
+			this.income += branch.getIncome();
+		return this.income;
 	}
 	
 }

@@ -1,6 +1,6 @@
 package data;
 
-class Toy extends Item {
+public class Toy extends Item {
     private int[] suitableAges; // Array to represent suitable age range
     private String brand;
     private int type; // Additional attribute for a specific age type

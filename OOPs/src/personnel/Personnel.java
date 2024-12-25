@@ -40,4 +40,14 @@ public class Personnel {
 		this.account = account;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		try {
+			return account.equals(((Personnel) obj).getAccount());
+		}
+		catch (Exception e) {
+			return false;
+		}
+	}
+
 }
