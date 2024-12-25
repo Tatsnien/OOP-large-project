@@ -18,6 +18,7 @@ module OOPs {
 	opens system to javafx.fxml;
 	opens system.screen.director.home to javafx.fxml;
 	opens system.screen.director.profile to javafx.fxml;
+	opens system.screen.director.work.branch to javafx.fxml;
 	opens system.screen.manager.home to javafx.fxml;
 	opens system.screen.manager.profile to javafx.fxml;
 	opens system.screen.staff.home to javafx.fxml;

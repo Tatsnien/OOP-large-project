@@ -5,12 +5,26 @@ import java.util.List;
 
 import data.Expense;
 import data.RecurringExpense;
+import data.StoreBranch;
+import data.StoreChain;
 
 public class ExpenseManagementService {
 	private List<Expense> expenses;
 	
 	public ExpenseManagementService() {
-		this.expenses = new ArrayList<Expense>();
+		this.expenses = (new StoreChain()).getExpenses();
+	}
+	
+	public ExpenseManagementService(int branchNumber) {
+		for (StoreBranch branch : StoreChain.getBranchs())
+			if (branch.getBranchNumber() == branchNumber) {
+				expenses = branch.getExpenses();
+				return;
+			}
+	}
+	
+	public ExpenseManagementService(StoreBranch branch) {
+		expenses = branch.getExpenses();
 	}
 	
 	public ExpenseManagementService(List<Expense> expenses) {

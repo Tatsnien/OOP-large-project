@@ -17,6 +17,7 @@ import personnel.Director;
 import system.notice.Notice;
 import system.screen.director.profile.ProfileScreenDirector;
 import system.screen.director.work.WorkScreenDirector;
+import system.screen.director.work.branch.WorkBranchScreenDirector;
 
 public class HomeScreenDirectorController {
 
@@ -84,6 +85,13 @@ public class HomeScreenDirectorController {
     	System.out.println("Home -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnViewBranchPressed(ActionEvent event) {
+    	System.out.println("Home -> View Branch");
+    	this.frame.setVisible(false);
+		new WorkBranchScreenDirector(this.director);
     }
 
 }

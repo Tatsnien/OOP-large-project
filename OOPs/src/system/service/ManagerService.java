@@ -1,8 +1,6 @@
 package system.service;
 
-public abstract class ManagerService {
-	
-	protected ExpenseManagementService expenseService;
+public interface ManagerService {
 
 	public abstract double getRevenue();
 	

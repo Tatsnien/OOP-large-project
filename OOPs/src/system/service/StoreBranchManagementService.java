@@ -23,24 +23,34 @@ public class StoreBranchManagementService {
 		return branchs.size();
 	}
 	
-	public void addBranch(String address) {
+	public int addBranch(String address, String id) {
 		int slot = availableSlot();
-		StoreBranch newBranch = new StoreBranch();
-		newBranch.setAddress(address);
-		newBranch.setBranchNumber(slot + 1);
+		StoreBranchManager assignedManager = getAssignedBranchManager(id);
+		if (assignedManager == null)
+			return -1;
+		
+		StoreBranch newBranch = new StoreBranch(slot + 1, address, assignedManager);
 		branchs.add(slot, newBranch);
+		return slot + 1;
 	}
 	
-	public void addBranch(StoreBranch newBranch) {
+	public int addBranch(StoreBranch newBranch) {
+		int slot = -1;
 		try {
 			if (getBranch(newBranch.getBranchNumber()) != null)
-				return;
+				return -1;
 		} 
 		finally {
-			int slot = availableSlot();
+			slot = availableSlot();
 			newBranch.setBranchNumber(slot + 1);
 			branchs.add(slot, newBranch);
+			slot += 1;
 		}
+		return slot;
+	}
+	
+	public void removeBranch(StoreBranch branch) {
+		branchs.remove(branch);
 	}
 	
 	public StoreBranch getBranch(int branchNumber) {
@@ -52,11 +62,7 @@ public class StoreBranchManagementService {
 		return null;
 	}
 	
-	public void assignBranchManager(String id, int branchNumber) {
-		StoreBranch assignedBranch = getBranch(branchNumber);
-		if (assignedBranch == null)
-			return;
-		
+	public StoreBranchManager getAssignedBranchManager(String id) {
 		Personnel assignedPersonnel = null;
 		PersonnelManagementService personnelService = new PersonnelManagementService();
 		for (StoreBranch branch : branchs) {
@@ -66,8 +72,15 @@ public class StoreBranchManagementService {
 				continue;
 			personnelService.removePersonnel(assignedPersonnel);
 		}
-		if (assignedPersonnel == null)
+		return (StoreBranchManager) assignedPersonnel;
+	}
+	
+	public void assignBranchManager(String id, int branchNumber) {
+		StoreBranch assignedBranch = getBranch(branchNumber);
+		if (assignedBranch == null)
 			return;
+		
+		StoreBranchManager assignedManager = getAssignedBranchManager(id);
 		
 		StoreBranchManager oldManager = 
 				(new StoreManagerManagementService())
@@ -79,7 +92,7 @@ public class StoreBranchManagementService {
 			assignedBranch.getPersonnels().add(personnel);
 		}
 		
-		assignedBranch.setBranchManager((StoreBranchManager) assignedPersonnel);
+		assignedBranch.setBranchManager(assignedManager);
 	}
 	
 }

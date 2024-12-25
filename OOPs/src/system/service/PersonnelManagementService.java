@@ -15,6 +15,7 @@ public class PersonnelManagementService {
 	
 	public PersonnelManagementService() {
 		this.personnels = new ArrayList<>();
+		this.expenseService = new ExpenseManagementService();
 	}
 
 	public PersonnelManagementService(List<Personnel> personnels, List<Expense> expenses) {

@@ -17,9 +17,23 @@ public class ItemManagementService {
 	private List<Integer> qty;
 
 	public ItemManagementService() {
-		this.items = new ArrayList<>();
-		this.qty = new ArrayList<>();
+		this.items = (new StoreChain()).getItems();
+		this.qty = (new StoreChain()).getQty();
 	}
+	
+	public ItemManagementService(int branchNumber) {
+		for (StoreBranch branch : StoreChain.getBranchs())
+			if (branch.getBranchNumber() == branchNumber) {
+				items = branch.getItems();
+				qty = branch.getQty();
+				return;
+			}
+	}
+	
+	public ItemManagementService(StoreBranch branch) {
+		items = branch.getItems();
+		qty = branch.getQty();
+	}	
 	
 	public ItemManagementService(List<Item> items, List<Integer> qty) {
 		this.items = items;

@@ -29,6 +29,8 @@ public class SystemTest {
 		Personnel manager1 = new StoreBranchManager("Le Van C");
 		Personnel staff2 = new Staff("Hoang Thi D");
 		Director director = new Director("Tran Binh E");
+		Personnel manager2 = new StoreBranchManager("Nguyen Thi F");
+		Personnel manager3 = new StoreBranchManager("Nguyen Van G");
 		
 		// Id should be sequential to reduce duplicated
 		cashier1.setAccount(new Account("01", ""));
@@ -36,12 +38,26 @@ public class SystemTest {
 		manager1.setAccount(new Account("03", ""));
 		staff2.setAccount(new Account("04", "4"));
 		director.setAccount(new Account("05", ""));
+		manager2.setAccount(new Account("06", ""));
+		manager3.setAccount(new Account("07", ""));
 		
 		branch1.addPersonnel(cashier1);
 		branch1.addPersonnel(staff1);
 		branch1.addPersonnel(manager1);
 		branch2.addPersonnel(staff2);
+		branch2.addPersonnel(manager2);
+		branch3.addPersonnel(manager3);
 		StoreChain.setDirector(director);
+		branch1.addExpense(cashier1);
+		branch1.addExpense(staff1);
+		branch1.addExpense(manager1);
+		branch2.addExpense(staff2);
+		branch2.addExpense(manager2);
+		branch3.addExpense(manager3);
+		
+		branch1.setBranchManager((StoreBranchManager) manager1);
+		branch2.setBranchManager((StoreBranchManager) manager2);
+		branch3.setBranchManager((StoreBranchManager) manager3);
 		
 		Notice notice1 = new Notice();
 		Notice notice2 = new Notice(staff1);

@@ -11,6 +11,14 @@ public class StoreBranch extends StoreEntity {
 	private int branchNumber;
 	private String address;
 	private StoreBranchManager branchManager;
+	
+	public StoreBranch() {}
+	
+	public StoreBranch(int branchNumber, String address, StoreBranchManager branchManager) {
+		this.branchNumber = branchNumber;
+		this.address = address;
+		this.branchManager = branchManager;
+	}
 
 	public void addBill(Bill bill) {
 		this.bills.add(bill);
@@ -27,6 +35,10 @@ public class StoreBranch extends StoreEntity {
 
 	public StoreBranchManager getBranchManager() {
 		return branchManager;
+	}
+	
+	public String getBranchManagerName() {
+		return branchManager.getName();
 	}
 
 	public void setBranchNumber(int branchNumber) {
@@ -52,11 +64,15 @@ public class StoreBranch extends StoreEntity {
 	public void addPersonnel(Personnel person) {
 		if (person instanceof StoreBranchManager) {
 			StoreBranchManager manager = (StoreBranchManager) person;
-			manager.setService(new StoreBranchManagerService(this));
 			this.getPersonnels().add(manager);
 		}
 		else
 			this.getPersonnels().add(person);
+	}
+	
+	//Testing purpose: Deleted at final stage
+	public void addExpense(Personnel person) {
+		this.expenses.add(new SalaryExpense(person));
 	}
 	
 }

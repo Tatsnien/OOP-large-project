@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -38,7 +41,7 @@
                   </VBox>
                   <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../resources/hust_bookstore_logo.jpg" />
+                        <Image url="@../../../../../../resources/hust_bookstore_logo.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -64,79 +67,26 @@
       </SplitPane>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+      <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="0.0" prefWidth="200.0">
+            <TableView fx:id="tblBranch">
+              <columns>
+                <TableColumn fx:id="colBranchNo" prefWidth="100.0" resizable="false" text="Branch No." />
+                <TableColumn fx:id="colManager" prefWidth="200.0" resizable="false" text="Manager" />
+                  <TableColumn fx:id="colAddress" minWidth="500.0" prefWidth="670.0" text="Address" />
+              </columns>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
                <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Name:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileName" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="lbStatus" alignment="CENTER_RIGHT" prefWidth="200.0" textFill="RED" />
+                <Button mnemonicParsing="false" onAction="#btnAddPressed" prefWidth="60.0" text="Add" />
+                  <Button mnemonicParsing="false" onAction="#btnRemovePressed" prefWidth="60.0" text="Remove" />
+                  <Button mnemonicParsing="false" onAction="#btnAssignPressed" prefWidth="60.0" text="Assign" />
                </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="290.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="ID:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileId" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="240.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Position:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfilePosition" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="190.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Salary:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileSalary" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets left="450.0" />
+            <Insets left="30.0" right="30.0" top="100.0" />
          </BorderPane.margin>
       </VBox>
    </center>

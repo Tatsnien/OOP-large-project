@@ -3,17 +3,19 @@ package data;
 import java.util.*;
 
 import customer.MemberCustomer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import payment.Bill;
 import personnel.Director;
 import personnel.Personnel;
 
 public class StoreChain extends StoreEntity{
-	private static List<StoreBranch> branchs;
+	private static ObservableList<StoreBranch> branchs;
 	private static Director director;
 	
 	public StoreChain() {
-		if (branchs == null)
-			branchs = new ArrayList<StoreBranch>();
+		if (branchs == null) 
+			branchs = FXCollections.observableArrayList();			
 	}
 	
 	public static Director getDirector() {
@@ -58,6 +60,22 @@ public class StoreChain extends StoreEntity{
 		}
 		else
 			System.out.println("Branch " + newBranch.getBranchNumber() + " doesn't exist.");
+	}
+	
+	public StoreBranch searchBranch(String id) {
+		for (StoreBranch branch : branchs)
+			for (Personnel personnel : getPersonnels())
+				if (personnel.getAccount().getId().equals(id))
+					return branch;
+		return null;
+	}
+	
+	public Personnel searchPersonnel(String id) {
+		for (StoreBranch branch : branchs)
+			for (Personnel personnel : getPersonnels())
+				if (personnel.getAccount().getId().equals(id))
+					return personnel;
+		return null;
 	}
 	
 	@Override

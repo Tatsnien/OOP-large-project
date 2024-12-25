@@ -3,6 +3,7 @@ package system.service;
 import java.util.List;
 
 import data.StoreBranch;
+import data.StoreChain;
 import payment.Bill;
 
 public class IncomeManagementService {
@@ -10,6 +11,14 @@ public class IncomeManagementService {
 	StoreBranch branch;
 	
 	public IncomeManagementService() {}
+	
+	public IncomeManagementService(int branchNumber) {
+		for (StoreBranch branch : StoreChain.getBranchs())
+			if (branch.getBranchNumber() == branchNumber) {
+				this.branch = branch;
+				return;
+			}
+	}
 	
 	public IncomeManagementService(StoreBranch branch) {
 		this.branch = branch;
