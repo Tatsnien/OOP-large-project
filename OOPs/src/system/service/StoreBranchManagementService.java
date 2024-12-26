@@ -62,17 +62,23 @@ public class StoreBranchManagementService {
 		return null;
 	}
 	
+	public StoreBranchManager searchManager(int branchNumber) {
+		for (StoreBranch branch : StoreChain.getBranchs())
+			if (branch.getBranchNumber() == branchNumber)
+				return branch.getBranchManager();
+		return null;
+	}
+	
 	public StoreBranchManager getAssignedBranchManager(String id) {
-		Personnel assignedPersonnel = null;
-		PersonnelManagementService personnelService = new PersonnelManagementService();
-		for (StoreBranch branch : branchs) {
-			personnelService.setPersonnels(branch.getPersonnels());
-			assignedPersonnel = personnelService.searchPersonnel(id);
-			if (assignedPersonnel == null)
-				continue;
-			personnelService.removePersonnel(assignedPersonnel);
-		}
-		return (StoreBranchManager) assignedPersonnel;
+		Personnel assignedPersonnel = (new StoreChain()).searchPersonnel(id);
+		if (assignedPersonnel == null)
+			return null;
+		StoreBranch oldBranch = (new StoreChain()).searchBranch(id);
+		(new PersonnelManagementService(oldBranch)).removePersonnel(assignedPersonnel);
+		StoreBranchManager manager = new StoreBranchManager(assignedPersonnel.getName());
+		manager.setAccount(assignedPersonnel.getAccount());
+		
+		return manager;
 	}
 	
 	public void assignBranchManager(String id, int branchNumber) {
@@ -82,16 +88,20 @@ public class StoreBranchManagementService {
 		
 		StoreBranchManager assignedManager = getAssignedBranchManager(id);
 		
-		StoreBranchManager oldManager = 
-				(new StoreManagerManagementService())
-				.searchManager(branchNumber);
+		if (assignedManager == null)
+			return;
+		
+		StoreBranchManager oldManager = searchManager(branchNumber);
 		
 		if (oldManager != null) {
-			Personnel personnel = (Personnel) oldManager;
 			assignedBranch.getPersonnels().remove(oldManager);
+			Personnel personnel = (Personnel) oldManager;
 			assignedBranch.getPersonnels().add(personnel);
 		}
 		
+		System.out.println("Assign");
+		
+		assignedBranch.addPersonnel(assignedManager);
 		assignedBranch.setBranchManager(assignedManager);
 	}
 	

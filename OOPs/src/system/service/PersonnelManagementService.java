@@ -5,6 +5,7 @@ import java.util.List;
 
 import data.Expense;
 import data.SalaryExpense;
+import data.StoreBranch;
 import personnel.Account;
 import personnel.Personnel;
 
@@ -16,6 +17,11 @@ public class PersonnelManagementService {
 	public PersonnelManagementService() {
 		this.personnels = new ArrayList<>();
 		this.expenseService = new ExpenseManagementService();
+	}
+	
+	public PersonnelManagementService(StoreBranch storeBranch) {
+		this.personnels = storeBranch.getPersonnels();
+		this.expenseService = new ExpenseManagementService(storeBranch);
 	}
 
 	public PersonnelManagementService(List<Personnel> personnels, List<Expense> expenses) {

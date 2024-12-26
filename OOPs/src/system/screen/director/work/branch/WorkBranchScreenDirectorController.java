@@ -90,6 +90,7 @@ public class WorkBranchScreenDirectorController {
     	StoreBranch storeBranch = tblBranch.getSelectionModel().getSelectedItem();
     	if (storeBranch == null) {
     		lbStatus.setText("Please click on the branch.");
+    		return;
     	}
     	
     	lbStatus.setText("");
@@ -110,6 +111,7 @@ public class WorkBranchScreenDirectorController {
     	StoreBranch storeBranch = tblBranch.getSelectionModel().getSelectedItem();
     	if (storeBranch == null) {
     		lbStatus.setText("Please click on the branch.");
+    		return;
     	}
     	lbStatus.setText("");
     	branchService.removeBranch(storeBranch);

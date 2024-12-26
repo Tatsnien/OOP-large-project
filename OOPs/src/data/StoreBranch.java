@@ -5,7 +5,6 @@ import java.util.List;
 import payment.Bill;
 import personnel.Personnel;
 import personnel.StoreBranchManager;
-import system.service.StoreBranchManagerService;
 
 public class StoreBranch extends StoreEntity {
 	private int branchNumber;
