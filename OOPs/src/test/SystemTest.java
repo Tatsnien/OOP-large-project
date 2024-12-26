@@ -2,7 +2,6 @@ package test;
 
 import customer.MemberCustomer;
 import data.*;
-import payment.Bill;
 import personnel.*;
 import system.LoginScreen;
 import system.notice.Notice;
@@ -42,14 +41,6 @@ public class SystemTest {
 		manager2.setAccount(new Account("06", ""));
 		manager3.setAccount(new Account("07", ""));
 		
-		cashier1.setSalary(1000);
-		staff1.setSalary(1000);
-		manager1.setSalary(1500);
-		staff2.setSalary(1000);
-		director.setSalary(20);
-		manager2.setSalary(1500);
-		manager3.setSalary(1500);
-		
 		branch1.addPersonnel(cashier1);
 		branch1.addPersonnel(staff1);
 		branch1.addPersonnel(manager1);
@@ -76,10 +67,6 @@ public class SystemTest {
 		cashier1.getAccount().addNotice(notice1);
 		cashier1.getAccount().addNotice(notice2);
 		cashier1.getAccount().addNotice(notice3);
-		
-		branch1.addBill(new Bill(10));
-		branch1.addBill(new Bill(2.3f));
-		branch1.addBill(new Bill(4));
 		
 		ItemManagementService itemService = new ItemManagementService(branch1.getItems(), branch1.getQty());
 		itemService.addBook("Calculus III", "0000", "Dao Tuan Anh", "NXB Bach Khoa", "0000", 100, 2);

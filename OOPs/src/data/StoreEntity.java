@@ -39,16 +39,16 @@ public class StoreEntity {
 		return items;
 	}
 	
-	public List<Bill> getBills() {
-		return bills;
-	}
-	
 	public List<Integer> getQty() {
 		return qty;
 	}
 	
 	public List<Expense> getExpenses() {
 		return expenses;
+	}
+
+	public List<Bill> getBills() {
+		return bills;
 	}
 	
 	public float getIncome() {
