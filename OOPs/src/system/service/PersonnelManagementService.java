@@ -6,7 +6,9 @@ import java.util.List;
 import data.Expense;
 import data.SalaryExpense;
 import data.StoreBranch;
+import data.StoreChain;
 import personnel.Account;
+import personnel.Director;
 import personnel.Personnel;
 
 public class PersonnelManagementService {
@@ -14,14 +16,23 @@ public class PersonnelManagementService {
 	protected List<Personnel> personnels;
 	protected ExpenseManagementService expenseService;
 	
-	public PersonnelManagementService() {
+	public PersonnelManagementService(Director director) {
 		this.personnels = new ArrayList<>();
-		this.expenseService = new ExpenseManagementService();
+		this.expenseService = new ExpenseManagementService(director);
 	}
 	
 	public PersonnelManagementService(StoreBranch storeBranch) {
 		this.personnels = storeBranch.getPersonnels();
 		this.expenseService = new ExpenseManagementService(storeBranch);
+	}
+	
+	public PersonnelManagementService(int branchNumber) {
+		for (StoreBranch branch : StoreChain.getBranchs())
+			if (branch.getBranchNumber() == branchNumber) {
+				personnels = branch.getPersonnels();
+				expenseService = new ExpenseManagementService(branch);
+				return;
+			}
 	}
 
 	public PersonnelManagementService(List<Personnel> personnels, List<Expense> expenses) {

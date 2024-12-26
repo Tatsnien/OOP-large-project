@@ -48,7 +48,7 @@ public class WorkBranchScreenDirectorController {
     	this.director = director;
     	this.storeChain = new StoreChain();
     	this.branchService = new StoreBranchManagementService();
-    	this.personnelService = new PersonnelManagementService();
+    	this.personnelService = new PersonnelManagementService(director);
     }
 	
 	public void setFrame(JFrame frame) {

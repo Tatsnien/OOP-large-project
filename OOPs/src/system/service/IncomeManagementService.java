@@ -5,12 +5,13 @@ import java.util.List;
 import data.StoreBranch;
 import data.StoreChain;
 import payment.Bill;
+import personnel.Director;
 
 public class IncomeManagementService {
 	
 	StoreBranch branch;
 	
-	public IncomeManagementService() {}
+	public IncomeManagementService(Director director) {}
 	
 	public IncomeManagementService(int branchNumber) {
 		for (StoreBranch branch : StoreChain.getBranchs())
@@ -29,15 +30,15 @@ public class IncomeManagementService {
 	}
 	
 	public List<Bill> getBills() {
+		if (branch == null)
+			return (new StoreChain()).getBills();
 		return branch.getBills();
 	}
 
 	public float getIncome() {
+		if (branch == null)
+			return (new StoreChain()).getIncome();
 		return branch.getIncome();
-	}
-	
-	public void addBill(Bill bill) {
-		branch.addBill(bill);
 	}
 	
 }

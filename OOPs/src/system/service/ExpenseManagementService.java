@@ -7,11 +7,12 @@ import data.Expense;
 import data.RecurringExpense;
 import data.StoreBranch;
 import data.StoreChain;
+import personnel.Director;
 
 public class ExpenseManagementService {
 	private List<Expense> expenses;
 	
-	public ExpenseManagementService() {
+	public ExpenseManagementService(Director director) {
 		this.expenses = (new StoreChain()).getExpenses();
 	}
 	

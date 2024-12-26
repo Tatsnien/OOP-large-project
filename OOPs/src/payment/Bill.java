@@ -55,4 +55,10 @@ public class Bill {
 	public float getTotalAmount() {
 		return this.totalAmount;
 	}
+	
+	//Test purpose
+	public Bill(float totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	
 }
