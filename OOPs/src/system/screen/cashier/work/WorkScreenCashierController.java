@@ -13,7 +13,7 @@ import customer.Cart;
 import customer.Customer;
 import customer.MemberCustomer;
 import data.Item;
-import data.OrderedItemGroup;
+import data.ItemGroup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -53,22 +53,22 @@ public class WorkScreenCashierController {
 	}
 
     @FXML
-    private TableColumn<OrderedItemGroup, Integer> colBarcode;
+    private TableColumn<ItemGroup, Integer> colBarcode;
 
     @FXML
-    private TableColumn<OrderedItemGroup, String> colName;
+    private TableColumn<ItemGroup, String> colName;
 
     @FXML
-    private TableColumn<OrderedItemGroup, Integer> colQty;
+    private TableColumn<ItemGroup, Integer> colQty;
     
     @FXML
-    private TableColumn<OrderedItemGroup, Float> colSellingPrice;
+    private TableColumn<ItemGroup, Float> colSellingPrice;
     
     @FXML
-    private TableColumn<OrderedItemGroup, Float> colPurchasePrice;
+    private TableColumn<ItemGroup, Float> colPurchasePrice;
 
     @FXML
-    private TableColumn<OrderedItemGroup, Float> colItemTotal;
+    private TableColumn<ItemGroup, Float> colItemTotal;
 
     @FXML
     private Label lbPaymentStatus;
@@ -98,7 +98,7 @@ public class WorkScreenCashierController {
     private RadioButton rbOnline;
 
     @FXML
-    private TableView<OrderedItemGroup> tblItem;
+    private TableView<ItemGroup> tblItem;
     
     @FXML
     private TextField tfBarcode;
@@ -177,7 +177,7 @@ public class WorkScreenCashierController {
     		cart.addItem(item, qty);
     	else {
     		itemCartService.getQty().set(idxCart, qty);
-    		cart.getGroup().set(idxCart, new OrderedItemGroup(item, qty));
+    		cart.getGroup().set(idxCart, new ItemGroup(item, qty));
     	}
     	
     	tfBarcode.setText("");

@@ -7,6 +7,7 @@ import data.Expense;
 import data.SalaryExpense;
 import data.StoreBranch;
 import personnel.Account;
+import personnel.Director;
 import personnel.Personnel;
 
 public class PersonnelManagementService {
@@ -14,9 +15,9 @@ public class PersonnelManagementService {
 	protected List<Personnel> personnels;
 	protected ExpenseManagementService expenseService;
 	
-	public PersonnelManagementService() {
+	public PersonnelManagementService(Director director) {
 		this.personnels = new ArrayList<>();
-		this.expenseService = new ExpenseManagementService();
+		this.expenseService = new ExpenseManagementService(director);
 	}
 	
 	public PersonnelManagementService(StoreBranch storeBranch) {
@@ -79,6 +80,11 @@ public class PersonnelManagementService {
 	
 	public void salaryDeductionByPercentage(Personnel personnel, float deductionPercentage) {
 		salaryDeduction(personnel, personnel.getSalary() * deductionPercentage);
+	}
+	
+	public PersonnelManagementService() {
+		this.personnels = new ArrayList<>();
+		this.expenseService = new ExpenseManagementService();
 	}
 
 }

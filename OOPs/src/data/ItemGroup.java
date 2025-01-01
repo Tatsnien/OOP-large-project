@@ -1,11 +1,11 @@
 package data;
 
-public class OrderedItemGroup {
+public class ItemGroup {
 	
 	private Item item;
 	private int qty;
 	
-	public OrderedItemGroup(Item item, int qty) {
+	public ItemGroup(Item item, int qty) {
 		this.item = item;
 		this.qty = qty;
 	}
@@ -42,8 +42,8 @@ public class OrderedItemGroup {
 	public boolean equals(Object obj) {
 		if (obj instanceof Item)
 			return item.equals((Item) obj);
-		if (obj instanceof OrderedItemGroup)
-			return item.equals(((OrderedItemGroup) obj).getItem());
+		if (obj instanceof ItemGroup)
+			return item.equals(((ItemGroup) obj).getItem());
 		return false;
 	}
 	

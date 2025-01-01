@@ -11,8 +11,10 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import java.awt.*;
 
+import javafx.event.ActionEvent;
 
-public class WorkScreenStaffAddReport {
+
+public class WorkScreenStaffAddReport extends JFrame {
 
 	private WorkScreenStaffAddReport frame;
 	

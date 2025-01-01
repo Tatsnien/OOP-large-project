@@ -1,12 +1,12 @@
 package customer;
 
 import data.Item;
-import data.OrderedItemGroup;
+import data.ItemGroup;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Cart {
-	private ObservableList<OrderedItemGroup> group;
+	private ObservableList<ItemGroup> group;
 	private ObservableList<Item> itemsOrdered;	
 	private ObservableList<Integer> qty;
 	
@@ -24,14 +24,14 @@ public class Cart {
 		return qty;
 	}
 	
-	public ObservableList<OrderedItemGroup> getGroup() {
+	public ObservableList<ItemGroup> getGroup() {
 		return group;
 	}
 
 	public void addItem(Item item, int qty) {		
 		this.itemsOrdered.add(item);
 		this.qty.add(qty);
-		group.add(new OrderedItemGroup(item, qty));
+		group.add(new ItemGroup(item, qty));
 		System.out.println("\"" + item.getName() + "\" has been added.");
 	}
 	

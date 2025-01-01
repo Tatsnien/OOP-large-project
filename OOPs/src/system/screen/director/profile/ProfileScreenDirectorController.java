@@ -7,8 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import personnel.Director;
 import system.screen.director.home.HomeScreenDirector;
-import system.screen.director.work.WorkScreenDirector;
 import system.screen.director.work.branch.WorkBranchScreenDirector;
+import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 
 public class ProfileScreenDirectorController{
 

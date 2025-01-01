@@ -1,15 +1,22 @@
 package system.screen.staff.work;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 
 import data.Item;
+import data.ItemGroup;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import personnel.Staff;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;
@@ -18,20 +25,24 @@ public class WorkScreenStaffAddReportController {
 	
 	private JFrame frame;
 	private Staff staff;
-	private ArrayList<Item> itemsList;
+	private ObservableList<ItemGroup> itemsList;
 	private String currentName;
 	private String currentStock;
 	
 	public WorkScreenStaffAddReportController(Staff staff) {
 		this.staff = staff;
-		this.itemsList = new ArrayList<Item>(staff.getService().getItems());
+		itemsList = FXCollections.observableArrayList();
+		List<Item> items = staff.getService().getItems();
+		List<Integer> qty = staff.getService().getQty();
+		for (int i = 0; i < items.size(); ++i)
+			itemsList.add(new ItemGroup(items.get(i), qty.get(i)));			
 	}
 
     @FXML
-    private TableColumn<Item, Integer> colCount;
+    private TableColumn<ItemGroup, Integer> colCount;
 
     @FXML
-    private TableColumn<Item, String> colName;
+    private TableColumn<ItemGroup, String> colName;
 
     @FXML
     private Label lbName;
@@ -45,7 +56,7 @@ public class WorkScreenStaffAddReportController {
     private TextField stockCheckSearchbar;
 
     @FXML
-    private TableView<?> tblItems;
+    private TableView<ItemGroup> tblItems;
 
     @FXML
     private TextField tfItemCount;
@@ -53,12 +64,16 @@ public class WorkScreenStaffAddReportController {
     @FXML
     private TextField tfItemName;
     
+    public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+    
     public void initialize() {
     	colCount.setCellValueFactory(
     			new PropertyValueFactory<>("quantity"));
     	colName.setCellValueFactory(
     			new PropertyValueFactory<>("name"));
-    	tblItems.setItems(new FXCollections.ObservableArrayList(this.itemsList));
+    	tblItems.setItems(this.itemsList);
     	tfItemCount.textProperty().addListener(new ChangeListener<String>() {
     		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
     			currentStock = newValue;

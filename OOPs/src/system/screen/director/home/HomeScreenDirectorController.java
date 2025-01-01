@@ -16,8 +16,8 @@ import javafx.scene.text.Font;
 import personnel.Director;
 import system.notice.Notice;
 import system.screen.director.profile.ProfileScreenDirector;
-import system.screen.director.work.WorkScreenDirector;
 import system.screen.director.work.branch.WorkBranchScreenDirector;
+import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 
 public class HomeScreenDirectorController {
 

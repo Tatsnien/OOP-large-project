@@ -1,4 +1,4 @@
-package system.screen.director.work.branch;
+package system.screen.director.work.personnel;
 
 import java.io.IOException;
 
@@ -11,11 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import personnel.Director;
 
-public class WorkBranchScreenDirector extends JFrame{
+public class WorkPersonnelScreenDirector extends JFrame{
 	
-	private WorkBranchScreenDirector frame;
+	private WorkPersonnelScreenDirector frame;
 	
-	public WorkBranchScreenDirector(Director director) {
+	public WorkPersonnelScreenDirector(Director director) {
 		super();
 		
 		this.frame = this;
@@ -23,7 +23,7 @@ public class WorkBranchScreenDirector extends JFrame{
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
-		this.setTitle("Work Branch Screen Director");
+		this.setTitle("Work Personnel Screen Director");
 		this.setVisible(true);
 		setSize(1024, 768);
 		Platform.runLater(new Runnable() {
@@ -32,7 +32,7 @@ public class WorkBranchScreenDirector extends JFrame{
 				try {							
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("workbranchdirector.fxml"));
 					
-					WorkBranchScreenDirectorController controller = new WorkBranchScreenDirectorController(director);
+					WorkPersonnelScreenDirectorController controller = new WorkPersonnelScreenDirectorController(director);
 					loader.setController(controller);
 					
 					Parent root = loader.load();
