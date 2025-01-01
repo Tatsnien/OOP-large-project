@@ -47,15 +47,19 @@
             </HBox>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Home">
+                <Menu fx:id="mnHome" mnemonicParsing="false" onAction="#mnHomePressed" text="Home">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#mnHomePressed" text="Home" />
                      </items></Menu>
-                <Menu mnemonicParsing="false" text="Work">
+                <Menu fx:id="mnWork" mnemonicParsing="false" text="Work">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Work" />
+                        <MenuItem fx:id="mnWorkReports" mnemonicParsing="false" onAction="#mnWorkReportsPressed" text="Reports" />
+                        <MenuItem fx:id="mnWorkItems" mnemonicParsing="false" onAction="#mnWorkItemsPressed" text="Items" />
+                        <MenuItem fx:id="mnWorkExpenses" mnemonicParsing="false" onAction="#mnWorkExpensesPressed" text="Expenses" />
+                        <MenuItem fx:id="mnWorkPersonnel" mnemonicParsing="false" onAction="#mnWorkPersonnelPressed" text="Personnel" />
+                        <MenuItem fx:id="mnWorkDiscounts" mnemonicParsing="false" onAction="#mnWorkDiscountsPressed" text="Discounts" />
                      </items></Menu>
-                <Menu mnemonicParsing="false" text="Profile">
+                <Menu fx:id="mnProfile" mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile" />
                      </items></Menu>
@@ -70,6 +74,9 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1024.0">
                <children>
                   <VBox fx:id="vbNotice" prefWidth="1024.0" spacing="10.0">
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="20.0" />
+                     </padding>
                      <children>
                         <Label text="Notice">
                            <font>
@@ -80,12 +87,8 @@
                            </VBox.margin>
                         </Label>
                      </children>
-                     <padding>
-                        <Insets left="30.0" right="30.0" top="20.0" />
-                     </padding>
                   </VBox>
-               </children>
-            </AnchorPane>
+               </children></AnchorPane>
         </content>
          <BorderPane.margin>
             <Insets />

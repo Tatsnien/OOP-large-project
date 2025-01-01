@@ -1,4 +1,4 @@
-package system.screen.manager.profile;
+package system.screen.manager.work.discount;
 
 import java.io.IOException;
 
@@ -10,13 +10,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import personnel.StoreBranchManager;
+import system.screen.manager.work.items.WorkScreenManagerItemsController;
 
-@SuppressWarnings("serial")
-public class ProfileScreenManager extends JFrame{
+public class WorkScreenManagerDiscount extends JFrame {
+
+	private WorkScreenManagerDiscount frame;
 	
-	private ProfileScreenManager frame;
-	
-	public ProfileScreenManager(StoreBranchManager manager) {
+	public WorkScreenManagerDiscount(StoreBranchManager manager) {
 		super();
 		
 		this.frame = this;
@@ -24,16 +24,16 @@ public class ProfileScreenManager extends JFrame{
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
-		this.setTitle("Profile Screen Manager");
+		this.setTitle("Work Screen Manager - Discount");
 		this.setVisible(true);
 		setSize(1024, 768);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				try {							
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("profilemanager.fxml"));
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("workmanageritems.fxml"));
 					
-					ProfileScreenManagerController controller = new ProfileScreenManagerController(manager);
+					WorkScreenManagerItemsController controller = new WorkScreenManagerItemsController(manager);
 					loader.setController(controller);
 					
 					Parent root = loader.load();
@@ -43,9 +43,9 @@ public class ProfileScreenManager extends JFrame{
 					controller.setFrame(frame);
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
+					}
 			}
 		});
 	}
-	
 }
+		

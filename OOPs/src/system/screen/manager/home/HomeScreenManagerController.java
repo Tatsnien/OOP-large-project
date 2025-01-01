@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,6 +17,11 @@ import javafx.scene.text.Font;
 import personnel.StoreBranchManager;
 import system.notice.Notice;
 import system.screen.manager.profile.ProfileScreenManager;
+import system.screen.manager.work.discount.WorkScreenManagerDiscount;
+import system.screen.manager.work.expense.WorkScreenManagerExpense;
+import system.screen.manager.work.items.WorkScreenManagerItems;
+import system.screen.manager.work.personnel.WorkScreenManagerPersonnel;
+import system.screen.manager.work.report.WorkScreenManagerReport;
 
 public class HomeScreenManagerController {
 
@@ -26,7 +32,29 @@ public class HomeScreenManagerController {
     private Label lbName;
 
     @FXML
+    private Menu mnHome;
+
+    @FXML
+    private Menu mnProfile;
+
+    @FXML
+    private Menu mnWork;
+
+    @FXML
+    private MenuItem mnWorkExpenses;
+    
+    @FXML
+    private MenuItem mnWorkDiscounts;
+
+    @FXML
+    private MenuItem mnWorkItems;
+
+    @FXML
+    private MenuItem mnWorkPersonnel;
+
+    @FXML
     private VBox vbNotice;
+
     
     public HomeScreenManagerController(StoreBranchManager manager) {
     	this.manager = manager;
@@ -84,5 +112,39 @@ public class HomeScreenManagerController {
     	this.frame.setVisible(false);
 		new ProfileScreenManager(this.manager);
     }
+    
+    @FXML
+    void mnWorkExpensesPressed(ActionEvent event) {
+    	System.out.println("Work -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerExpense(this.manager);
+    }
 
+    @FXML
+    void mnWorkItemsPressed(ActionEvent event) {
+    	System.out.println("Work -> Items");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerItems(this.manager);
+    }
+
+    @FXML
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Work -> Personnel");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerPersonnel(this.manager);
+    }
+
+    @FXML
+    void mnWorkReportsPressed(ActionEvent event) {
+    	System.out.println("Work -> Reports");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerReport(this.manager);
+    }
+    
+    @FXML
+    void mnWorkDiscountsPressed(ActionEvent event) {
+    	System.out.println("Work -> Discounts");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerDiscount(this.manager);
+    }
 }

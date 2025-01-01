@@ -116,10 +116,10 @@ public class WorkScreenStaffAddReportController {
     void updateCheckPressed(ActionEvent event) {
     	try {
     		boolean found = false;
-    		for (Item i: itemsList) {
+    		for (ItemGroup i: itemsList) {
     			if (i.getName() == currentName) {
     				found = true;
-    				i.setQuantity(Integer.parseInt(currentStock));
+    				i.setQty(Integer.parseInt(currentStock));
     				lbUpdateCheck.setText("Successfully updated.");
     			}
     		}

@@ -1,4 +1,4 @@
-package system.screen.manager.home;
+package system.screen.manager.work.items;
 
 import java.io.IOException;
 
@@ -11,12 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import personnel.StoreBranchManager;
 
-@SuppressWarnings("serial")
-public class HomeScreenManager extends JFrame{
+public class WorkScreenManagerItems extends JFrame {
 	
-	private HomeScreenManager frame;
+	private WorkScreenManagerItems frame;
 	
-	public HomeScreenManager(StoreBranchManager manager) {
+	public WorkScreenManagerItems(StoreBranchManager manager) {
 		super();
 		
 		this.frame = this;
@@ -24,24 +23,27 @@ public class HomeScreenManager extends JFrame{
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
-		this.setTitle("Home Screen Manager");
+		this.setTitle("Work Screen Manager - Items");
 		this.setVisible(true);
 		setSize(1024, 768);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				try {							
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("homemanager.fxml"));
-					HomeScreenManagerController controller = new HomeScreenManagerController(manager);
-					controller.setFrame(frame);
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("workmanageritems.fxml"));
+					
+					WorkScreenManagerItemsController controller = new WorkScreenManagerItemsController(manager);
 					loader.setController(controller);
+					
 					Parent root = loader.load();
-					fxPanel.setScene(new Scene(root));
+					Scene scene = new Scene(root);
+					fxPanel.setScene(scene);
+					
+					controller.setFrame(frame);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-	
 }
