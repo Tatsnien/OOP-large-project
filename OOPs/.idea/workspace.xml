@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d91457b3-20f8-45aa-a9b2-9879175d19b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/customer/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/customer/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/data/ItemProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/ItemProperty.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/data/StoreBranch.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/StoreBranch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/data/StoreBranchDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/StoreBranchDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/data/StoreChain.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/StoreChain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/data/StoreEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/payment/PaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/payment/PaymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/personnel/Cashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/personnel/Cashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/personnel/Personnel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/personnel/Personnel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/personnel/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/personnel/Staff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/personnel/StoreBranchManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/personnel/StoreBranchManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/home/HomeScreenCashier$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/home/HomeScreenCashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/home/HomeScreenCashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/home/HomeScreenCashierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/home/HomeScreenCashierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/profile/ProfileScreenCashier$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/profile/ProfileScreenCashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/profile/ProfileScreenCashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/profile/ProfileScreenCashierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/profile/ProfileScreenCashierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/work/WorkScreenCashier$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/work/WorkScreenCashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/work/WorkScreenCashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/cashier/work/WorkScreenCashierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/cashier/work/WorkScreenCashierController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/home/HomeScreenDirector$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/home/HomeScreenDirector.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/home/HomeScreenDirector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/home/HomeScreenDirectorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/home/HomeScreenDirectorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/profile/ProfileScreenDirector$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/profile/ProfileScreenDirector.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/profile/ProfileScreenDirector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/profile/ProfileScreenDirectorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/profile/ProfileScreenDirectorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/work/personnel/WorkPersonnelScreenDirectorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/work/personnel/WorkPersonnelScreenDirectorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/director/work/personnel/workpersonneldirector.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/director/work/personnel/workpersonneldirector.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/home/HomeScreenManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/home/HomeScreenManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/manager/home/HomeScreenManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/home/HomeScreenManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/manager/home/HomeScreenManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/profile/ProfileScreenManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/profile/ProfileScreenManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/manager/profile/ProfileScreenManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/manager/profile/ProfileScreenManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/manager/profile/ProfileScreenManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/home/HomeScreenStaff$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/home/HomeScreenStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/home/HomeScreenStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/home/HomeScreenStaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/home/HomeScreenStaffController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/profile/ProfileScreenStaff$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/profile/ProfileScreenStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/profile/ProfileScreenStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/profile/ProfileScreenStaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/profile/ProfileScreenStaffController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReport$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReportController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReportController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/system/screen/staff/work/WorkScreenStaffAddReportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/StoreBranch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StoreBranch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/StoreChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/StoreChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/StoreEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnel/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnel/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnel/Personnel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnel/Personnel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnel/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnel/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/personnel/StoreBranchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/personnel/StoreBranchManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/screen/director/work/personnel/WorkPersonnelScreenDirectorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/screen/director/work/personnel/WorkPersonnelScreenDirectorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/screen/director/work/personnel/workpersonneldirector.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/screen/director/work/personnel/workpersonneldirector.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../[DRAFT]large_project_uml.asta" beforeDir="false" afterPath="$PROJECT_DIR$/../[DRAFT]large_project_uml.asta" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2r2FMRqDdS7HZdkvVJEVVGSP3zB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/nguye/Documents/C++/Java/LargeProject/OOPs"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d91457b3-20f8-45aa-a9b2-9879175d19b6" name="Changes" comment="" />
+      <created>1735749214309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735749214309</updated>
+    </task>
+    <servers />
+  </component>
+</project>

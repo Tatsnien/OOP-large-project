@@ -5,8 +5,6 @@ import personnel.*;
 import java.io.*;
 import java.util.ArrayList;
 
-import customer.MemberCustomer;
-
 public class StoreBranchDAO {
     private StoreBranch branch;
 
@@ -48,19 +46,8 @@ public class StoreBranchDAO {
         }
     }
 
-   public void setPersonnels(ArrayList<Personnel> personnels) {
-        branch.setPersonnels(personnels); 
+   public void setEmployees(ArrayList<Employee> employees) {
+        branch.setEmployees(employees); 
     }
-
-    public void setItems(ArrayList<Item> items) {
-        branch.setItems(items); 
-    }
-
-    public void setMemberCustomers(ArrayList<MemberCustomer> memberCustomers) {
-        StoreEntity.getMemberCustomers().addAll(memberCustomers);
-    }
-
-    public void setBasicSalary(float salary) {
-        branch.setBasicSalary(salary);
-    }
+    
 }

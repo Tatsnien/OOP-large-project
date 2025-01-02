@@ -37,6 +37,10 @@ public class ItemGroup {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
+	
+	public void addQty(int qty) {
+		this.qty += qty;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

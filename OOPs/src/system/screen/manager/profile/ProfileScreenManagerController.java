@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import personnel.StoreBranchManager;
 import system.screen.manager.home.HomeScreenManager;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 
 public class ProfileScreenManagerController{
 
@@ -55,6 +56,13 @@ public class ProfileScreenManagerController{
     @FXML
     void mnProfilePressed(ActionEvent event) {
     	
+    }
+    
+    @FXML
+    void mnViewEmployeesPressed(ActionEvent event) {
+    	System.out.println("View Branches -> View Employees");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenManager(this.manager);
     }
 
 }

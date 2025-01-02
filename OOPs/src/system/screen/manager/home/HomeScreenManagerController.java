@@ -15,7 +15,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import personnel.StoreBranchManager;
 import system.notice.Notice;
+import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 import system.screen.manager.profile.ProfileScreenManager;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 
 public class HomeScreenManagerController {
 
@@ -83,6 +85,13 @@ public class HomeScreenManagerController {
     	System.out.println("Home -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenManager(this.manager);
+    }
+    
+    @FXML
+    void mnViewEmployeesPressed(ActionEvent event) {
+    	System.out.println("View Branches -> View Employees");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenManager(this.manager);
     }
 
 }

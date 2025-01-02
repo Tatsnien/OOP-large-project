@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import data.StoreChain;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import personnel.Director;
 
 public class WorkPersonnelScreenDirector extends JFrame{
 	
+	private StoreChain chain;
 	private WorkPersonnelScreenDirector frame;
 	
 	public WorkPersonnelScreenDirector(Director director) {
@@ -30,7 +32,7 @@ public class WorkPersonnelScreenDirector extends JFrame{
 			@Override
 			public void run() {
 				try {							
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("workbranchdirector.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("workpersonneldirector.fxml"));
 					
 					WorkPersonnelScreenDirectorController controller = new WorkPersonnelScreenDirectorController(director);
 					loader.setController(controller);

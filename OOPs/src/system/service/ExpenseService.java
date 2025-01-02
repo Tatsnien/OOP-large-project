@@ -9,29 +9,31 @@ import data.StoreBranch;
 import data.StoreChain;
 import personnel.Director;
 
-public class ExpenseManagementService {
+public class ExpenseService {
+	
+	private static StoreChain chain;
 	private List<Expense> expenses;
 	
-	public ExpenseManagementService(Director director) {
-		this.expenses = (new StoreChain()).getExpenses();
+	public ExpenseService(Director director) {
+		this.expenses = chain.getExpenses();
 	}
 	
-	public ExpenseManagementService(int branchNumber) {
-		for (StoreBranch branch : StoreChain.getBranchs())
-			if (branch.getBranchNumber() == branchNumber) {
-				expenses = branch.getExpenses();
-				return;
-			}
+	public ExpenseService(int branchNumber) {
+		this.expenses = chain.getBranch(branchNumber).getExpenses();
 	}
 	
-	public ExpenseManagementService(StoreBranch branch) {
-		expenses = branch.getExpenses();
+	public ExpenseService(StoreBranch branch) {
+		this.expenses = branch.getExpenses();
 	}
 	
-	public ExpenseManagementService(List<Expense> expenses) {
+	public ExpenseService(List<Expense> expenses) {
 		this.expenses = expenses;
 	}
 	
+	public static void setChain(StoreChain chain) {
+		ExpenseService.chain = chain;
+	}
+
 	public List<Expense> getExpenses() {
 		return expenses;
 	}
@@ -61,10 +63,6 @@ public class ExpenseManagementService {
 	
 	public void removeExpense(Expense expense) {
 		expenses.remove(expense);
-	}
-	
-	public ExpenseManagementService() {
-		this.expenses = (new StoreChain()).getExpenses();
 	}
 	
 }

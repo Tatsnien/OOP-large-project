@@ -11,16 +11,32 @@ import system.screen.cashier.home.HomeScreenCashier;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.manager.home.HomeScreenManager;
 import system.screen.staff.home.HomeScreenStaff;
+import system.service.ExpenseService;
+import system.service.IncomeService;
+import system.service.ItemService;
+import system.service.PersonnelService;
+import system.service.StoreBranchService;
 
 public class LoginScreenController {
 
+	private StoreChain chain;
 	private Stage stage;
 	
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
 	
-	 @FXML
+	public LoginScreenController() {
+		chain = new StoreChain();
+		ExpenseService.setChain(chain);
+    	IncomeService.setChain(chain);
+    	ItemService.setChain(chain);
+    	PersonnelService.setChain(chain);
+    	StoreBranchService.setChain(chain);
+		(new DAO()).getChainFromFiles(chain);
+	}
+
+	@FXML
     private TextField tfId;
 
     @FXML
@@ -31,14 +47,11 @@ public class LoginScreenController {
 
     @FXML
     void btnLoginPressed(ActionEvent event) {
-    	StoreChain storeChain = new StoreChain();
-    	System.out.println("There is " + storeChain.getPersonnels().size() + " people in store chain.");
+    	System.out.println("There is " + chain.getPersonnels().size() + " people in store chain.");
     	
     	Account account = new Account(tfId.getText(), tfPassword.getText());
     	Personnel validPerson = null;
-    	if (account.equals(StoreChain.getDirector().getAccount()))
-    		validPerson = StoreChain.getDirector();
-    	for (Personnel person : storeChain.getPersonnels()) {
+    	for (Personnel person : chain.getPersonnels()) {
     		if (account.equals(person.getAccount())) {
     			validPerson = person;
     			break;

@@ -54,8 +54,8 @@
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Work">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Work" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnViewBranchPressed" text="View Branch" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnViewEmployeesPressed" text="View Employees" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnViewBranchesPressed" text="View Branches" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Profile">
                      <items>

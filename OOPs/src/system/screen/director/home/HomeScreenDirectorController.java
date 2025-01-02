@@ -88,8 +88,15 @@ public class HomeScreenDirectorController {
     }
     
     @FXML
-    void mnViewBranchPressed(ActionEvent event) {
-    	System.out.println("Home -> View Branch");
+    void mnViewEmployeesPressed(ActionEvent event) {
+    	System.out.println("Home -> View Employees");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnViewBranchesPressed(ActionEvent event) {
+    	System.out.println("Home -> View Branches");
     	this.frame.setVisible(false);
 		new WorkBranchScreenDirector(this.director);
     }

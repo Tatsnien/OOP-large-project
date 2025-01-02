@@ -59,10 +59,17 @@ public class ProfileScreenDirectorController{
     }
     
     @FXML
-    void mnViewBranchPressed(ActionEvent event) {
-    	System.out.println("Home -> View Branch");
+    void mnViewBranchesPressed(ActionEvent event) {
+    	System.out.println("Profile -> View Branch");
     	this.frame.setVisible(false);
 		new WorkBranchScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnViewEmployeesPressed(ActionEvent event) {
+    	System.out.println("View Branches -> View Employees");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenDirector(this.director);
     }
 
 }

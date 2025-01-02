@@ -2,137 +2,143 @@ package data;
 
 import java.util.*;
 
-import customer.MemberCustomer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import payment.Bill;
 import personnel.Director;
+import personnel.Employee;
 import personnel.Personnel;
 
-public class StoreChain extends StoreEntity{
-	private static ObservableList<StoreBranch> branchs;
-	private static Director director;
+public class StoreChain implements IStoreEntity{
+	private ObservableList<StoreBranch> branchs;
+	private Director director;
+	private float basicSalary;
 	
 	public StoreChain() {
-		if (branchs == null) 
-			branchs = FXCollections.observableArrayList();			
+		branchs = FXCollections.observableArrayList();	
 	}
 	
-	public static Director getDirector() {
+	public StoreChain(Director director) {
+		branchs = FXCollections.observableArrayList();	
+		this.director = director;
+	}
+	
+	public float getBasicSalary() {
+		return basicSalary;
+	}
+
+	public void setBasicSalary(float basicSalary) {
+		this.basicSalary = basicSalary;
+	}
+
+	public Director getDirector() {
 		return director;
 	}
 	
-	public static void setDirector(Director director) {
-		StoreChain.director = director;
+	public void setDirector(Director director) {
+		this.director = director;
 	}
 
-	public static List<StoreBranch> getBranchs() {
+	public List<StoreBranch> getBranchs() {
 		return branchs;
+	}
+	
+	public void setBranchs(List<StoreBranch> branchs) {
+		this.branchs.addAll(branchs);
 	}
 
 	public void addBranch(StoreBranch newBranch) {
-		boolean branchExisted = false;
-		for (StoreBranch branch : branchs)
-			if (newBranch.equals(branch)) {
-				branchExisted = true;
-				break;
-			}
-		
-		if (branchExisted)
-			System.out.println("Branch " + newBranch.getBranchNumber() + " has existed. Can't be added to store chain.");
-		else {
-			branchs.add(newBranch);
-			System.out.println("Branch " + newBranch.getBranchNumber() + " has been added to store chain.");
+		if (branchs.contains(newBranch)) {
+			System.out.println("Branch " + newBranch.getBranchNumber() + " has existed. Can't be added to store chain.");			
+			return;
 		}
+		
+		branchs.add(newBranch);
+		System.out.println("Branch " + newBranch.getBranchNumber() + " has been added to store chain.");
 	}
 	
-	public void removeBranch(StoreBranch newBranch) {
-		StoreBranch similarBranch = null;
-		for (StoreBranch branch : branchs)
-			if (newBranch.equals(branch)) {
-				similarBranch = branch;
-				break;
-			}
-		
-		if (similarBranch != null) {
-			branchs.remove(similarBranch);
-			System.out.println("Branch " + newBranch.getBranchNumber() + " has been removed from store chain.");
+	public void removeBranch(StoreBranch removedBranch) {
+		if (branchs.contains(removedBranch)) {
+			branchs.remove(removedBranch);
+			System.out.println("Branch " + removedBranch.getBranchNumber() + " has been removed from store chain.");		
+			return;
 		}
-		else
-			System.out.println("Branch " + newBranch.getBranchNumber() + " doesn't exist.");
+		
+		System.out.println("Branch " + removedBranch.getBranchNumber() + " doesn't exist.");
 	}
 	
-	public StoreBranch searchBranch(String id) {
+	public StoreBranch getBranch(int branchNumber) {
+		/**
+		 * return StoreBranch | null 
+		 */
 		for (StoreBranch branch : branchs)
-			for (Personnel personnel : getPersonnels())
-				if (personnel.getAccount().getId().equals(id))
+			if (branch.getBranchNumber() == branchNumber)
+				return branch;
+		System.out.println("Branch " + branchNumber + " not found.");
+		return null;
+	}
+	
+	public StoreBranch searchEmployeeBranch(String id) {
+		for (StoreBranch branch : branchs)
+			for (Employee employee : branch.getEmployees())
+				if (employee.getAccount().getId().equals(id))
 					return branch;
+		System.out.println("Employee's ID " + id + " not found.");
 		return null;
 	}
 	
 	public Personnel searchPersonnel(String id) {
-		for (StoreBranch branch : branchs)
-			for (Personnel personnel : getPersonnels())
-				if (personnel.getAccount().getId().equals(id))
-					return personnel;
+		for (Personnel personnel : getPersonnels())
+			if (personnel.getAccount().getId().equals(id))
+				return personnel;
+		System.out.println("Personnel's ID " + id + " not found.");
 		return null;
 	}
 	
-	@Override
-	public List<Personnel> getPersonnels() {
-		this.personnels = new ArrayList<>();
-		for (StoreBranch branch : branchs)
-			this.personnels.addAll(branch.getPersonnels());
-		return this.personnels;
+	public List<Personnel> getPersonnels(){
+		List<Personnel> personnels = new ArrayList<>();
+		personnels.add(director);
+		personnels.addAll(getEmployees());
+		return personnels;
 	}
 	
-	@Override
-	public List<Item> getItems() {
-		this.items = new ArrayList<>();
-		this.qty = new ArrayList<>();
-		for (StoreBranch branch : branchs) {
-			List<Item> curItems = branch.getItems();
-			List<Integer> curQty = branch.getQty();
-			
-			for (int i = 0; i < curItems.size(); ++i)
-				if (items.contains(curItems.get(i))) {
-					int idx = items.indexOf(curItems.get(i));
-					qty.set(idx, qty.get(idx) + curQty.get(i));
-				}
-				else {
-					items.add(curItems.get(i));
-					qty.add(curQty.get(i));
-				}
-		}
-		
+	public List<Employee> getEmployees() {
+		List<Employee> employees = new ArrayList<>();
 		for (StoreBranch branch : branchs)
-			this.items.addAll(branch.getItems());
-		return this.items;
+			employees.addAll(branch.getEmployees());
+		return employees;
 	}
 
-	@Override
 	public List<Bill> getBills() {
-		this.bills = new ArrayList<>();
+		List<Bill> bills = new ArrayList<>();
 		for (StoreBranch branch : branchs)
-			this.bills.addAll(branch.getBills());
-		return this.bills;
+			bills.addAll(branch.getBills());
+		return bills;
 	}
 
-	@Override
 	public float getIncome() {
-		this.income = 0;
+		float income = 0;
 		for (StoreBranch branch : branchs)
-			this.income += branch.getIncome();
-		return this.income;
+			income += branch.getIncome();
+		return income;
 	}
 	
-	@Override
 	public List<Expense> getExpenses(){
+		List<Expense> expenses = new ArrayList<>();
+		if (director != null)
+			expenses.add(new SalaryExpense(director));
 		for (StoreBranch branch : branchs)
 			for (Expense expense : branch.getExpenses())
-				if (!this.expenses.contains(expense))
-					this.expenses.add(expense);
-		return this.expenses;
+				expenses.add(expense);
+		return expenses;
+	}
+
+	public List<ItemGroup> getGroups() {
+		List<ItemGroup> itemGroups = new ArrayList<>();
+		for (StoreBranch branch : branchs)
+			for (ItemGroup itemGroup : branch.getGroups())
+				itemGroups.add(itemGroup);
+		return itemGroups;
 	}
 	
 }

@@ -11,7 +11,7 @@ module OOPs {
 	requires java.desktop;
 	requires javafx.controls;
 	requires javafx.fxml;
-	requires javafx.graphics;
+	requires transitive javafx.graphics;
 	requires javafx.swing;
 	requires transitive javafx.base;
 	
@@ -19,8 +19,10 @@ module OOPs {
 	opens system.screen.director.home to javafx.fxml;
 	opens system.screen.director.profile to javafx.fxml;
 	opens system.screen.director.work.branch to javafx.fxml;
+	opens system.screen.director.work.personnel to javafx.fxml;
 	opens system.screen.manager.home to javafx.fxml;
 	opens system.screen.manager.profile to javafx.fxml;
+	opens system.screen.manager.work.personnel to javafx.fxml;
 	opens system.screen.staff.home to javafx.fxml;
 	opens system.screen.staff.profile to javafx.fxml;
 	opens system.screen.cashier.home to javafx.fxml;

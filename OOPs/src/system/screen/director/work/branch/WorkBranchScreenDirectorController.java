@@ -11,20 +11,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import personnel.Account;
 import personnel.Director;
+import personnel.Employee;
 import personnel.StoreBranchManager;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.director.profile.ProfileScreenDirector;
-import system.service.PersonnelManagementService;
-import system.service.StoreBranchManagementService;
+import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
+import system.service.PersonnelService;
+import system.service.StoreBranchService;
 
 public class WorkBranchScreenDirectorController {
 
 	private Director director;
 	private JFrame frame;
-	private StoreChain storeChain;
-	private StoreBranchManagementService branchService;
-	private PersonnelManagementService personnelService;
+	private StoreBranchService branchService;
+	private PersonnelService personnelService;
 
     @FXML
     private TableColumn<StoreBranch, String> colAddress;
@@ -46,9 +48,10 @@ public class WorkBranchScreenDirectorController {
     
     public WorkBranchScreenDirectorController(Director director) {
     	this.director = director;
-    	this.storeChain = new StoreChain();
-    	this.branchService = new StoreBranchManagementService();
-    	this.personnelService = new PersonnelManagementService();
+    	this.branchService = new StoreBranchService(director);
+    	this.personnelService = new PersonnelService(director);
+    	System.out.println("Director branch service has " + branchService.getBranchs().size() + " branchs.");
+    	System.out.println("Director personnel service has " + personnelService.getEmployees().size() + " employees.");
     }
 	
 	public void setFrame(JFrame frame) {
@@ -67,7 +70,7 @@ public class WorkBranchScreenDirectorController {
 		colManager.setCellValueFactory(
 				new PropertyValueFactory<>("branchManagerName"));
 		
-		tblBranch.setItems((ObservableList<StoreBranch>) StoreChain.getBranchs());
+		tblBranch.setItems((ObservableList<StoreBranch>) branchService.getBranchs());
 		
 	}
 	
@@ -75,13 +78,33 @@ public class WorkBranchScreenDirectorController {
     void btnAddPressed(ActionEvent event) {
 		 String address = JOptionPane.showInputDialog("Enter Address: ");
 		 String id = JOptionPane.showInputDialog("Enter Manager ID: ");
-			 
-		 lbStatus.setText("");
-		 int branchNumber = branchService.addBranch(address, id);
-		 
-		 if (branchNumber == -1) {
-			 lbStatus.setText("Personnel doesn't exist.");
+		
+		 Employee assignedEmployee = personnelService.searchEmployee(id);
+		 if (id.equals(director.getId()) || assignedEmployee != null && !(assignedEmployee instanceof StoreBranchManager)) {
+			 lbStatus.setText("This person is not a manager.");
 			 return;
+		 }
+		 
+		 if (assignedEmployee != null && assignedEmployee.getWorkingBranchNumber() != 0) {
+			 lbStatus.setText("This manager has already been assigned");
+			 return;
+		 }
+		 
+		 lbStatus.setText("");
+		 int branchNumber = branchService.addBranch(address);
+		 
+		 if (assignedEmployee == null) {
+			 String name = JOptionPane.showInputDialog("Enter Manager name: ");
+			 StoreBranchManager manager = new StoreBranchManager(name);
+			 manager.setAccount(new Account(id, id));
+			 manager.setWorkingBranchNumber(branchNumber);
+			 manager.setServices();
+			 branchService.getBranch(branchNumber).addEmployee(manager);
+			 lbStatus.setText("New Manager added");
+			 return;
+		 }
+		 else {
+			 branchService.getBranch(branchNumber).setBranchManager((StoreBranchManager) assignedEmployee);
 		 }
     }
 
@@ -96,14 +119,33 @@ public class WorkBranchScreenDirectorController {
     	lbStatus.setText("");
     	
     	String id = JOptionPane.showInputDialog("Enter Manager ID: ");
-    	
-    	if (storeChain.searchPersonnel(id) == null) {
-			 lbStatus.setText("Personnel doesn't exist.");
+		 
+		 Employee assignedEmployee = personnelService.searchEmployee(id);
+		 if (id.equals(director.getId()) || assignedEmployee != null && !(assignedEmployee instanceof StoreBranchManager)) {
+			 lbStatus.setText("This person is not a manager.");
 			 return;
 		 }
-			 
+		 
+		 if (assignedEmployee != null && assignedEmployee.getWorkingBranchNumber() != 0) {
+			 lbStatus.setText("This manager has already been assigned");
+			 return;
+		 }
+		 
 		 lbStatus.setText("");
-		 branchService.assignBranchManager(id, storeBranch.getBranchNumber());
+		 
+		 if (assignedEmployee == null) {
+			 String name = JOptionPane.showInputDialog("Enter Manager name: ");
+			 StoreBranchManager manager = new StoreBranchManager(name);
+			 manager.setAccount(new Account(id, ""));
+			 manager.setWorkingBranchNumber(storeBranch.getBranchNumber());
+			 manager.setServices();
+			 storeBranch.addEmployee(manager);
+			 lbStatus.setText("New Manager added");
+			 return;
+		 }
+		 else {
+			 storeBranch.setBranchManager((StoreBranchManager) assignedEmployee);
+		 }
     }
 
     @FXML
@@ -119,20 +161,28 @@ public class WorkBranchScreenDirectorController {
 	
 	 @FXML
     void mnHomePressed(ActionEvent event) {
+		 System.out.println("View Branches -> Home");
 		this.frame.setVisible(false);
 		new HomeScreenDirector(this.director);
     }
     
     @FXML
     void mnProfilePressed(ActionEvent event) {
-    	System.out.println("Home -> Profile");
+    	System.out.println("View Branches -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenDirector(this.director);
     }
     
     @FXML
-    void mnViewBranchPressed(ActionEvent event) {
+    void mnViewBranchesPressed(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void mnViewEmployeesPressed(ActionEvent event) {
+    	System.out.println("View Branches -> View Employees");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenDirector(this.director);
     }
 
 }

@@ -51,7 +51,7 @@
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Work">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Work" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnViewEmployeesPressed" text="View Employees" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Profile">
                      <items>
