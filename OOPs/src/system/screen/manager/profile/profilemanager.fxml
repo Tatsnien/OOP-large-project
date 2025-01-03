@@ -45,15 +45,23 @@
             </HBox>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Home">
+                <Menu fx:id="mnHome" mnemonicParsing="false" onAction="#mnHomePressed" text="Home">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#mnHomePressed" text="Home" />
                      </items></Menu>
-                <Menu mnemonicParsing="false" text="Work">
+                <Menu fx:id="mnWork" mnemonicParsing="false" text="Work">
                      <items>
+<<<<<<< HEAD
                         <MenuItem mnemonicParsing="false" onAction="#mnViewEmployeesPressed" text="View Employees" />
+=======
+                        <MenuItem fx:id="mnWorkReports" mnemonicParsing="false" onAction="#mnWorkReportsPressed" text="Reports" />
+                        <MenuItem fx:id="mnWorkItems" mnemonicParsing="false" onAction="#mnWorkItemsPressed" text="Items" />
+                        <MenuItem fx:id="mnWorkExpenses" mnemonicParsing="false" onAction="#mnWorkExpensesPressed" text="Expenses" />
+                        <MenuItem fx:id="mnWorkPersonnel" mnemonicParsing="false" onAction="#mnWorkPersonnelPressed" text="Personnel" />
+                        <MenuItem fx:id="mnWorkDiscounts" mnemonicParsing="false" onAction="#mnWorkDiscountsPressed" text="Discounts" />
+>>>>>>> dab2ec4365775f74b95aec1e511b86e91ebf9054
                      </items></Menu>
-                <Menu mnemonicParsing="false" text="Profile">
+                <Menu fx:id="mnProfile" mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile" />
                      </items></Menu>
@@ -64,79 +72,60 @@
    </top>
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
-         <children>
-            <HBox prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Name:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileName" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="290.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="ID:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileId" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="240.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Position:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfilePosition" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="190.0" prefHeight="0.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="75.0" style="-fx-font-weight: bold;" text="Salary:">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbProfileSalary" text="Label">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
          <BorderPane.margin>
             <Insets left="450.0" />
          </BorderPane.margin>
+         <children>
+            <HBox prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" text="Name:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileName" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" text="ID:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileId" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" text="Position:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfilePosition" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="75.0" text="Salary:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbProfileSalary" text="Label" />
+               </children>
+            </HBox>
+         </children>
       </VBox>
    </center>
 </BorderPane>
