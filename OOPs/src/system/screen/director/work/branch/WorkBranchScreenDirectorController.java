@@ -17,6 +17,8 @@ import personnel.Employee;
 import personnel.StoreBranchManager;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.director.profile.ProfileScreenDirector;
+import system.screen.director.work.expense.WorkExpenseScreenDirector;
+import system.screen.director.work.item.WorkItemScreenDirector;
 import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 import system.service.PersonnelService;
 import system.service.StoreBranchService;
@@ -159,30 +161,44 @@ public class WorkBranchScreenDirectorController {
     	branchService.removeBranch(storeBranch);
     }
 	
-	 @FXML
+    @FXML
     void mnHomePressed(ActionEvent event) {
-		 System.out.println("View Branches -> Home");
-		this.frame.setVisible(false);
+    	System.out.println("Branches -> Home");
+    	this.frame.setVisible(false);
 		new HomeScreenDirector(this.director);
     }
-    
+
     @FXML
     void mnProfilePressed(ActionEvent event) {
-    	System.out.println("View Branches -> Profile");
+    	System.out.println("Branches -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenDirector(this.director);
     }
     
     @FXML
-    void mnViewBranchesPressed(ActionEvent event) {
-
+    void mnWorkBranchPressed(ActionEvent event) {
+    	
     }
     
     @FXML
-    void mnViewEmployeesPressed(ActionEvent event) {
-    	System.out.println("View Branches -> View Employees");
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Branches -> Personnel");
     	this.frame.setVisible(false);
-		new WorkPersonnelScreenDirector(this.director);
+    	new WorkPersonnelScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnWorkExpensePressed(ActionEvent event) {
+    	System.out.println("Branches -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkExpenseScreenDirector(this.director);
+    }
+
+    @FXML
+    void mnWorkItemPressed(ActionEvent event) {
+    	System.out.println("Branches -> Items");
+    	this.frame.setVisible(false);
+    	new WorkItemScreenDirector(this.director);
     }
 
 }

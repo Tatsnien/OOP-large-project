@@ -20,9 +20,14 @@ module OOPs {
 	opens system.screen.director.profile to javafx.fxml;
 	opens system.screen.director.work.branch to javafx.fxml;
 	opens system.screen.director.work.personnel to javafx.fxml;
+	opens system.screen.director.work.expense to javafx.fxml;
+	opens system.screen.director.work.item to javafx.fxml;
 	opens system.screen.manager.home to javafx.fxml;
 	opens system.screen.manager.profile to javafx.fxml;
+	opens system.screen.manager.work.expense to javafx.fxml;
+	opens system.screen.manager.work.item to javafx.fxml;
 	opens system.screen.manager.work.personnel to javafx.fxml;
+	opens system.screen.manager.work.report to javafx.fxml;
 	opens system.screen.staff.home to javafx.fxml;
 	opens system.screen.staff.profile to javafx.fxml;
 	opens system.screen.cashier.home to javafx.fxml;

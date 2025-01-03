@@ -1,4 +1,4 @@
-package system.screen.manager.work.discount;
+package system.screen.manager.work.item;
 
 import java.io.IOException;
 
@@ -10,13 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import personnel.StoreBranchManager;
-import system.screen.manager.work.items.WorkScreenManagerItemsController;
 
-public class WorkScreenManagerDiscount extends JFrame {
-
-	private WorkScreenManagerDiscount frame;
+public class WorkScreenManagerItems extends JFrame {
 	
-	public WorkScreenManagerDiscount(StoreBranchManager manager) {
+	private WorkScreenManagerItems frame;
+	
+	public WorkScreenManagerItems(StoreBranchManager manager) {
 		super();
 		
 		this.frame = this;
@@ -24,7 +23,7 @@ public class WorkScreenManagerDiscount extends JFrame {
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
-		this.setTitle("Work Screen Manager - Discount");
+		this.setTitle("Work Screen Manager - Items");
 		this.setVisible(true);
 		setSize(1024, 768);
 		Platform.runLater(new Runnable() {
@@ -43,9 +42,8 @@ public class WorkScreenManagerDiscount extends JFrame {
 					controller.setFrame(frame);
 				} catch (IOException e) {
 					e.printStackTrace();
-					}
+				}
 			}
 		});
 	}
 }
-		

@@ -17,6 +17,8 @@ import personnel.Director;
 import system.notice.Notice;
 import system.screen.director.profile.ProfileScreenDirector;
 import system.screen.director.work.branch.WorkBranchScreenDirector;
+import system.screen.director.work.expense.WorkExpenseScreenDirector;
+import system.screen.director.work.item.WorkItemScreenDirector;
 import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 
 public class HomeScreenDirectorController {
@@ -88,17 +90,31 @@ public class HomeScreenDirectorController {
     }
     
     @FXML
-    void mnViewEmployeesPressed(ActionEvent event) {
-    	System.out.println("Home -> View Employees");
+    void mnWorkBranchPressed(ActionEvent event) {
+    	System.out.println("Home -> Branches");
     	this.frame.setVisible(false);
-		new WorkPersonnelScreenDirector(this.director);
+    	new WorkBranchScreenDirector(this.director);
     }
     
     @FXML
-    void mnViewBranchesPressed(ActionEvent event) {
-    	System.out.println("Home -> View Branches");
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Home -> Personnel");
     	this.frame.setVisible(false);
-		new WorkBranchScreenDirector(this.director);
+    	new WorkPersonnelScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnWorkExpensePressed(ActionEvent event) {
+    	System.out.println("Home -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkExpenseScreenDirector(this.director);
+    }
+
+    @FXML
+    void mnWorkItemPressed(ActionEvent event) {
+    	System.out.println("Home -> Items");
+    	this.frame.setVisible(false);
+    	new WorkItemScreenDirector(this.director);
     }
 
 }

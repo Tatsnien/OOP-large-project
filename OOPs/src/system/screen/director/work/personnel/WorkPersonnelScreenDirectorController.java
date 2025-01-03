@@ -25,6 +25,13 @@ import personnel.StoreBranchManager;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.director.profile.ProfileScreenDirector;
 import system.screen.director.work.branch.WorkBranchScreenDirector;
+import system.screen.director.work.expense.WorkExpenseScreenDirector;
+import system.screen.director.work.item.WorkItemScreenDirector;
+import system.screen.manager.home.HomeScreenManager;
+import system.screen.manager.profile.ProfileScreenManager;
+import system.screen.manager.work.expense.WorkScreenManagerExpense;
+import system.screen.manager.work.item.WorkScreenManagerItems;
+import system.screen.manager.work.report.WorkScreenManagerReport;
 import system.service.PersonnelService;
 import system.service.StoreBranchService;
 
@@ -69,9 +76,6 @@ public class WorkPersonnelScreenDirectorController {
     private TableColumn<Employee, String> colNotice;
 
     @FXML
-    private ToggleGroup employeeViewSelect;
-
-    @FXML
     private Label lbMemberName;
 
     @FXML
@@ -82,15 +86,6 @@ public class WorkPersonnelScreenDirectorController {
     
     @FXML
     private Label lbStatus;
-
-    @FXML
-    private RadioButton rbID;
-
-    @FXML
-    private RadioButton rbName;
-
-    @FXML
-    private RadioButton rbPosition;
 
     @FXML
     private TableView<Employee> tblPersonnel;
@@ -213,28 +208,42 @@ public class WorkPersonnelScreenDirectorController {
 
     @FXML
     void mnHomePressed(ActionEvent event) {
-    	System.out.println("View Employees -> Home");
+    	System.out.println("Personnel -> Home");
     	this.frame.setVisible(false);
 		new HomeScreenDirector(this.director);
     }
 
     @FXML
     void mnProfilePressed(ActionEvent event) {
-    	System.out.println("View Employees -> Profile");
+    	System.out.println("Personnel -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenDirector(this.director);
     }
     
     @FXML
-    void mnViewBranchesPressed(ActionEvent event) {
-    	System.out.println("View Employees -> View Branches");
+    void mnWorkBranchPressed(ActionEvent event) {
+    	System.out.println("Personnel -> Branches");
     	this.frame.setVisible(false);
-		new WorkBranchScreenDirector(this.director);
+    	new WorkBranchScreenDirector(this.director);
     }
     
     @FXML
-    void mnViewEmployeesPressed(ActionEvent event) {
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void mnWorkExpensePressed(ActionEvent event) {
+    	System.out.println("Personnel -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkExpenseScreenDirector(this.director);
+    }
 
+    @FXML
+    void mnWorkItemPressed(ActionEvent event) {
+    	System.out.println("Personnel -> Items");
+    	this.frame.setVisible(false);
+    	new WorkItemScreenDirector(this.director);
     }
 
 }

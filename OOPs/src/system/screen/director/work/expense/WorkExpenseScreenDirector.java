@@ -1,21 +1,23 @@
-package system.screen.manager.work.items;
+package system.screen.director.work.expense;
 
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import data.StoreChain;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import personnel.StoreBranchManager;
+import personnel.Director;
 
-public class WorkScreenManagerItems extends JFrame {
+public class WorkExpenseScreenDirector extends JFrame{
 	
-	private WorkScreenManagerItems frame;
+	private StoreChain chain;
+	private WorkExpenseScreenDirector frame;
 	
-	public WorkScreenManagerItems(StoreBranchManager manager) {
+	public WorkExpenseScreenDirector(Director director) {
 		super();
 		
 		this.frame = this;
@@ -23,16 +25,16 @@ public class WorkScreenManagerItems extends JFrame {
 		JFXPanel fxPanel = new JFXPanel();
 		this.add(fxPanel);
 		
-		this.setTitle("Work Screen Manager - Items");
+		this.setTitle("Work Expense Screen Director");
 		this.setVisible(true);
 		setSize(1024, 768);
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("workmanageritems.fxml"));
+				try {							
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("workexpensedirector.fxml"));
 					
-					WorkScreenManagerItemsController controller = new WorkScreenManagerItemsController(manager);
+					WorkExpenseScreenDirectorController controller = new WorkExpenseScreenDirectorController(director);
 					loader.setController(controller);
 					
 					Parent root = loader.load();
@@ -46,4 +48,5 @@ public class WorkScreenManagerItems extends JFrame {
 			}
 		});
 	}
+	
 }

@@ -24,6 +24,9 @@ import personnel.Staff;
 import personnel.StoreBranchManager;
 import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
+import system.screen.manager.work.expense.WorkScreenManagerExpense;
+import system.screen.manager.work.item.WorkScreenManagerItems;
+import system.screen.manager.work.report.WorkScreenManagerReport;
 import system.service.PersonnelService;
 import system.service.StoreBranchService;
 
@@ -200,21 +203,42 @@ public class WorkPersonnelScreenManagerController {
 
     @FXML
     void mnHomePressed(ActionEvent event) {
-    	System.out.println("View Employees -> Home");
+    	System.out.println("Personnel -> Home");
     	this.frame.setVisible(false);
 		new HomeScreenManager(this.manager);
     }
 
     @FXML
     void mnProfilePressed(ActionEvent event) {
-    	System.out.println("View Employees -> Profile");
+    	System.out.println("Personnel -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenManager(this.manager);
     }
     
     @FXML
-    void mnViewEmployeesPressed(ActionEvent event) {
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void mnWorkExpensesPressed(ActionEvent event) {
+    	System.out.println("Personnel -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerExpense(this.manager);
+    }
 
+    @FXML
+    void mnWorkItemsPressed(ActionEvent event) {
+    	System.out.println("Personnel -> Items");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerItems(this.manager);
+    }
+
+    @FXML
+    void mnWorkReportsPressed(ActionEvent event) {
+    	System.out.println("Personnel -> Reports");
+    	this.frame.setVisible(false);
+    	new WorkScreenManagerReport(this.manager);
     }
 
 }

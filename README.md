@@ -15,10 +15,11 @@ Finished screens:
 * Director View Branches (WorkBranch) screen
 * Director View Employees (WorkPersonnel) screen
 * Manager View Employees (WorkPersonnel) screen
+* Navigation for Cahier, Director and Manager 
 
 Unfinished screens:
 * Director Item, Income and Expense screen
-* Manager Item, Income and Expense screen
+* Manager Item, Income and Expense (controller) screen
 * Staff Item screen
 
 Removed classes:

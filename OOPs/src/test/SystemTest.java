@@ -1,10 +1,6 @@
 package test;
 
-import data.*;
-import personnel.*;
 import system.LoginScreen;
-import system.notice.Notice;
-import system.service.ItemService;
 
 public class SystemTest {
 	
