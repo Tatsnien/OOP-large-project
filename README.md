@@ -17,10 +17,11 @@ Finished screens:
 * Manager View Employees (WorkPersonnel) screen
 * Navigation for Cahier, Director and Manager 
 
-Unfinished screens:
-* Director Item, Income and Expense screen
-* Manager Item, Income and Expense (controller) screen
+Unfinished works:
+* Director Item and Expense screen
+* Manager Item and Expense (controller) screen
 * Staff Item screen
+* Salary calculation
 
 Removed classes:
 * Customer-related classes
