@@ -22,6 +22,7 @@ Unfinished works:
 * Manager Item and Expense (controller) screen
 * Staff Item screen
 * Salary calculation
+* DAO
 
 Removed classes:
 * Customer-related classes
