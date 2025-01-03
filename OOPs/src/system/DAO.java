@@ -1,4 +1,4 @@
-package data;
+package system;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import data.StoreBranch;
+import data.StoreChain;
 import personnel.Account;
 import personnel.Cashier;
 import personnel.Director;
@@ -88,10 +90,9 @@ public class DAO {
 			} catch (FileNotFoundException e) {
 		    	System.out.println("File not found.");
 		    	e.printStackTrace();
-		    } 
-//			catch (Exception e){
-//				System.out.println("Some errors occur while reading " + path);
-//			}
+		    } catch (Exception e){
+				System.out.println("Some errors occur while reading " + path);
+			}
 		}
 		
 		return personnels;
