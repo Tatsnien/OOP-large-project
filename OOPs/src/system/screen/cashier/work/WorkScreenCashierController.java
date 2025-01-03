@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import customer.Cart;
-import customer.Customer;
-import customer.MemberCustomer;
 import data.Item;
 import data.ItemGroup;
 import javafx.event.ActionEvent;
@@ -29,7 +27,7 @@ import payment.*;
 import personnel.Cashier;
 import system.screen.cashier.home.HomeScreenCashier;
 import system.screen.cashier.profile.ProfileScreenCashier;
-import system.service.ItemManagementService;
+import system.service.ItemService;
 
 public class WorkScreenCashierController {
 	
@@ -37,15 +35,15 @@ public class WorkScreenCashierController {
 	private Cashier cashier;
 	private Cart cart;
 	private PaymentService paymentService;
-	private ItemManagementService itemBranchService;
-	private ItemManagementService itemCartService;
+	private ItemService itemBranchService;
+	private ItemService itemCartService;
 	
 	public WorkScreenCashierController(Cashier cashier) {
 		this.cashier = cashier;
 		this.cart = new Cart();
 		this.paymentService = new CashPaymentService(cart);
-		this.itemBranchService = new ItemManagementService(cashier);
-		this.itemCartService = new ItemManagementService(cart.getItemsOrdered(), cart.getQty());
+		this.itemBranchService = new ItemService(cashier.getWorkingBranchNumber());
+		this.itemCartService = new ItemService(cart.getGroups());
 	}
 	
 	public void setFrame(JFrame frame) {
@@ -128,7 +126,7 @@ public class WorkScreenCashierController {
 		colItemTotal.setCellValueFactory(
 				new PropertyValueFactory<>("total"));
 		
-		tblItem.setItems(cart.getGroup());
+		tblItem.setItems(cart.getGroups());
     }
     
     @FXML
@@ -157,7 +155,7 @@ public class WorkScreenCashierController {
     	
     	// Handle cashier makes an invalid input
     	int qty = 0;
-    	Item item = itemBranchService.getItems().get(idxBranch);
+    	Item item = itemBranchService.getGroups().get(idxBranch).getItem();
     	try {
     		qty = Integer.parseInt(tfQty.getText());
     	} catch (Exception e) {
@@ -166,7 +164,7 @@ public class WorkScreenCashierController {
     	}
     	
     	// Handle quantity is larger than store capacity
-    	if (qty > itemBranchService.getQty().get(idxBranch)) {
+    	if (qty > itemBranchService.getGroups().get(idxBranch).getQty()) {
     		lbAddItemStatus.setText("Not enough items available.");
     		return;
     	}
@@ -174,11 +172,9 @@ public class WorkScreenCashierController {
     	// Normal
     	int idxCart = itemCartService.searchItemIndex(tfBarcode.getText().strip());
     	if (idxCart == -1)
-    		cart.addItem(item, qty);
-    	else {
-    		itemCartService.getQty().set(idxCart, qty);
-    		cart.getGroup().set(idxCart, new ItemGroup(item, qty));
-    	}
+    		itemCartService.addItem(item, qty);
+    	else 
+    		itemCartService.getGroups().get(idxCart).setQty(qty);
     	
     	tfBarcode.setText("");
     	tfQty.setText("");

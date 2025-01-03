@@ -1,14 +1,11 @@
 package system;
 
-import data.StoreChain;
 import javafx.application.Application;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.stage.*;
 
-public class LoginScreen extends Application{
-	private StoreChain storeChain;
-	
+public class LoginScreen extends Application{	
 	@Override
 	public void start(Stage stage) throws Exception{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));

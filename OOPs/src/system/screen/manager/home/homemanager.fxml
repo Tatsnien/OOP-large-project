@@ -57,7 +57,6 @@
                         <MenuItem fx:id="mnWorkItems" mnemonicParsing="false" onAction="#mnWorkItemsPressed" text="Items" />
                         <MenuItem fx:id="mnWorkExpenses" mnemonicParsing="false" onAction="#mnWorkExpensesPressed" text="Expenses" />
                         <MenuItem fx:id="mnWorkPersonnel" mnemonicParsing="false" onAction="#mnWorkPersonnelPressed" text="Personnel" />
-                        <MenuItem fx:id="mnWorkDiscounts" mnemonicParsing="false" onAction="#mnWorkDiscountsPressed" text="Discounts" />
                      </items></Menu>
                 <Menu fx:id="mnProfile" mnemonicParsing="false" onAction="#mnProfilePressed" text="Profile">
                      <items>

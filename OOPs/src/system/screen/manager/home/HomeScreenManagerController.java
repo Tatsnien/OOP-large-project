@@ -17,10 +17,9 @@ import javafx.scene.text.Font;
 import personnel.StoreBranchManager;
 import system.notice.Notice;
 import system.screen.manager.profile.ProfileScreenManager;
-import system.screen.manager.work.discount.WorkScreenManagerDiscount;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
-import system.screen.manager.work.items.WorkScreenManagerItems;
-import system.screen.manager.work.personnel.WorkScreenManagerPersonnel;
+import system.screen.manager.work.item.WorkScreenManagerItems;
 import system.screen.manager.work.report.WorkScreenManagerReport;
 
 public class HomeScreenManagerController {
@@ -114,37 +113,31 @@ public class HomeScreenManagerController {
     }
     
     @FXML
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Home -> Personnel");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenManager(this.manager);
+    }
+
+    @FXML
     void mnWorkExpensesPressed(ActionEvent event) {
-    	System.out.println("Work -> Expenses");
+    	System.out.println("Home -> Expenses");
     	this.frame.setVisible(false);
     	new WorkScreenManagerExpense(this.manager);
     }
 
     @FXML
     void mnWorkItemsPressed(ActionEvent event) {
-    	System.out.println("Work -> Items");
+    	System.out.println("Home -> Items");
     	this.frame.setVisible(false);
     	new WorkScreenManagerItems(this.manager);
     }
 
     @FXML
-    void mnWorkPersonnelPressed(ActionEvent event) {
-    	System.out.println("Work -> Personnel");
-    	this.frame.setVisible(false);
-    	new WorkScreenManagerPersonnel(this.manager);
-    }
-
-    @FXML
     void mnWorkReportsPressed(ActionEvent event) {
-    	System.out.println("Work -> Reports");
+    	System.out.println("Home -> Reports");
     	this.frame.setVisible(false);
     	new WorkScreenManagerReport(this.manager);
     }
     
-    @FXML
-    void mnWorkDiscountsPressed(ActionEvent event) {
-    	System.out.println("Work -> Discounts");
-    	this.frame.setVisible(false);
-    	new WorkScreenManagerDiscount(this.manager);
-    }
 }

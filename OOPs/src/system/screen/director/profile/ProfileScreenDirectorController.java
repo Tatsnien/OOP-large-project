@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import personnel.Director;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.director.work.branch.WorkBranchScreenDirector;
+import system.screen.director.work.expense.WorkExpenseScreenDirector;
+import system.screen.director.work.item.WorkItemScreenDirector;
 import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 
 public class ProfileScreenDirectorController{
@@ -59,10 +61,31 @@ public class ProfileScreenDirectorController{
     }
     
     @FXML
-    void mnViewBranchPressed(ActionEvent event) {
-    	System.out.println("Home -> View Branch");
+    void mnWorkBranchPressed(ActionEvent event) {
+    	System.out.println("Home -> Branches");
     	this.frame.setVisible(false);
-		new WorkBranchScreenDirector(this.director);
+    	new WorkBranchScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Home -> Personnel");
+    	this.frame.setVisible(false);
+    	new WorkPersonnelScreenDirector(this.director);
+    }
+    
+    @FXML
+    void mnWorkExpensePressed(ActionEvent event) {
+    	System.out.println("Home -> Expenses");
+    	this.frame.setVisible(false);
+    	new WorkExpenseScreenDirector(this.director);
+    }
+
+    @FXML
+    void mnWorkItemPressed(ActionEvent event) {
+    	System.out.println("Home -> Items");
+    	this.frame.setVisible(false);
+    	new WorkItemScreenDirector(this.director);
     }
 
 }

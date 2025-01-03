@@ -9,10 +9,9 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import personnel.StoreBranchManager;
 import system.screen.manager.home.HomeScreenManager;
-import system.screen.manager.work.discount.WorkScreenManagerDiscount;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
-import system.screen.manager.work.items.WorkScreenManagerItems;
-import system.screen.manager.work.personnel.WorkScreenManagerPersonnel;
+import system.screen.manager.work.item.WorkScreenManagerItems;
 import system.screen.manager.work.report.WorkScreenManagerReport;
 
 public class ProfileScreenManagerController{
@@ -88,37 +87,31 @@ public class ProfileScreenManagerController{
     }
     
     @FXML
+    void mnWorkPersonnelPressed(ActionEvent event) {
+    	System.out.println("Profile -> Personnel");
+    	this.frame.setVisible(false);
+		new WorkPersonnelScreenManager(this.manager);
+    }
+
+    @FXML
     void mnWorkExpensesPressed(ActionEvent event) {
-    	System.out.println("Work -> Expenses");
+    	System.out.println("Profile -> Expenses");
     	this.frame.setVisible(false);
     	new WorkScreenManagerExpense(this.manager);
     }
 
     @FXML
     void mnWorkItemsPressed(ActionEvent event) {
-    	System.out.println("Work -> Items");
+    	System.out.println("Profile -> Items");
     	this.frame.setVisible(false);
     	new WorkScreenManagerItems(this.manager);
     }
 
     @FXML
-    void mnWorkPersonnelPressed(ActionEvent event) {
-    	System.out.println("Work -> Personnel");
-    	this.frame.setVisible(false);
-    	new WorkScreenManagerPersonnel(this.manager);
-    }
-
-    @FXML
     void mnWorkReportsPressed(ActionEvent event) {
-    	System.out.println("Work -> Reports");
+    	System.out.println("Profile -> Reports");
     	this.frame.setVisible(false);
     	new WorkScreenManagerReport(this.manager);
     }
     
-    @FXML
-    void mnWorkDiscountsPressed(ActionEvent event) {
-    	System.out.println("Work -> Discounts");
-    	this.frame.setVisible(false);
-    	new WorkScreenManagerDiscount(this.manager);
-    }
 }

@@ -8,6 +8,8 @@ public class CustomDate {
     private int day;
     private int month;
     private int year;
+    private int hr;
+    private int min;
     private String mth;
 
     private static final Map<String, Integer> monthMap = new HashMap<>();
@@ -32,12 +34,30 @@ public class CustomDate {
     	day = localDate.getDayOfMonth();
     	month = localDate.getMonthValue();
     	year = localDate.getYear();
+    	hr = localDate.getHour();
+    	min = localDate.getMinute();
     }
 
     public CustomDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
+    }
+    
+    public CustomDate(int day, int month, int year, int hr, int min) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.hr = hr;
+        this.min = min;
+    }
+    
+    public CustomDate(String date) {
+    	this.day = Integer.parseInt(date.substring(0, 1));
+    	this.month = Integer.parseInt(date.substring(2, 3));
+    	this.year = Integer.parseInt(date.substring(4, 7));
+    	this.hr = Integer.parseInt(date.substring(8, 9));
+    	this.min = Integer.parseInt(date.substring(10, 11));
     }
 
     public CustomDate(int day, String mth, int year) {
@@ -68,8 +88,35 @@ public class CustomDate {
         return year;
     }
 
-    @Override
+    public int getHr() {
+		return hr;
+	}
+
+	public int getMin() {
+		return min;
+	}
+	
+	public String timeStamp() {
+		return 	formatTimeStamp(this.getDay()) + 
+				formatTimeStamp(this.getMonth()) + 
+				formatTimeStamp(this.getYear()) + 
+				formatTimeStamp(this.getHr()) + 
+				formatTimeStamp(this.getMin());
+	}
+	
+	private String formatTimeStamp(int time) {
+		String formatted = time + "";
+		if (formatted.length() == 1)
+			formatted = "0" + formatted;
+		return formatted;
+	}
+
+	@Override
     public String toString() {
-        return this.getDay() + "/" + this.getMonth() + "/" + this.getYear();
+        return 	this.getDay() + "/" + 
+        		this.getMonth() + "/" + 
+        		this.getYear() + " " +
+        		this.getHr() + ":" +
+        		this.getMin();
     }
 }

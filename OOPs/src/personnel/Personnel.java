@@ -1,5 +1,7 @@
 package personnel;
 
+import system.notice.Notice;
+
 public class Personnel {
 	
 	private String name;
@@ -12,6 +14,13 @@ public class Personnel {
 		this.salary = 0;
 	}
 	
+	public Personnel(String name, float salary, Account account, String position) {
+		this.name = name;
+		this.salary = salary;
+		this.account = account;
+		this.position = position;
+	}
+
 	public String getPosition() {
 		return position;
 	}
@@ -25,7 +34,7 @@ public class Personnel {
 	}
 	
 	public float getSalary() {
-		return salary;
+		return ((int) (salary * 100)) / 100.0f;
 	}
 
 	public void setSalary(float salary) {
@@ -39,11 +48,25 @@ public class Personnel {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	
+	public String getId() {
+		return this.account.getId();
+	}
+	
+	public String getNoticeTitles() {
+		String titles = "";
+		for (Notice notice : this.account.getNotices())
+			titles += notice.getTitle() + "\n";
+		return titles;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
 		try {
-			return account.equals(((Personnel) obj).getAccount());
+			if (obj instanceof String)
+				return account.getId().equals((String) obj);
+			else
+				return account.equals(((Personnel) obj).getAccount());
 		}
 		catch (Exception e) {
 			return false;

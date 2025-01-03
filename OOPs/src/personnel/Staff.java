@@ -1,25 +1,27 @@
 package personnel;
 import system.notice.Report;
-import system.service.ItemManagementService;
+import system.service.ItemService;
 
-public class Staff extends Personnel {
-	private ItemManagementService service;
+public class Staff extends Employee {
+	
+	private ItemService service;
 	
 	public Staff(String name) {
 		super(name);
 		this.position = "Staff";
 	}
-
-	public Staff(String name, ItemManagementService service) {
-		super(name);
+	
+	public Staff(String name, float salary, Account account, String position, int branchNb) {
+		super(name, salary, account, position);
 		this.position = "Staff";
-		this.service = service;
+		this.setWorkingBranchNumber(branchNb);
 	}
-	public void setService(ItemManagementService service) {
+	
+	public void setService(ItemService service) {
 		this.service = service;
 	}
 
-	public ItemManagementService getService() {
+	public ItemService getService() {
 		return service;
 	}
 

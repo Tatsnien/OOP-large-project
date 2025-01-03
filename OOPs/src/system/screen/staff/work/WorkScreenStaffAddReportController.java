@@ -32,8 +32,6 @@ public class WorkScreenStaffAddReportController {
 	public WorkScreenStaffAddReportController(Staff staff) {
 		this.staff = staff;
 		itemsList = FXCollections.observableArrayList();
-		List<Item> items = staff.getService().getItems();
-		List<Integer> qty = staff.getService().getQty();
 		for (int i = 0; i < items.size(); ++i)
 			itemsList.add(new ItemGroup(items.get(i), qty.get(i)));			
 	}

@@ -54,8 +54,10 @@
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Work">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Work" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnViewBranchPressed" text="View Branch" />
+                        <MenuItem fx:id="mnWorkBranch" mnemonicParsing="false" onAction="#mnWorkBranchPressed" text="Branchs" />
+                        <MenuItem fx:id="mnWorkExpense" mnemonicParsing="false" onAction="#mnWorkExpensePressed" text="Expenses" />
+                        <MenuItem fx:id="mnWorkItem" mnemonicParsing="false" onAction="#mnWorkItemPressed" text="Items" />
+                        <MenuItem fx:id="mnWorkPersonnel" mnemonicParsing="false" onAction="#mnWorkPersonnelPressed" text="Personnel" />
                      </items></Menu>
                 <Menu mnemonicParsing="false" text="Profile">
                      <items>
