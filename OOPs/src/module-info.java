@@ -30,6 +30,8 @@ module OOPs {
 	opens system.screen.manager.work.report to javafx.fxml;
 	opens system.screen.staff.home to javafx.fxml;
 	opens system.screen.staff.profile to javafx.fxml;
+	opens system.screen.staff.work.check to javafx.fxml;
+	opens system.screen.staff.work.importing to javafx.fxml;
 	opens system.screen.cashier.home to javafx.fxml;
 	opens system.screen.cashier.work to javafx.fxml;
 	opens system.screen.cashier.profile to javafx.fxml;

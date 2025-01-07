@@ -1,14 +1,10 @@
-package system.screen.staff.work;
-import java.util.ArrayList;
-import java.util.List;
+package system.screen.staff.work.check;
 
 import javax.swing.JFrame;
 
-import data.Item;
 import data.ItemGroup;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,20 +16,26 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import personnel.Staff;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;
+import system.screen.staff.work.importing.ImportingScreenStaff;
+import system.service.ItemService;
 
-public class WorkScreenStaffAddReportController {
+public class CheckScreenStaffController {
 	
-	private JFrame frame;
 	private Staff staff;
-	private ObservableList<ItemGroup> itemsList;
+	private JFrame frame;
+	private ItemService itemService;
+	private ObservableList<ItemGroup> groups;
 	private String currentName;
 	private String currentStock;
 	
-	public WorkScreenStaffAddReportController(Staff staff) {
+	public CheckScreenStaffController(Staff staff) {
 		this.staff = staff;
-		itemsList = FXCollections.observableArrayList();
-		for (int i = 0; i < items.size(); ++i)
-			itemsList.add(new ItemGroup(items.get(i), qty.get(i)));			
+		this.itemService = new ItemService(this.staff);
+		this.groups = (ObservableList<ItemGroup>) itemService.getGroups();
+	}
+	
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
     @FXML
@@ -46,7 +48,7 @@ public class WorkScreenStaffAddReportController {
     private Label lbName;
     
     @FXML
-    private java.awt.Label lbUpdateCheck;
+    private Label lbUpdateCheck;
     
     private Label lbSendReport;
 
@@ -62,16 +64,12 @@ public class WorkScreenStaffAddReportController {
     @FXML
     private TextField tfItemName;
     
-    public void setFrame(JFrame frame) {
-		this.frame = frame;
-	}
-    
     public void initialize() {
     	colCount.setCellValueFactory(
     			new PropertyValueFactory<>("quantity"));
     	colName.setCellValueFactory(
     			new PropertyValueFactory<>("name"));
-    	tblItems.setItems(this.itemsList);
+    	tblItems.setItems(this.groups);
     	tfItemCount.textProperty().addListener(new ChangeListener<String>() {
     		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
     			currentStock = newValue;
@@ -86,26 +84,6 @@ public class WorkScreenStaffAddReportController {
     }
 
     @FXML
-    void mnCheckPressed(ActionEvent event) {
-    	
-    }
-
-    @FXML
-    void mnHomePressed(ActionEvent event) {
-    	new HomeScreenStaff(staff);
-    }
-
-    @FXML
-    void mnImportPressed(ActionEvent event) {
-    	// new WorkScreenStaffImportReport(staff);
-    }
-
-    @FXML
-    void mnProfilePressed(ActionEvent event) {
-    	new ProfileScreenStaff(staff);
-    }
-
-    @FXML
     void sendReportPressed(ActionEvent event) {
     	// TODO
     }
@@ -114,7 +92,7 @@ public class WorkScreenStaffAddReportController {
     void updateCheckPressed(ActionEvent event) {
     	try {
     		boolean found = false;
-    		for (ItemGroup i: itemsList) {
+    		for (ItemGroup i: groups) {
     			if (i.getName() == currentName) {
     				found = true;
     				i.setQty(Integer.parseInt(currentStock));
@@ -127,6 +105,32 @@ public class WorkScreenStaffAddReportController {
     	} catch (Exception e) {
     		lbUpdateCheck.setText("Invalid inputs");
     	}
+    }
+	
+	@FXML
+    void mnHomePressed(ActionEvent event) {
+    	System.out.println("Check -> Home");
+    	this.frame.setVisible(false);
+		new HomeScreenStaff(this.staff);
+    }
+	
+	@FXML
+    void mnProfilePressed(ActionEvent event) {
+    	System.out.println("Check -> Profile");
+    	this.frame.setVisible(false);
+		new ProfileScreenStaff(this.staff);
+    }
+    
+    @FXML
+    void mnCheckPressed(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    void mnImportPressed(ActionEvent event) {
+    	System.out.println("Check -> Impor");
+    	this.frame.setVisible(false);
+		new ImportingScreenStaff(this.staff);
     }
 
 }

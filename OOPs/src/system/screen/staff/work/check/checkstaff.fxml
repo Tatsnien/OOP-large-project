@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -40,7 +42,7 @@
                   </VBox>
                   <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../resources/hust_bookstore_logo.jpg" />
+                        <Image url="@../../../../../../resources/hust_bookstore_logo.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -66,31 +68,71 @@
       </SplitPane>
    </top>
    <center>
-      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1024.0">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Stock checking">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
                <children>
-                  <VBox fx:id="vbNotice" prefWidth="1024.0" spacing="10.0">
-                     <children>
-                        <Label text="Notice">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="30.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="30.0" right="30.0" top="20.0" />
-                     </padding>
-                  </VBox>
+                  <Label prefWidth="75.0" text="Item name" />
+                  <TextField fx:id="stockCheckSearchbar" promptText="Search for an item...">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
                </children>
-            </AnchorPane>
-        </content>
+            </HBox>
+            <TableView fx:id="tblItems">
+              <columns>
+                <TableColumn fx:id="colName" prefWidth="300.0" text="Item name" />
+                  <TableColumn fx:id="colCount" prefWidth="112.0" text="Count" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <HBox spacing="10.0">
+               <children>
+                  <Label prefWidth="75.0" text="Item name" />
+                  <TextField fx:id="tfItemName" promptText="Enter item name" />
+               </children>
+            </HBox>
+            <HBox spacing="10.0">
+               <children>
+                  <Label prefWidth="75.0" text="Item quantity" />
+                  <TextField fx:id="tfItemCount" promptText="Enter item quantity" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#updateCheckPressed" text="Update check" />
+                  <Label fx:id="lbUpdateCheck" text="Update check">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#sendReportPressed" text="Send report" />
+                  <Label fx:id="lbSendReport" text="Label">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
          <BorderPane.margin>
-            <Insets />
+            <Insets left="10.0" />
          </BorderPane.margin>
-      </ScrollPane>
+      </VBox>
    </center>
 </BorderPane>

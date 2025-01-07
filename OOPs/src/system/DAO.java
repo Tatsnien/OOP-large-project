@@ -83,7 +83,7 @@ public class DAO {
 			    		personnels.add(new Staff(name, salary, new Account(id, password), position, branchNb));
 			    	else if (position.equals("Manager"))
 			    		personnels.add(new StoreBranchManager(name, salary, new Account(id, password), position, branchNb));
-			    	System.out.println(id);
+			    	System.out.println(id + " " + position);
 			    }
 			    
 			    scanner.close();

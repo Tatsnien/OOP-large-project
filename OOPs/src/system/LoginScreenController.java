@@ -57,7 +57,6 @@ public class LoginScreenController {
     			break;
     		}
     			
-    		System.out.print(account.getId() + " " + account.getPassword() + "-");
     		System.out.println(person.getAccount().getId() + " " + person.getAccount().getPassword());
     	}
     	

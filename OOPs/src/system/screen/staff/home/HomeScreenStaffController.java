@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
@@ -16,6 +15,8 @@ import javafx.scene.text.Font;
 import personnel.Staff;
 import system.notice.Notice;
 import system.screen.staff.profile.ProfileScreenStaff;
+import system.screen.staff.work.check.CheckScreenStaff;
+import system.screen.staff.work.importing.ImportingScreenStaff;
 
 public class HomeScreenStaffController {
 
@@ -83,6 +84,20 @@ public class HomeScreenStaffController {
     	System.out.println("Home -> Profile");
     	this.frame.setVisible(false);
 		new ProfileScreenStaff(this.staff);
+    }
+    
+    @FXML
+    void mnCheckPressed(ActionEvent event) {
+    	System.out.println("Home -> Check");
+    	this.frame.setVisible(false);
+		new CheckScreenStaff(this.staff);
+    }
+    
+    @FXML
+    void mnImportPressed(ActionEvent event) {
+    	System.out.println("Home -> Impor");
+    	this.frame.setVisible(false);
+		new ImportingScreenStaff(this.staff);
     }
 
 }

@@ -109,4 +109,7 @@ public class DAO {
 		
 		return personnels;
 	}
+
+	// Save method
+	public savePersonnel(List<Personnel> personnels);
 }
