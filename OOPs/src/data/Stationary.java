@@ -7,6 +7,7 @@ public class Stationary extends Item {
     public Stationary (String name, String barcode, String type, float price) {
     	super(name, barcode, price);
         this.type = type;
+        this.itemType = "Stationary";
     }
 
     @Override

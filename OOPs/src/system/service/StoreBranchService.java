@@ -3,11 +3,8 @@ package system.service;
 import java.util.List;
 
 import data.StoreBranch;
-import data.StoreBranchDAO;
 import data.StoreChain;
-import javafx.collections.ObservableList;
 import personnel.Director;
-import personnel.Personnel;
 import personnel.StoreBranchManager;
 
 public class StoreBranchService {
@@ -61,7 +58,7 @@ public class StoreBranchService {
 		return chain.getBranch(branchNumber);
 	}
 	
-	public StoreBranchManager searchManager(int branchNumber) {
+	public static StoreBranchManager searchManager(int branchNumber) {
 		return chain.getBranch(branchNumber).getBranchManager();
 	}
 	

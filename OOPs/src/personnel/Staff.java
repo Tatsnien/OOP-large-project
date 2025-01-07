@@ -1,5 +1,4 @@
 package personnel;
-import system.notice.Report;
 import system.service.ItemService;
 
 public class Staff extends Employee {

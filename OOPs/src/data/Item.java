@@ -1,9 +1,10 @@
 package data;
 // Abstract Item Class
 public abstract class Item {
-    protected String name;          // Common attribute for all items
-    protected String barcode;          // Unique barcode for the item
-    protected float price;  // Purchase price of the item
+    protected String name;          	// Common attribute for all items
+    protected String barcode;          	// Unique barcode for the item
+    protected float price;  			// Purchase price of the item
+    protected String itemType;
 
     public Item(String name, String barcode, float price) {
         this.name = name;
@@ -36,6 +37,10 @@ public abstract class Item {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public String getItemType() {
+		return itemType;
 	}
 	
 }  

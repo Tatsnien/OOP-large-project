@@ -61,6 +61,19 @@ public class ItemService {
 			groups.get(idx).addQty(quantity);
 	}
 	
+	public void addItemGroup(ItemGroup group) {		
+		int idx = groups.indexOf(group);
+		if (idx == -1)
+			groups.add(group);
+		else
+			groups.get(idx).addQty(group.getQty());
+	}
+	
+	public void addItemGroups(List<ItemGroup> groups) {		
+		for (ItemGroup group : groups)
+			addItemGroup(group);
+	}
+	
 	public void addToy(String name, String barcode, String brand, int[] suitableAges, String type, int quantity, float price) {
 		Item item = new Toy(name, barcode, brand, suitableAges, type, price);
 		addItem(item, quantity);
@@ -78,6 +91,14 @@ public class ItemService {
 	
 	public void removeItem(Item item) {
 		groups.remove(item);
+	}
+	
+	public void removeGroup(ItemGroup group) {
+		groups.remove(group);
+	}
+	
+	public void clear() {
+		groups.clear();
 	}
 	
 }

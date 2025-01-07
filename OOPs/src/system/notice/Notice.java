@@ -1,28 +1,37 @@
 package system.notice;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import data.CustomDate;
 import personnel.Personnel;
 
 public class Notice {
-	private Date date;
+	private CustomDate date;
 	private String title;
 	private String sender;
+	private String receiver;
+	private String content;
 	
-	public Notice() {
+	public Notice(Personnel receiver) {
 		this.sender = "System";
-		date = new Date();
-		title = "No title";
+		this.receiver = receiver.getPosition() + " " + receiver.getName();
+		this.date = new CustomDate();
+		this.title = "No title";
 	}
 	
-	public Notice(Personnel person) {
-		this.sender = person.getPosition() + " " + person.getName();
-		date = new Date();
-		title = "No title";
+	public Notice(Personnel sender, Personnel receiver) {
+		this.sender = sender.getPosition() + " " + sender.getName();
+		this.receiver = receiver.getPosition() + " " + receiver.getName();
+		this.date = new CustomDate();
+		this.title = "No title";
 	}
 	
-	public Date getDate() {
+	public Notice(Personnel sender, Personnel receiver, String title) {
+		this.sender = sender.getPosition() + " " + sender.getName();
+		this.receiver = receiver.getPosition() + " " + receiver.getName();
+		this.date = new CustomDate();
+		this.title = title;
+	}
+	
+	public CustomDate getnewDate() {
 		return date;
 	}
 	
@@ -38,10 +47,21 @@ public class Notice {
 		return sender;
 	}
 	
+	public String getReceiver() {
+		return receiver;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public String printDate() {
-		String toStringDate = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(date);
-		System.out.println(toStringDate);
-		return toStringDate;
+		System.out.println(date.toString());
+		return date.toString();
 	}
 	
 }

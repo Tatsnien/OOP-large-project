@@ -33,6 +33,14 @@ public class ItemGroup {
 	public float getTotal() {
 		return getPrice() * qty;
 	}
+	
+	public String getItemType() {
+		return item.getItemType();
+	}
+	
+	public String getItemInfo() {
+		return item.getItemInfo();
+	}
 
 	public void setQty(int qty) {
 		this.qty = qty;

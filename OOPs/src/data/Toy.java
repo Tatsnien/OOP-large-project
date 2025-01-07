@@ -10,6 +10,7 @@ public class Toy extends Item {
         this.brand = brand;
         this.suitableAges = suitableAges; // Expecting an array with two elements [minAge, maxAge]
         this.type = type; // A specific age value or category
+        this.itemType = "Toy";
     }
 
     @Override 

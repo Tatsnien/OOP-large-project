@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import data.ItemGroup;
 import data.StoreBranch;
 import data.StoreChain;
 import personnel.Account;
@@ -18,6 +19,7 @@ import personnel.Employee;
 import personnel.Personnel;
 import personnel.Staff;
 import personnel.StoreBranchManager;
+import system.notice.Notice;
 
 public class DAO {
 	
@@ -101,6 +103,18 @@ public class DAO {
 	public void getChainFromFiles(StoreChain chain) {
 		chain.setBranchs(getBranchFromFiles());
 		addPersonnelsToBranches(chain);
+		
+	}
+	
+	public void savePersonnels(List<Personnel> personnels) {
+		
+	}
+	
+	public void saveItems(List<ItemGroup> groups) {
+		
+	}
+	
+	public void saveNotices(List<Notice> notices) {
 		
 	}
 	

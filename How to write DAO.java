@@ -111,5 +111,5 @@ public class DAO {
 	}
 
 	// Save method
-	public savePersonnel(List<Personnel> personnels);
+	public savePersonnels(List<Personnel> personnels);
 }

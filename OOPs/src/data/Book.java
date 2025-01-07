@@ -11,6 +11,7 @@ public class Book extends Item {
         this.author = author;
         this.publisher = publisher;
         this.isbn = isbn;
+        this.itemType = "Book";
     }
 
     @Override

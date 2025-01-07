@@ -68,7 +68,7 @@
       </SplitPane>
    </top>
    <center>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Stock checking">
                <font>
@@ -78,11 +78,12 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </Label>
-            <HBox>
+            <HBox alignment="CENTER_LEFT">
                <children>
+                  <Label prefWidth="75.0" text="Item name" />
                   <TextField fx:id="stockCheckSearchbar" promptText="Search for an item...">
                      <HBox.margin>
-                        <Insets bottom="7.0" left="20.0" top="7.0" />
+                        <Insets />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -96,16 +97,16 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox>
+            <HBox spacing="10.0">
                <children>
-                  <Label text="Item name" />
-                  <TextField fx:id="tfItemName" />
+                  <Label prefWidth="75.0" text="Item name" />
+                  <TextField fx:id="tfItemName" promptText="Enter item name" />
                </children>
             </HBox>
-            <HBox>
+            <HBox spacing="10.0">
                <children>
-                  <Label text="Item count" />
-                  <TextField fx:id="tfItemCount" />
+                  <Label prefWidth="75.0" text="Item quantity" />
+                  <TextField fx:id="tfItemCount" promptText="Enter item quantity" />
                </children>
             </HBox>
             <HBox>
@@ -129,6 +130,9 @@
                </children>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
 </BorderPane>
