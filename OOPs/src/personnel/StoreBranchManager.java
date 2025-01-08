@@ -4,10 +4,10 @@ import data.StoreChain;
 import system.service.ExpenseService;
 import system.service.IncomeService;
 import system.service.ItemService;
-import system.service.ManagerService;
+import system.service.IManagerService;
 import system.service.PersonnelService;
 
-public class StoreBranchManager extends Employee implements ManagerService{
+public class StoreBranchManager extends Employee implements IManagerService{
 	
 	private ExpenseService expenseService;
 	private IncomeService incomeService;
@@ -23,17 +23,14 @@ public class StoreBranchManager extends Employee implements ManagerService{
 		super(name, salary, account, position);
 		this.position = "Manager";
 		this.setWorkingBranchNumber(branchNb);
-		this.expenseService = new ExpenseService(this.getWorkingBranchNumber());
-		this.incomeService = new IncomeService(this.getWorkingBranchNumber());
-		this.itemService = new ItemService(this.getWorkingBranchNumber());
-		this.personnelService = new PersonnelService(this.getWorkingBranchNumber());
+		this.setServices();
 	}
 	
 	public void setServices() {
-		this.expenseService = new ExpenseService(this.getWorkingBranchNumber());
-		this.incomeService = new IncomeService(this.getWorkingBranchNumber());
-		this.itemService = new ItemService(this.getWorkingBranchNumber());
-		this.personnelService = new PersonnelService(this.getWorkingBranchNumber());
+		this.expenseService 	= new ExpenseService(this.getWorkingBranchNumber());
+		this.incomeService 		= new IncomeService(this.getWorkingBranchNumber());
+		this.itemService 		= new ItemService(this.getWorkingBranchNumber());
+		this.personnelService 	= new PersonnelService(this.getWorkingBranchNumber());
 	}
 
 	public ExpenseService getExpenseService() {

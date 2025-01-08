@@ -1,6 +1,10 @@
 package personnel;
 
+import system.service.ItemService;
+
 public class Cashier extends Employee{
+	
+	private ItemService itemService;
 	
 	public Cashier(String name) {
 		super(name);
@@ -11,6 +15,11 @@ public class Cashier extends Employee{
 		super(name, salary, account, position);
 		this.position = "Cashier";
 		this.setWorkingBranchNumber(branchNb);
+		this.itemService = new ItemService(this.getWorkingBranchNumber());
+	}
+
+	public ItemService getItemService() {
+		return itemService;
 	}
 	
 }

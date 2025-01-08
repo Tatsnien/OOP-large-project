@@ -19,7 +19,7 @@ public class WorkScreenManagerExpenseController {
 	
 	public WorkScreenManagerExpenseController(StoreBranchManager manager) {
 		this.manager = manager;
-		this.service = new ExpenseService(manager.getWorkingBranchNumber());
+		this.service = manager.getExpenseService();
 	}
 	
 	public void setFrame(JFrame frame) {

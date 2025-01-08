@@ -38,7 +38,7 @@ public class CheckScreenStaffController {
 	
 	public CheckScreenStaffController(Staff staff) {
 		this.staff = staff;
-		this.itemService = new ItemService(this.staff);
+		this.itemService = this.staff.getItemService();
 		
 		this.missingGroups = FXCollections.observableArrayList();
 		this.missingGroups.addAll(this.itemService.getGroups());

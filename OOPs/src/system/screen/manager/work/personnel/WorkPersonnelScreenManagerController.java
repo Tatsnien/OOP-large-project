@@ -38,7 +38,7 @@ public class WorkPersonnelScreenManagerController {
 	
 	public WorkPersonnelScreenManagerController(StoreBranchManager manager) {
     	this.manager = manager;
-    	this.personnelService = new PersonnelService(manager.getWorkingBranchNumber());
+    	this.personnelService = this.manager.getPersonnelService();
     	System.out.println("Manager personnel service has " + personnelService.getEmployees().size() + " employees.");
     }
 	

@@ -33,7 +33,7 @@ public class ImportingScreenStaffController {
 	
 	public ImportingScreenStaffController(Staff staff) {
     	this.staff = staff;
-    	this.itemService = new ItemService(this.staff);
+    	this.itemService = this.staff.getItemService();
     	this.groups = new ItemService(new ArrayList<>());
     }
 	

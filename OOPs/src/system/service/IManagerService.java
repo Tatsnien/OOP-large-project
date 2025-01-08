@@ -1,6 +1,6 @@
 package system.service;
 
-public interface ManagerService {
+public interface IManagerService {
 
 	public abstract double getRevenue();
 	

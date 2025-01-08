@@ -35,7 +35,7 @@ public class WorkScreenManagerItemsController {
 	
 	public WorkScreenManagerItemsController(StoreBranchManager manager) {
     	this.manager = manager;
-    	this.itemService = new ItemService(this.manager);
+    	this.itemService = this.manager.getItemService();
     	this.groups = new ItemService(new ArrayList<>());
     }
 	

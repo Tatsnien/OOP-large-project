@@ -5,11 +5,11 @@ import data.StoreChain;
 import system.service.ExpenseService;
 import system.service.IncomeService;
 import system.service.ItemService;
-import system.service.ManagerService;
+import system.service.IManagerService;
 import system.service.PersonnelService;
 import system.service.StoreBranchService;
 
-public class Director extends Personnel implements ManagerService{
+public class Director extends Personnel implements IManagerService{
 	
 	private ExpenseService expenseService;
 	private IncomeService incomeService;

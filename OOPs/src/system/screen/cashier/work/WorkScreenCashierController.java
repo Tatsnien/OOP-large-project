@@ -42,7 +42,7 @@ public class WorkScreenCashierController {
 		this.cashier = cashier;
 		this.cart = new Cart();
 		this.paymentService = new CashPaymentService(cart);
-		this.itemBranchService = new ItemService(cashier.getWorkingBranchNumber());
+		this.itemBranchService = this.cashier.getItemService();
 		this.itemCartService = new ItemService(cart.getGroups());
 	}
 	

@@ -3,7 +3,7 @@ import system.service.ItemService;
 
 public class Staff extends Employee {
 	
-	private ItemService service;
+	private ItemService itemService;
 	
 	public Staff(String name) {
 		super(name);
@@ -14,16 +14,11 @@ public class Staff extends Employee {
 		super(name, salary, account, position);
 		this.position = "Staff";
 		this.setWorkingBranchNumber(branchNb);
+		itemService = new ItemService(this.getWorkingBranchNumber());
+	}
+
+	public ItemService getItemService() {
+		return itemService;
 	}
 	
-	public void setService(ItemService service) {
-		this.service = service;
-	}
-
-	public ItemService getService() {
-		return service;
-	}
-
-	//	public Report report() {
-	//	}
 }
