@@ -1,10 +1,14 @@
 package system.screen.staff.work.check;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.JFrame;
 
 import data.ItemGroup;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,98 +17,128 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import personnel.Staff;
+import system.DAO;
+import system.notice.Notice;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;
 import system.screen.staff.work.importing.ImportingScreenStaff;
 import system.service.ItemService;
+import system.service.StoreBranchService;
 
 public class CheckScreenStaffController {
 	
 	private Staff staff;
 	private JFrame frame;
 	private ItemService itemService;
-	private ObservableList<ItemGroup> groups;
+	private ObservableList<ItemGroup> missingGroups;
 	private String currentName;
 	private String currentStock;
 	
 	public CheckScreenStaffController(Staff staff) {
 		this.staff = staff;
 		this.itemService = new ItemService(this.staff);
-		this.groups = (ObservableList<ItemGroup>) itemService.getGroups();
+		
+		this.missingGroups = FXCollections.observableArrayList();
+		this.missingGroups.addAll(this.itemService.getGroups());
 	}
 	
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
+	
+	@FXML
+	private TableColumn<ItemGroup, String> colBarcode;
+	
+	@FXML
+	private TableColumn<ItemGroup, String> colName;
+	
+	@FXML
+	private TableColumn<ItemGroup, String> colType;
 
-    @FXML
+	@FXML
     private TableColumn<ItemGroup, Integer> colCount;
 
     @FXML
-    private TableColumn<ItemGroup, String> colName;
-
-    @FXML
     private Label lbName;
-    
-    @FXML
-    private Label lbUpdateCheck;
-    
-    private Label lbSendReport;
 
     @FXML
-    private TextField stockCheckSearchbar;
+    private Label lbSendReportStatus;
+
+    @FXML
+    private Label lbUpdateCheckStatus;
 
     @FXML
     private TableView<ItemGroup> tblItems;
 
     @FXML
-    private TextField tfItemCount;
+    private TextField tfItemBarcode;
 
     @FXML
-    private TextField tfItemName;
+    private TextField tfItemCount;
     
-    public void initialize() {
-    	colCount.setCellValueFactory(
-    			new PropertyValueFactory<>("quantity"));
-    	colName.setCellValueFactory(
-    			new PropertyValueFactory<>("name"));
-    	tblItems.setItems(this.groups);
-    	tfItemCount.textProperty().addListener(new ChangeListener<String>() {
-    		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-    			currentStock = newValue;
-    		}
-    	});
-    	tfItemName.textProperty().addListener(new ChangeListener<String>() {
-    		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-    			currentName = newValue;
-    		}
-    	});
-    	lbName.setText(staff.getName());
+    private void printError(Label lbStatus, String message) {
+    	System.out.println(message);
+		lbStatus.setTextFill(Color.RED);
+		lbStatus.setText(message);
+    }
+    
+    private void printSuccessful(Label lbStatus, String message) {
+    	lbStatus.setTextFill(Color.GREEN);
+    	lbStatus.setText(message);
     }
 
     @FXML
     void sendReportPressed(ActionEvent event) {
-    	// TODO
+    	// Create notice to manager
+    	Notice notice = new Notice(
+    			this.staff,
+    			StoreBranchService.searchManager(this.staff.getWorkingBranchNumber()),
+    			"Check stock");
+    	
+    	String content = "";
+    	if (this.missingGroups.size() > 0) {
+    		content = "Missing items:\n";
+    		for (ItemGroup group : this.missingGroups)
+    			content += group.getItemInfo() + ", quantity: " + group.getQty();
+    	}
+    	else
+    		content = "No missing items.";
+
+    	// Save notice
+    	notice.setContent(content);
+    	(new DAO()).saveNotices(Arrays.asList(new Notice[]{notice}));
+    	
+    	// Save items
+    	for (ItemGroup group : itemService.getGroups())
+    		if (missingGroups.contains(group))
+    			group.setQty(group.getQty() - missingGroups.get(missingGroups.indexOf(content)).getQty());
+    	(new DAO()).saveItems(this.itemService.getGroups());
+    	tblItems.refresh();
     }
 
     @FXML
     void updateCheckPressed(ActionEvent event) {
-    	try {
-    		boolean found = false;
-    		for (ItemGroup i: groups) {
-    			if (i.getName() == currentName) {
-    				found = true;
-    				i.setQty(Integer.parseInt(currentStock));
-    				lbUpdateCheck.setText("Successfully updated.");
-    			}
+    	if (this.missingGroups.contains(tfItemBarcode.getText())) {
+    		int qty = 0;
+    		int idx = this.missingGroups.indexOf(tfItemBarcode.getText());
+    		try {
+    			qty = Integer.parseInt(tfItemCount.getText());
+    		} catch (Exception e) {
+    			printError(lbUpdateCheckStatus, "Invalid quantity. Please enter a number.");
+    			return;
     		}
-    		if (found == false) {
-    			lbUpdateCheck.setText("Item not in items list");
+    		if (qty > this.missingGroups.get(idx).getQty()) {
+    			printError(lbUpdateCheckStatus, "Invalid quantity. Not enough items.");
+    			return;
     		}
-    	} catch (Exception e) {
-    		lbUpdateCheck.setText("Invalid inputs");
+    		this.missingGroups.get(idx).setQty(this.missingGroups.get(idx).getQty() - qty);
+    		printSuccessful(lbUpdateCheckStatus, "Successfully updated.");
+    		tblItems.refresh();
     	}
+    	else 
+    		printError(lbUpdateCheckStatus, "Item not in items list");
     }
 	
 	@FXML
