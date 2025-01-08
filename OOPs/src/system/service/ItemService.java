@@ -24,11 +24,11 @@ public class ItemService {
 	}
 	
 	public ItemService(int branchNumber) {
-		groups = FXCollections.observableArrayList(chain.getBranch(branchNumber).getGroups());
+		this.groups = FXCollections.observableArrayList(chain.getBranch(branchNumber).getGroups());
 	}
 	
 	public ItemService(StoreBranch branch) {
-		groups = FXCollections.observableArrayList(branch.getGroups());
+		this.groups = FXCollections.observableArrayList(branch.getGroups());
 	}
 	
 	public ItemService(Personnel personnel) {

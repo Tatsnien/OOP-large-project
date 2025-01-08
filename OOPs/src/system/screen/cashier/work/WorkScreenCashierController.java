@@ -182,6 +182,8 @@ public class WorkScreenCashierController {
 		lbTax.setText(paymentService.calculateTax() + "");
 		lbTotal.setText(paymentService.calculateTotal() + "");
 		lbAddItemStatus.setText("");
+		
+		tblItem.refresh();
     }
 
     @FXML
@@ -210,7 +212,9 @@ public class WorkScreenCashierController {
     		lbTax.setText("-");
     		lbTotal.setText("-");
     		lbAddItemStatus.setText("");
-    	}    	
+    	}
+    	
+    	tblItem.refresh();
     }
 
     @FXML

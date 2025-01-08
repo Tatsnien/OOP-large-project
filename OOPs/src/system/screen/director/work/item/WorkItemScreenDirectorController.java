@@ -1,9 +1,15 @@
 package system.screen.director.work.item;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import data.ItemGroup;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import personnel.Director;
 import system.screen.director.home.HomeScreenDirector;
 import system.screen.director.profile.ProfileScreenDirector;
@@ -11,32 +17,66 @@ import system.screen.director.work.branch.WorkBranchScreenDirector;
 import system.screen.director.work.expense.WorkExpenseScreenDirector;
 import system.screen.director.work.personnel.WorkPersonnelScreenDirector;
 import system.service.ItemService;
-import system.service.StoreBranchService;
 
 public class WorkItemScreenDirectorController {
 
 	private Director director;
 	private JFrame frame;
-	private StoreBranchService branchService;
-	private ItemService itemService;
+	private ItemService groups;
 	
 	public WorkItemScreenDirectorController(Director director) {
     	this.director = director;
-    	this.branchService = new StoreBranchService(director);
-    	this.itemService = new ItemService(director);
-    	System.out.println("Director branch service has " + branchService.getBranchs().size() + " branchs.");
-    	System.out.println("Director item service has " + itemService.getGroups().size() + " item groups.");
+    	this.groups = new ItemService(new ArrayList<>());
     }
 	
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
+	
+	@FXML
+    private TableColumn<ItemGroup, String> colBarcode;
+
+    @FXML
+    private TableColumn<ItemGroup, String> colInfo;
+
+    @FXML
+    private TableColumn<ItemGroup, String> colName;
+
+    @FXML
+    private TableColumn<ItemGroup, Integer> colQty;
+
+    @FXML
+    private TableColumn<ItemGroup, String> colType;
 
     @FXML
     private Label lbName;
+
+    @FXML
+    private Label lbStatus;
+
+    @FXML
+    private TableView<ItemGroup> tblItems;
     
     public void initialize() {
-		lbName.setText(director.getName());		
+		lbName.setText(this.director.getName());
+		
+		colBarcode.setCellValueFactory(
+				new PropertyValueFactory<>("barcode"));
+		
+		colInfo.setCellValueFactory(
+				new PropertyValueFactory<>("itemInfo"));
+		
+		colName.setCellValueFactory(
+				new PropertyValueFactory<>("name"));
+		
+		colQty.setCellValueFactory(
+				new PropertyValueFactory<>("qty"));
+		
+		colType.setCellValueFactory(
+				new PropertyValueFactory<>("itemType"));
+		
+		tblItems.setItems((ObservableList<ItemGroup>) groups.getGroups());
+		
 	}
 
     @FXML

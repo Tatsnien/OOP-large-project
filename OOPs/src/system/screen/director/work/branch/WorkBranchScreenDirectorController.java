@@ -73,7 +73,6 @@ public class WorkBranchScreenDirectorController {
 				new PropertyValueFactory<>("branchManagerName"));
 		
 		tblBranch.setItems((ObservableList<StoreBranch>) branchService.getBranchs());
-		
 	}
 	
 	 @FXML
@@ -108,6 +107,8 @@ public class WorkBranchScreenDirectorController {
 		 else {
 			 branchService.getBranch(branchNumber).setBranchManager((StoreBranchManager) assignedEmployee);
 		 }
+		 
+		 tblBranch.refresh();
     }
 
     @FXML
@@ -148,6 +149,8 @@ public class WorkBranchScreenDirectorController {
 		 else {
 			 storeBranch.setBranchManager((StoreBranchManager) assignedEmployee);
 		 }
+		 
+		 tblBranch.refresh();
     }
 
     @FXML
@@ -159,6 +162,7 @@ public class WorkBranchScreenDirectorController {
     	}
     	lbStatus.setText("");
     	branchService.removeBranch(storeBranch);
+    	tblBranch.refresh();
     }
 	
     @FXML

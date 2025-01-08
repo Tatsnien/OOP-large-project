@@ -95,7 +95,7 @@ public class HomeScreenStaffController {
     
     @FXML
     void mnImportPressed(ActionEvent event) {
-    	System.out.println("Home -> Impor");
+    	System.out.println("Home -> Import");
     	this.frame.setVisible(false);
 		new ImportingScreenStaff(this.staff);
     }

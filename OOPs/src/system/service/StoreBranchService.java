@@ -70,4 +70,8 @@ public class StoreBranchService {
 		return chain.getBranchs();
 	}
 	
+	static public Director getDirector() {
+		return chain.getDirector();
+	}
+	
 }

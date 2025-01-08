@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import data.ItemGroup;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,10 +101,15 @@ public class ImportingScreenStaffController {
     @FXML
     void mnAddBookPressed(ActionEvent event) {
     	String name 		= JOptionPane.showInputDialog("Enter item name: ");
+    	if (name.equals("")) printError("Name is empty. Please enter a name.");
     	String barcode 		= JOptionPane.showInputDialog("Enter barcode: ");
-    	String author 		= JOptionPane.showInputDialog("Enter author(s): "); 
+    	if (barcode.equals("")) printError("Barcode is empty. Please enter a barcode.");
+    	String author 		= JOptionPane.showInputDialog("Enter author(s): ");
+    	if (author.equals("")) printError("Author(s) is empty. Please enter author(s).");
     	String publisher 	= JOptionPane.showInputDialog("Enter publisher: ");
+    	if (publisher.equals("")) printError("Publisher is empty. Please enter a publisher.");
     	String isbn 		= JOptionPane.showInputDialog("Enter isbn: ");
+    	if (isbn.equals("")) printError("ISBN is empty. Please enter a ISBN.");
     	float price = 0;
     	int qty 	= 0;
     	try {
@@ -123,13 +127,17 @@ public class ImportingScreenStaffController {
     	
     	groups.addBook(name, barcode, author, publisher, isbn, qty, price);
     	printSuccessful("Book \"" + name + "\" has been added");
+    	tblItems.refresh();
     }
 
     @FXML
     void mnAddStationaryPressed(ActionEvent event) {
     	String name 		= JOptionPane.showInputDialog("Enter item name: ");
+    	if (name.equals("")) printError("Name is empty. Please enter a name.");
     	String barcode 		= JOptionPane.showInputDialog("Enter barcode: ");
+    	if (barcode.equals("")) printError("Barcode is empty. Please enter a barcode.");
     	String type 		= JOptionPane.showInputDialog("Enter type: ");
+    	if (type.equals("")) printError("Type is empty. Please enter a type.");
     	float price = 0;
     	int qty 	= 0;
     	try {
@@ -147,13 +155,17 @@ public class ImportingScreenStaffController {
     	
     	groups.addStationary(name, barcode, type, qty, price);
     	printSuccessful("Stationary \"" + name + "\" has been added");
+    	tblItems.refresh();
     }
 
     @FXML
     void mnAddToyPressed(ActionEvent event) {
     	String name 		= JOptionPane.showInputDialog("Enter item name: ");
+    	if (name.equals("")) 	printError("Name is empty. Please enter a name.");
     	String barcode 		= JOptionPane.showInputDialog("Enter barcode: ");
+    	if (barcode.equals("")) printError("Barcode is empty. Please enter a barcode.");
     	String brand 		= JOptionPane.showInputDialog("Enter brand: ");
+    	if (brand.equals("")) 	printError("Brand is empty. Please enter a brand.");
     	int[] suitableAges	= new int[2];
     	try {
     		suitableAges[0] = Integer.parseInt(JOptionPane.showInputDialog("Enter lowest suitable age: ")); 	
@@ -172,6 +184,7 @@ public class ImportingScreenStaffController {
     		return;
     	}
     	String type 		= JOptionPane.showInputDialog("Enter type: ");
+    	if (type.equals("")) printError("Type is empty. Please enter a type.");
     	float price = 0;
     	int qty 	= 0;
     	try {
@@ -189,6 +202,7 @@ public class ImportingScreenStaffController {
     	
     	groups.addToy(name, barcode, brand, suitableAges, type, qty, price);
     	printSuccessful("Toy \"" + name + "\" has been added");
+    	tblItems.refresh();
     }
     
     @FXML
@@ -199,7 +213,8 @@ public class ImportingScreenStaffController {
     		return;
     	}
     	printSuccessful(group.getItemType() + " \"" + group.getName() + "\" has been removed.");
-    	itemService.removeGroup(group);
+    	groups.removeGroup(group);
+    	tblItems.refresh();
     }
 
     @FXML
@@ -213,17 +228,27 @@ public class ImportingScreenStaffController {
     			StoreBranchService.searchManager(this.staff.getWorkingBranchNumber()),
     			"Import stock");
     	
+    	// Create notice to director
+    	Notice notice2 = new Notice(
+    			this.staff,
+    			StoreBranchService.getDirector(),
+    			"Import stock");
+    	
     	String content = "";
     	for (ItemGroup group : this.groups.getGroups())
     		content += group.getItemInfo() + ", quantity: " + group.getQty();
     	notice.setContent(content);
     	
     	// Save notice
-    	(new DAO()).saveNotices(Arrays.asList(new Notice[]{notice}));
+    	(new DAO()).saveNotices(Arrays.asList(new Notice[]{notice, notice2}));
+    	
+    	// Save new items
+    	(new DAO()).saveItems(this.itemService.getGroups());
     	
     	// Clear table
     	groups.clear();
     	printSuccessful("Report sent successfully");
+    	tblItems.refresh();
     }
 	
 	@FXML
