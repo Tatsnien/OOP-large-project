@@ -1,5 +1,16 @@
 # Management System for HUST Book Stores
 
+# What's New (08.01.2025)
+After all of struggles and efforts, our journey has come to an end. This post is dedicated for
+listing the unfinished works:
+
+* Director Expense screen
+* Manager Expense (controller) screen
+* Salary calculation
+* DAO
+* Report
+* Class Diagram UML
+
 # What's New (02.01.2025)
 **HAPPY NEW YEAR'S MASSIVE CHANGEEEEE**
 
