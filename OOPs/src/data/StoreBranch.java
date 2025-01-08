@@ -5,7 +5,6 @@ import java.util.List;
 
 import payment.Bill;
 import personnel.Employee;
-import personnel.Personnel;
 import personnel.StoreBranchManager;
 
 public class StoreBranch implements IStoreEntity {

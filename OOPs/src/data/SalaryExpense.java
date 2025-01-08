@@ -20,6 +20,10 @@ public class SalaryExpense extends Expense {
 	public Personnel getPersonnel() {
 		return personnel;
 	}
+	
+	public String getExpenseType() {
+		return "Salary";
+	}
 
 	@Override
 	public boolean equals(Object obj) {

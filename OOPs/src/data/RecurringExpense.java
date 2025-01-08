@@ -23,6 +23,10 @@ public class RecurringExpense extends Expense {
 	public double getBase() {
 		return base;
 	}
+	
+	public String getExpenseType() {
+		return "Recurring";
+	}
 
 	public void setBase(double base) {
 		this.base = base;
