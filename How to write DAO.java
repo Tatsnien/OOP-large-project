@@ -21,6 +21,7 @@
  *      -   notice      [UNFINISHED]     
  *      -   expense     [UNFINISHED]
  *      -   item        [UNFINISHED]
+ * 		- 	bill		[UNFINISHED]
  *      -   personnel
  * 
  * 3)   Your tasks
