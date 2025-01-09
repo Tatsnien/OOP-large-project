@@ -103,6 +103,60 @@ public class DAO {
 		
 	}
 	
+	public List<Item> getItemFromFiles() {
+	    List<Item> items = new ArrayList<>();
+	    Set<String> files = listFiles("items");
+	    
+	    for (String filename : files) {
+	        String path = "resources/items/" + filename;
+	        try {
+	            File file = new File(path);
+	            Scanner scanner = new Scanner(file);
+	            String itemType = scanner.nextLine().strip();
+	            String name = scanner.nextLine().strip();
+                    String barcode = scanner.nextLine().strip();
+
+	            if (itemType.equals("Book")) {
+	               
+	                String author = scanner.nextLine().strip();
+	                String publisher = scanner.nextLine().strip();
+	                String isbn = scanner.nextLine().strip();
+	                float price = Float.parseFloat(scanner.nextLine().strip());
+	                items.add(new Book(name, barcode, author, publisher, isbn, price));
+	            } else if (itemType.equals("Stationary")) {
+	               
+	                String type = scanner.nextLine().strip();
+	                float price = Float.parseFloat(scanner.nextLine().strip());
+	                items.add(new Stationary(name, barcode, type, price));
+	            } else if (itemType.equals("Toy")) {
+	               
+	                String brand = scanner.nextLine().strip();
+	                int[] suitableAges = {Integer.parseInt(scanner.nextLine().strip()), Integer.parseInt(scanner.nextLine().strip())};
+	                String toyType = scanner.nextLine().strip();
+	                float price = Float.parseFloat(scanner.nextLine().strip());
+	                items.add(new Toy(name, barcode, brand, suitableAges, toyType, price));
+	            } 
+	            
+	            scanner.close();
+	        } catch (FileNotFoundException e) {
+		    	System.out.println("File not found.");
+		    	e.printStackTrace();
+		    } 
+			catch (Exception e){
+				System.out.println("Some errors occur while reading " + path);
+			}
+		}
+	    return items;
+	}
+
+	public List<Expense> getExpenseFromFiles() {
+
+	}
+
+	public List<Notice> getNoticeFromFiles() {
+
+	}
+	
 	public void savePersonnels(List<Personnel> personnels) {
 		
 	}
