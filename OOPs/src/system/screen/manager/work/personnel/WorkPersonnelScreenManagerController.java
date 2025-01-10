@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import personnel.Account;
 import personnel.Cashier;
-import personnel.StoreBranchManager;
 import personnel.Employee;
 import personnel.Staff;
 import personnel.StoreBranchManager;
@@ -26,9 +26,7 @@ import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
 import system.screen.manager.work.item.WorkScreenManagerItems;
-import system.screen.manager.work.report.WorkScreenManagerReport;
 import system.service.PersonnelService;
-import system.service.StoreBranchService;
 
 public class WorkPersonnelScreenManagerController {
 
@@ -238,7 +236,7 @@ public class WorkPersonnelScreenManagerController {
     void mnWorkReportsPressed(ActionEvent event) {
     	System.out.println("Personnel -> Reports");
     	this.frame.setVisible(false);
-    	new WorkScreenManagerReport(this.manager);
+//    	new WorkScreenManagerReport(this.manager);
     }
 
 }

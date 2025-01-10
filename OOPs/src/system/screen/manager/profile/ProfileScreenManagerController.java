@@ -9,10 +9,9 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import personnel.StoreBranchManager;
 import system.screen.manager.home.HomeScreenManager;
-import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
 import system.screen.manager.work.item.WorkScreenManagerItems;
-import system.screen.manager.work.report.WorkScreenManagerReport;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 
 public class ProfileScreenManagerController{
 
@@ -111,7 +110,7 @@ public class ProfileScreenManagerController{
     void mnWorkReportsPressed(ActionEvent event) {
     	System.out.println("Profile -> Reports");
     	this.frame.setVisible(false);
-    	new WorkScreenManagerReport(this.manager);
+//    	new WorkScreenManagerReport(this.manager);
     }
     
 }

@@ -6,6 +6,7 @@ public abstract class Item {
     protected float price;  			// Purchase price of the item
     protected String itemType;
 
+
     public Item(String name, String barcode, float price) {
         this.name = name;
         this.barcode = barcode;
@@ -30,6 +31,7 @@ public abstract class Item {
 	public String getBarcode() {
 		return barcode;
 	}
+	
 
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
@@ -41,7 +43,6 @@ public abstract class Item {
 
 	public String getItemType() {
 		return itemType;
-	}
 	
 }  
 
