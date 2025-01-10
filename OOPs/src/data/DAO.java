@@ -98,57 +98,53 @@ public class DAO {
 	}
 	
 	public void getChainFromFiles(StoreChain chain) {
-		chain.setBranchs(getBranchFromFiles());
+		chain.getBranchs(getBranchFromFiles());
 		addPersonnelsToBranches(chain);
 		
 	}
 	
 	public List<Item> getItemFromFiles() {
-	    List<Item> items = new ArrayList<>();
-	    Set<String> files = listFiles("items");
-	    
-	    for (String filename : files) {
-	        String path = "resources/items/" + filename;
-	        try {
-	            File file = new File(path);
-	            Scanner scanner = new Scanner(file);
-	            String itemType = scanner.nextLine().strip();
-	            String name = scanner.nextLine().strip();
-                    String barcode = scanner.nextLine().strip();
+		List<Item> items = new ArrayList<>();
+		Set<String> files = listFiles("items");
+		
+		for (String filename : files) {
+			String path = "resources/items/" + filename;
+			try (Scanner scanner = new Scanner(new File(path))) {
+				String itemType = scanner.nextLine().strip();
+				String name = scanner.nextLine().strip();
+				String barcode = scanner.nextLine().strip();
+				int quantity = Integer.parseInt(scanner.nextLine().strip()); // Read quantity
 
-	            if (itemType.equals("Book")) {
-	               
-	                String author = scanner.nextLine().strip();
-	                String publisher = scanner.nextLine().strip();
-	                String isbn = scanner.nextLine().strip();
-	                float price = Float.parseFloat(scanner.nextLine().strip());
-	                items.add(new Book(name, barcode, author, publisher, isbn, price));
-	            } else if (itemType.equals("Stationary")) {
-	               
-	                String type = scanner.nextLine().strip();
-	                float price = Float.parseFloat(scanner.nextLine().strip());
-	                items.add(new Stationary(name, barcode, type, price));
-	            } else if (itemType.equals("Toy")) {
-	               
-	                String brand = scanner.nextLine().strip();
-	                int[] suitableAges = {Integer.parseInt(scanner.nextLine().strip()), Integer.parseInt(scanner.nextLine().strip())};
-	                String toyType = scanner.nextLine().strip();
-	                float price = Float.parseFloat(scanner.nextLine().strip());
-	                items.add(new Toy(name, barcode, brand, suitableAges, toyType, price));
-	            } 
-	            
-	            scanner.close();
-	        } catch (FileNotFoundException e) {
-		    	System.out.println("File not found.");
+				if (itemType.equals("Book")) {
+					String author = scanner.nextLine().strip();
+					String publisher = scanner.nextLine().strip();
+					String isbn = scanner.nextLine().strip();
+					float price = Float.parseFloat(scanner.nextLine().strip());
+					items.add(new Book(name, barcode, author, publisher, isbn, quantity, price));
+					
+				} else if (itemType.equals("Stationary")) {
+					String type = scanner.nextLine().strip();
+					float price = Float.parseFloat(scanner.nextLine().strip());
+					items.add(new Stationary(name, barcode, type, quantity, price));
+					
+				} else if (itemType.equals("Toy")) {
+					String brand = scanner.nextLine().strip();
+					int[] suitableAges = {Integer.parseInt(scanner.nextLine().strip()), Integer.parseInt(scanner.nextLine().strip())};
+					String type = scanner.nextLine().strip();
+					float price = Float.parseFloat(scanner.nextLine().strip());
+					items.add(new Toy(name, barcode, brand, suitableAges, type, quantity, price));
+				} 
+			} catch (FileNotFoundException e) {
+		    	System.out.println("File not found: " + path);
 		    	e.printStackTrace();
-		    } 
-			catch (Exception e){
-				System.out.println("Some errors occur while reading " + path);
+		    } catch (Exception e) {
+				System.out.println("Error reading " + path);
 			}
 		}
-	    return items;
+		return items;
 	}
 
+	
 	public List<Expense> getExpenseFromFiles() {
 
 	}
@@ -156,13 +152,59 @@ public class DAO {
 	public List<Notice> getNoticeFromFiles() {
 
 	}
-	
+
 	public void savePersonnels(List<Personnel> personnels) {
-		
+		for (Personnel personnel : personnels) {
+			String path = "resources/personnel/" + personnel.getId() + ".txt"; // Use getter for ID
+			try (FileWriter writer = new FileWriter(path)) {
+				writer.write(personnel.getPosition() + "\n"); // Use getter for position
+				writer.write(personnel.getName() + "\n"); // Use getter for name
+				writer.write(personnel.getSalary() + "\n"); // Use getter for salary
+				writer.write(personnel.getAccount().getPassword() + "\n"); // Use getter for password
+				if (personnel instanceof Employee) {
+					writer.write(((Employee) personnel).getWorkingBranchNumber() + "\n"); // Use getter for branch number
+				}
+			} catch (IOException e) {
+				System.out.println("Error saving personnel: " + personnel.getId());
+				e.printStackTrace();
+			}
+		}
 	}
+
+	public void saveItems(List<Item> items) {
+		for (Item item : items) {
+			String path = "resources/items/" + item.getBarcode() + ".txt"; // Use getter for barcode
+			try (FileWriter writer = new FileWriter(path)) {
+				writer.write(item.getItemType() + "\n"); // Use getter for item type
+				writer.write(item.getName() + "\n"); // Use getter for name
+				writer.write(item.getBarcode() + "\n"); // Use getter for barcode
+				writer.write(item.getQuantity() + "\n"); // Use getter for quantity
+				if (item instanceof Book) {
+					Book book = (Book) item;
+					writer.write(book.getAuthor() + "\n"); // Use getter for author
+					writer.write(book.getPublisher() + "\n"); // Use getter for publisher
+					writer.write(book.getIsbn() + "\n"); // Use getter for ISBN
+					writer.write(book.getPrice() + "\n"); // Use getter for price
+				} else if (item instanceof Stationary) {
+					Stationary stationary = (Stationary) item;
+					writer.write(stationary.getType() + "\n"); // Use getter for type
+					writer.write(stationary.getPrice() + "\n"); // Use getter for price
+				} else if (item instanceof Toy) {
+					Toy toy = (Toy) item;
+					writer.write(toy.getBrand() + "\n"); // Use getter for brand
+					writer.write(toy.getSuitableAges() + "\n"); // Use getter for suitable age
+					writer.write(toy.getType() + "\n"); // Use getter for type
+					writer.write(toy.getPrice() + "\n"); // Use getter for price
+				}
+			} catch (IOException e) {
+				System.out.println("Error saving item: " + item.getBarcode());
+				e.printStackTrace();
+			}
+		}
 	
-	public void saveItems(List<ItemGroup> groups) {
-		
+
+	public void saveExpenses(List<Expense> expenses) {
+
 	}
 	
 	public void saveNotices(List<Notice> notices) {
