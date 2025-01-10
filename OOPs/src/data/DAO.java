@@ -121,10 +121,10 @@ public class DAO {
 					float price = Float.parseFloat(scanner.nextLine().strip());
 					items.add(new Book(name, barcode, author, publisher, isbn, price));
 					
-				} else if (itemType.equals("Stationary")) {
+				} else if (itemType.equals("Stationery")) {
 					String type = scanner.nextLine().strip();
 					float price = Float.parseFloat(scanner.nextLine().strip());
-					items.add(new Stationary(name, barcode, type, price));
+					items.add(new Stationery(name, barcode, type, price));
 					
 				} else if (itemType.equals("Toy")) {
 					String brand = scanner.nextLine().strip();
@@ -234,7 +234,7 @@ public class DAO {
 					writer.write(book.getPublisher() + "\n"); // Use getter for publisher
 					writer.write(book.getIsbn() + "\n"); // Use getter for ISBN
 					writer.write(book.getPrice() + "\n"); // Use getter for price
-				} else if (item instanceof Stationary) {
+				} else if (item instanceof Stationery) {
 					Stationary stationary = (Stationary) item;
 					writer.write(stationary.getType() + "\n"); // Use getter for type
 					writer.write(stationary.getPrice() + "\n"); // Use getter for price
