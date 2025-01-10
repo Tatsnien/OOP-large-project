@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 
+import data.DAO;
 import data.ItemGroup;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import personnel.Staff;
-import system.DAO;
 import system.notice.Notice;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;

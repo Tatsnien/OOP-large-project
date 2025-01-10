@@ -6,6 +6,7 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import data.DAO;
 import data.ItemGroup;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +17,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import personnel.StoreBranchManager;
-import system.DAO;
 import system.notice.Notice;
 import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
