@@ -26,7 +26,6 @@ module OOPs {
 	opens system.screen.manager.work.expense to javafx.fxml;
 	opens system.screen.manager.work.item to javafx.fxml;
 	opens system.screen.manager.work.personnel to javafx.fxml;
-	opens system.screen.manager.work.report to javafx.fxml;
 	opens system.screen.staff.home to javafx.fxml;
 	opens system.screen.staff.profile to javafx.fxml;
 	opens system.screen.staff.work.check to javafx.fxml;

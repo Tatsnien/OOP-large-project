@@ -35,18 +35,6 @@ public class Book extends Item {
         		", Price: " + price;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
 }
 
 

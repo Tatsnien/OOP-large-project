@@ -36,18 +36,6 @@ public class Toy extends Item {
     public boolean isAgeSuitable(int age) {
         return age >= suitableAges[0] && age <= suitableAges[1];
     }
-
-       public String getBrand() {
-        return brand;
-    }
-
-    public int[] getSuitableAges() {
-        return suitableAges;
-    }
-
-
-    public String getType() {
-        return type;
-    }
+       
 }
 

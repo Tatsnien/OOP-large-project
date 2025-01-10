@@ -38,12 +38,8 @@ public class Personnel {
 	}
 	
 	public float getSalary() {
-<<<<<<< HEAD
-		return (float) (BASIC_SALARY * salaryMultiplier + bonuses);
-=======
 		float salary = (BASIC_SALARY * salaryMultiplier + bonuses);
-		return ((int)(salary * 100)) / 100f;
->>>>>>> 65e67d12641d0ba135d0e54b7fe3bd60a969f288
+		return ((int)(salary * 100)) / 100.0f;
 	}
 
 	public void setSalary(float salaryMultiplier) {
