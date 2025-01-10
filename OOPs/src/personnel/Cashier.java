@@ -8,11 +8,13 @@ public class Cashier extends Employee{
 	
 	public Cashier(String name) {
 		super(name);
+		this.salaryMultiplier = 1.25f;
 		this.position = "Cashier";
 	}
 
-	public Cashier(String name, float salary, Account account, String position, int branchNb) {
-		super(name, salary, account, position);
+	public Cashier(String name, float salaryMultiplier, Account account, String position, int branchNb) {
+		super(name, salaryMultiplier, account, position);
+		this.salaryMultiplier = 1.25f;
 		this.position = "Cashier";
 		this.setWorkingBranchNumber(branchNb);
 		this.itemService = new ItemService(this.getWorkingBranchNumber());

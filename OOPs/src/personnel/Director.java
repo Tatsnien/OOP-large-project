@@ -19,6 +19,7 @@ public class Director extends Personnel implements IManagerService{
 
 	public Director(String name) {
 		super(name);
+		this.salaryMultiplier = 4.5f;
 		this.position = "Director";
 		this.expenseService = new ExpenseService(this);
 		this.incomeService = new IncomeService(this);
@@ -27,8 +28,9 @@ public class Director extends Personnel implements IManagerService{
 		this.branchService = new StoreBranchService(this);
 	}
 
-	public Director(String name, float salary, Account account, String position) {
-		super(position, salary, account, position);
+	public Director(String name, float salaryMultiplier, Account account, String position) {
+		super(position, salaryMultiplier, account, position);
+		this.salaryMultiplier = 4.5f;
 		this.position = "Director";
 		this.expenseService = new ExpenseService(this);
 		this.incomeService = new IncomeService(this);

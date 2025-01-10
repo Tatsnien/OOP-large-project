@@ -4,21 +4,25 @@ import system.notice.Notice;
 
 public class Personnel {
 	
+	private static float BASIC_SALARY = 3450000.0f;
+	
 	private String name;
-	private float salary;
+	private float salaryMultiplier;
+	private float bonuses;
 	private Account account;
 	protected String position;
 	
 	public Personnel(String name) {
 		this.name = name;
-		this.salary = 0;
+		this.salaryMultiplier = 1.0f;
 	}
 	
-	public Personnel(String name, float salary, Account account, String position) {
+	public Personnel(String name, float salaryMultiplier, Account account, String position) {
 		this.name = name;
-		this.salary = salary;
+		this.salaryMultiplier = salaryMultiplier;
 		this.account = account;
 		this.position = position;
+		this.bonuses = 0.0f;
 	}
 
 	public String getPosition() {
@@ -34,11 +38,23 @@ public class Personnel {
 	}
 	
 	public float getSalary() {
-		return ((int) (salary * 100)) / 100.0f;
+		return (float) (BASIC_SALARY * salaryMultiplier + bonuses);
 	}
 
-	public void setSalary(float salary) {
-		this.salary = salary;
+	public void setSalary(float salaryMultiplier) {
+		this.salaryMultiplier = salaryMultiplier;
+	}
+	
+	public void setBasicSalary(float basicSalary) {
+		BASIC_SALARY = basicSalary;
+	}
+	
+	public float getBonuses() {
+		return bonuses;
+	}
+	
+	public void addBonuses(float bonuses) {
+		this.bonuses += bonuses;
 	}
 
 	public Account getAccount() {

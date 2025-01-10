@@ -17,10 +17,12 @@ public class StoreBranchManager extends Employee implements IManagerService{
 	public StoreBranchManager(String name) {
 		super(name);
 		this.position = "Manager";
+		this.salaryMultiplier = 3.0f;
 	}
 	
-	public StoreBranchManager(String name, float salary, Account account, String position, int branchNb) {
-		super(name, salary, account, position);
+	public StoreBranchManager(String name, float salaryMultiplier, Account account, String position, int branchNb) {
+		super(name, salaryMultiplier, account, position);
+		this.salaryMultiplier = 3.0f;
 		this.position = "Manager";
 		this.setWorkingBranchNumber(branchNb);
 		this.setServices();
