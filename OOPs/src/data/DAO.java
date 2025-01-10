@@ -176,9 +176,31 @@ public class DAO {
 		return expenses;
 	}
 
-	public List<Notice> getNoticeFromFiles() {
+	public List<Notice> getNoticesFromFiles() {
+               List<Notice> notices = new ArrayList<>();
+               Set<String> files = listFiles("notices");
+        
+               for (String filename : files) {
+                      String path = "resources/notices/" + filename;
+                      try (Scanner scanner = new Scanner(new File(path))) {
+                           String sender = scanner.nextLine().strip();
+                           String receiver = scanner.nextLine().strip();
+                           String title = scanner.nextLine().strip();
+                           String content = scanner.nextLine().strip();
+                       CustomDate date = new CustomDate(); // Ideally, you would parse the date from the file
 
-	}
+                       Notice notice = new Notice(sender, receiver, title);
+                       notice.setContent(content);
+                // Assuming you have a way to set the date, you might want to implement that
+                       notices.add(notice);
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found: " + path);
+                e.printStackTrace();
+            } catch (Exception e) {
+                       System.out.println("Error reading " + path);
+            }
+        }
+        
 
 	public void savePersonnels(List<Personnel> personnels) {
 		for (Personnel personnel : personnels) {
