@@ -176,6 +176,16 @@ public class DAO {
 		return expenses;
 	}
 
+	public Personnel findPersonnelById(String id) {
+                List<Personnel> personnels = getPersonnelFromFiles(); // Assuming this method retrieves all personnel
+            for (Personnel personnel : personnels) {
+                if (personnel.getAccount().getId().equals(id)) {
+                    return personnel; // Return the matching personnel
+                }
+            }
+        return null; // Return null if not found
+    }
+
 	public List<Notice> getNoticesFromFiles() {
                List<Notice> notices = new ArrayList<>();
                Set<String> files = listFiles("notices");
