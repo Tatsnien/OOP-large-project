@@ -113,26 +113,25 @@ public class DAO {
 				String itemType = scanner.nextLine().strip();
 				String name = scanner.nextLine().strip();
 				String barcode = scanner.nextLine().strip();
-				int quantity = Integer.parseInt(scanner.nextLine().strip()); // Read quantity
-
+				
 				if (itemType.equals("Book")) {
 					String author = scanner.nextLine().strip();
 					String publisher = scanner.nextLine().strip();
 					String isbn = scanner.nextLine().strip();
 					float price = Float.parseFloat(scanner.nextLine().strip());
-					items.add(new Book(name, barcode, author, publisher, isbn, quantity, price));
+					items.add(new Book(name, barcode, author, publisher, isbn, price));
 					
 				} else if (itemType.equals("Stationary")) {
 					String type = scanner.nextLine().strip();
 					float price = Float.parseFloat(scanner.nextLine().strip());
-					items.add(new Stationary(name, barcode, type, quantity, price));
+					items.add(new Stationary(name, barcode, type, price));
 					
 				} else if (itemType.equals("Toy")) {
 					String brand = scanner.nextLine().strip();
 					int[] suitableAges = {Integer.parseInt(scanner.nextLine().strip()), Integer.parseInt(scanner.nextLine().strip())};
 					String type = scanner.nextLine().strip();
 					float price = Float.parseFloat(scanner.nextLine().strip());
-					items.add(new Toy(name, barcode, brand, suitableAges, type, quantity, price));
+					items.add(new Toy(name, barcode, brand, suitableAges, type, price));
 				} 
 			} catch (FileNotFoundException e) {
 		    	System.out.println("File not found: " + path);
@@ -206,7 +205,7 @@ public class DAO {
 				writer.write(item.getItemType() + "\n"); // Use getter for item type
 				writer.write(item.getName() + "\n"); // Use getter for name
 				writer.write(item.getBarcode() + "\n"); // Use getter for barcode
-				writer.write(item.getQuantity() + "\n"); // Use getter for quantity
+				
 				if (item instanceof Book) {
 					Book book = (Book) item;
 					writer.write(book.getAuthor() + "\n"); // Use getter for author
