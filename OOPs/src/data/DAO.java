@@ -233,10 +233,10 @@ public class DAO {
 	public void saveExpenses(List<Expense> expenses) {
 		for (Expense expense : expenses) {
 			String path = "resources/expenses/" + expense.getExpenseName() + ".txt"; // Use getter for expense name
-				try (FileWriter writer = new FileWriter(path)) {
-					writer.write(expense.getExpenseType() + "\n"); // Use getter for expense type
-					writer.write(expense.getExpenseName() + "\n"); // Use getter for expense name
-					writer.write(expense.getExpenseValue() + "\n"); // Use getter for expense value
+		        try (FileWriter writer = new FileWriter(path)) {
+			    writer.write(expense.getExpenseType() + "\n"); // Use getter for expense type
+			    writer.write(expense.getExpenseName() + "\n"); // Use getter for expense name
+			     writer.write(expense.getExpenseValue() + "\n"); // Use getter for expense value
 					if (expense instanceof RecurringExpense) {
 						RecurringExpense recurringExpense = (RecurringExpense) expense;
 						writer.write(recurringExpense.getFrequency() + "\n"); // Use getter for frequency
@@ -253,8 +253,21 @@ public class DAO {
 		}
 	
 	public void saveNotices(List<Notice> notices) {
-		
-	}
+             for (Notice notice : notices) {
+                      String path = "resources/notices/" + notice.getTitle() + ".txt"; // Use title as filename
+                      try (FileWriter writer = new FileWriter(path)) {
+                          writer.write(notice.getSender() + "\n"); // Write sender
+                          writer.write(notice.getReceiver() + "\n"); // Write receiver
+                          writer.write(notice.getTitle() + "\n"); // Write title
+                          writer.write(notice.getContent() + "\n"); // Write content
+               
+                       } catch (IOException e) {
+                                  System.out.println("Error saving notice: " + notice.getTitle());
+                                   e.printStackTrace();
+                               }  
+                       }
+              }
+
 	
 	private void addPersonnelsToBranches(StoreChain chain) {
 		for (Personnel personnel : getPersonnelFromFiles())
