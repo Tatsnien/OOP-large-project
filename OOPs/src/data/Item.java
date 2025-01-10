@@ -5,7 +5,7 @@ public abstract class Item {
     protected String barcode;          	// Unique barcode for the item
     protected float price;  			// Purchase price of the item
     protected String itemType;
-    protected int quantity;
+
 
     public Item(String name, String barcode, int quantity, float price) {
         this.name = name;
