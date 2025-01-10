@@ -20,7 +20,6 @@ import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
 import system.screen.manager.work.item.WorkScreenManagerItems;
 import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
-import system.screen.manager.work.report.WorkScreenManagerReport;
 import system.service.ExpenseService;
 import system.service.IncomeService;
 
@@ -157,6 +156,6 @@ public class WorkScreenManagerExpenseController {
     void mnWorkReportsPressed(ActionEvent event) {
     	System.out.println("Expenses -> Reports");
     	this.frame.setVisible(false);
-    	new WorkScreenManagerReport(this.manager);
+//    	new WorkScreenManagerReport(this.manager);
     }
 }

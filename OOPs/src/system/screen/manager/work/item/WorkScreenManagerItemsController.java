@@ -22,7 +22,6 @@ import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
 import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
-import system.screen.manager.work.report.WorkScreenManagerReport;
 import system.service.ItemService;
 import system.service.StoreBranchService;
 
@@ -281,7 +280,7 @@ public class WorkScreenManagerItemsController {
     void mnWorkReportsPressed(ActionEvent event) {
     	System.out.println("Items -> Reports");
     	this.frame.setVisible(false);
-    	new WorkScreenManagerReport(this.manager);
+//    	new WorkScreenManagerReport(this.manager);
     }
     
 }

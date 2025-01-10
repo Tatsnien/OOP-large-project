@@ -72,6 +72,17 @@ public class StoreBranch implements IStoreEntity {
 		return branchManager.getName();
 	}
 	
+	public double getTotalExpense() {
+		double total = 0;
+		for (Expense expense : this.expenses) 
+			total += expense.getExpenseValue();
+		return total;
+	}
+	
+	public double getProfit() {
+		double profit = this.getIncome() - this.getTotalExpense();
+		return profit;
+	}
 	public void setBranchNumber(int branchNumber) {
 		this.branchNumber = branchNumber;
 	}

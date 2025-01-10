@@ -17,10 +17,9 @@ import javafx.scene.text.Font;
 import personnel.StoreBranchManager;
 import system.notice.Notice;
 import system.screen.manager.profile.ProfileScreenManager;
-import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
 import system.screen.manager.work.item.WorkScreenManagerItems;
-import system.screen.manager.work.report.WorkScreenManagerReport;
+import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 
 public class HomeScreenManagerController {
 
@@ -137,7 +136,7 @@ public class HomeScreenManagerController {
     void mnWorkReportsPressed(ActionEvent event) {
     	System.out.println("Home -> Reports");
     	this.frame.setVisible(false);
-    	new WorkScreenManagerReport(this.manager);
+//    	new WorkScreenManagerReport(this.manager);
     }
     
 }
