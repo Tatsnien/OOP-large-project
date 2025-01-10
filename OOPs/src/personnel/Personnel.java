@@ -7,7 +7,7 @@ public class Personnel {
 	private static float BASIC_SALARY = 3450000.0f;
 	
 	private String name;
-	private float salaryMultiplier;
+	protected float salaryMultiplier;
 	private float bonuses;
 	private Account account;
 	protected String position;
@@ -38,7 +38,8 @@ public class Personnel {
 	}
 	
 	public float getSalary() {
-		return (float) (BASIC_SALARY * salaryMultiplier + bonuses);
+		float salary = (BASIC_SALARY * salaryMultiplier + bonuses);
+		return ((int)(salary * 100)) / 100f;
 	}
 
 	public void setSalary(float salaryMultiplier) {
