@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import data.DAO;
 import data.ItemGroup;
+import data.Notice;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import personnel.Staff;
-import system.notice.Notice;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;
 import system.screen.staff.work.check.CheckScreenStaff;
@@ -243,7 +243,7 @@ public class ImportingScreenStaffController {
     	(new DAO()).saveNotices(Arrays.asList(new Notice[]{notice, notice2}));
     	
     	// Save new items
-    	(new DAO()).saveItems(this.itemService.getGroups());
+//    	(new DAO()).saveItems(this.itemService.getGroups());
     	
     	// Clear table
     	groups.clear();

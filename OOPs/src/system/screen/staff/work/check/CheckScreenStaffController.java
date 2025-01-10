@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import data.DAO;
 import data.ItemGroup;
+import data.Notice;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,7 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import personnel.Staff;
-import system.notice.Notice;
 import system.screen.staff.home.HomeScreenStaff;
 import system.screen.staff.profile.ProfileScreenStaff;
 import system.screen.staff.work.importing.ImportingScreenStaff;
@@ -114,7 +114,7 @@ public class CheckScreenStaffController {
     	for (ItemGroup group : itemService.getGroups())
     		if (missingGroups.contains(group))
     			group.setQty(group.getQty() - missingGroups.get(missingGroups.indexOf(content)).getQty());
-    	(new DAO()).saveItems(this.itemService.getGroups());
+//    	(new DAO()).saveItems(this.itemService.getGroups());
     	tblItems.refresh();
     }
 

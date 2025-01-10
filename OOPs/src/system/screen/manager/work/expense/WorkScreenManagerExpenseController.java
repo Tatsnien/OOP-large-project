@@ -34,15 +34,16 @@ public class WorkScreenManagerExpenseController {
 		this.manager = manager;
 		this.expenseService = this.manager.getExpenseService();
 		this.incomeService = this.manager.getIncomeService();
-		System.out.println("Manager expense service has" + expenseService.getExpenses().size() + "expenses.");
+		System.out.println("Manager expense service has " + expenseService.getExpenses().size() + " expenses.");
 	}
 	
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
 	
-	public void initalize() {
+	public void initialize() {
 		lbName.setText(manager.getName());
+		
 		colExpenseName.setCellValueFactory(
 				new PropertyValueFactory<>("expenseName"));
 		colExpenseName.setSortable(true);

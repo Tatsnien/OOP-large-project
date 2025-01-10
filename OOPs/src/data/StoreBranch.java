@@ -112,6 +112,10 @@ public class StoreBranch implements IStoreEntity {
 		this.expenses.add(new SalaryExpense(employee));
 	}
 	
+	public void addExpense(Expense expense) {
+		this.expenses.add(expense);
+	}
+	
 	public void addItem(Item item, int qty) {
 		if (this.groups.contains(item)){
 			int idx = this.groups.indexOf(item);
@@ -120,6 +124,16 @@ public class StoreBranch implements IStoreEntity {
 		}
 		else
 			this.groups.add(new ItemGroup(item, qty));
+	}
+	
+	public void addGroup(ItemGroup group) {
+		if (this.groups.contains(group)){
+			int idx = this.groups.indexOf(group);
+			ItemGroup curItem = this.groups.get(idx);
+			curItem.setQty(curItem.getQty() + group.getQty());
+		}
+		else
+			this.groups.add(group);
 	}
 	
 	@Override

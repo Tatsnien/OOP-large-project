@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import data.DAO;
 import data.ItemGroup;
+import data.Notice;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import personnel.StoreBranchManager;
-import system.notice.Notice;
 import system.screen.manager.home.HomeScreenManager;
 import system.screen.manager.profile.ProfileScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;
@@ -35,8 +35,9 @@ public class WorkScreenManagerItemsController {
 	
 	public WorkScreenManagerItemsController(StoreBranchManager manager) {
     	this.manager = manager;
-    	this.itemService = this.manager.getItemService();
-    	this.groups = new ItemService(new ArrayList<>());
+    	this.itemService = new ItemService(manager.getWorkingBranchNumber());
+    	System.out.println("This item service has " + itemService.getGroups() + " groups.");
+    	
     }
 	
 	public void setFrame(JFrame frame) {
@@ -85,7 +86,7 @@ public class WorkScreenManagerItemsController {
 		colType.setCellValueFactory(
 				new PropertyValueFactory<>("itemType"));
 		
-		tblItems.setItems((ObservableList<ItemGroup>) groups.getGroups());
+		tblItems.setItems((ObservableList<ItemGroup>) this.itemService.getGroups());
 		
 	}
     

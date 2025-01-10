@@ -4,7 +4,6 @@ module OOPs {
 	exports data;
 	exports test;
 	exports personnel;
-	exports system.notice;
 	exports customer;
 	exports payment;
 

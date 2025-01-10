@@ -1,0 +1,7 @@
+1
+Stationery
+Staedtler 4H
+0001
+15000
+pencil
+0.2

@@ -7,11 +7,13 @@ public class Staff extends Employee {
 	
 	public Staff(String name) {
 		super(name);
+		this.salaryMultiplier = 1.5f;
 		this.position = "Staff";
 	}
 	
-	public Staff(String name, float salary, Account account, String position, int branchNb) {
-		super(name, salary, account, position);
+	public Staff(String name, float salaryMultiplier, Account account, String position, int branchNb) {
+		super(name, salaryMultiplier, account, position);
+		this.salaryMultiplier = 1.5f;
 		this.position = "Staff";
 		this.setWorkingBranchNumber(branchNb);
 		itemService = new ItemService(this.getWorkingBranchNumber());

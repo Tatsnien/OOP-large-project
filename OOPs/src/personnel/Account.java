@@ -1,7 +1,8 @@
 package personnel;
 
 import java.util.*;
-import system.notice.Notice;
+
+import data.Notice;
 
 public class Account {
 	

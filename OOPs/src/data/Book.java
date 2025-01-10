@@ -13,8 +13,20 @@ public class Book extends Item {
         this.isbn = isbn;
         this.itemType = "Book";
     }
+    
+    public String getAuthor() {
+		return author;
+	}
 
-    @Override
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	@Override
     public String getItemInfo() {
         return 	"Book: " + name + 
         		" by " + author + 

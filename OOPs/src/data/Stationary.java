@@ -10,7 +10,15 @@ public class Stationary extends Item {
         this.itemType = "Stationary";
     }
 
-    @Override
+    public String getType() {
+		return type;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	@Override
     public String getItemInfo() {
         return "Stationery: " + name + ", Type: " + type + ", Barcode: " + barcode + 
                ", Price: " + price;

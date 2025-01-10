@@ -1,6 +1,5 @@
-package system.notice;
+package data;
 
-import data.CustomDate;
 import personnel.Personnel;
 
 public class Notice {
@@ -33,6 +32,10 @@ public class Notice {
 	
 	public CustomDate getnewDate() {
 		return date;
+	}
+	
+	public void setDate(String date) {
+		this.date = new CustomDate(date);
 	}
 	
 	public String getTitle() {

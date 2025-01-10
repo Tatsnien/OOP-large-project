@@ -8,8 +8,8 @@ public class Employee extends Personnel {
 		super(name);
 	}
 	
-	public Employee(String name, float salary, Account account, String position) {
-		super(name, salary, account, position);
+	public Employee(String name, float salaryMultiplier, Account account, String position) {
+		super(name, salaryMultiplier, account, position);
 	}
 	
 	public int getWorkingBranchNumber() {

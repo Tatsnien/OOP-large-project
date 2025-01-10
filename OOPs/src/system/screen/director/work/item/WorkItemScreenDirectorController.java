@@ -26,7 +26,8 @@ public class WorkItemScreenDirectorController {
 	
 	public WorkItemScreenDirectorController(Director director) {
     	this.director = director;
-    	this.groups = new ItemService(new ArrayList<>());
+    	this.groups = new ItemService(director);
+    	System.out.println("This item service has " + groups.getGroups().size() + " groups.");
     }
 	
 	public void setFrame(JFrame frame) {

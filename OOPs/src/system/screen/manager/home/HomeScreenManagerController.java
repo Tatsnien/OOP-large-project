@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import data.Notice;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -15,7 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import personnel.StoreBranchManager;
-import system.notice.Notice;
 import system.screen.manager.profile.ProfileScreenManager;
 import system.screen.manager.work.personnel.WorkPersonnelScreenManager;
 import system.screen.manager.work.expense.WorkScreenManagerExpense;

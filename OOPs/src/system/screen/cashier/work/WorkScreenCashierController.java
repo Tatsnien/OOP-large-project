@@ -1,14 +1,6 @@
 package system.screen.cashier.work;
 
-import java.awt.event.ActionListener;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 import customer.Cart;
 import data.Item;
 import data.ItemGroup;
@@ -21,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import payment.Bill;
 import payment.CashPaymentService;
 import payment.*;
 import personnel.Cashier;
@@ -42,7 +33,7 @@ public class WorkScreenCashierController {
 		this.cashier = cashier;
 		this.cart = new Cart();
 		this.paymentService = new CashPaymentService(cart);
-		this.itemBranchService = this.cashier.getItemService();
+		this.itemBranchService = new ItemService(this.cashier.getWorkingBranchNumber());
 		this.itemCartService = new ItemService(cart.getGroups());
 	}
 	
@@ -67,6 +58,9 @@ public class WorkScreenCashierController {
 
     @FXML
     private TableColumn<ItemGroup, Float> colItemTotal;
+    
+    @FXML
+    private Label lbName;
 
     @FXML
     private Label lbPaymentStatus;
@@ -108,6 +102,8 @@ public class WorkScreenCashierController {
     private TextField tfReceivedMoney;
     
     public void initialize() {
+    	lbName.setText(this.cashier.getName());
+    	
     	colBarcode.setCellValueFactory(
 				new PropertyValueFactory<>("barcode"));
 		

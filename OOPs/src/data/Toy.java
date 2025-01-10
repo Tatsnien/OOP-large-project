@@ -13,7 +13,19 @@ public class Toy extends Item {
         this.itemType = "Toy";
     }
 
-    @Override 
+    public int[] getSuitableAges() {
+		return suitableAges;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	@Override 
     public String getItemInfo() {
         return "Toy: " + name + ", Suitable Ages: " + suitableAges[0] + "-" + suitableAges[1] + 
                ", Age Type: " + type + ", Barcode: " + barcode + 
