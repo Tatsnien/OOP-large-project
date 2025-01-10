@@ -145,8 +145,36 @@ public class DAO {
 	}
 
 	
-	public List<Expense> getExpenseFromFiles() {
-
+	public List<Expense> getExpensesFromFiles() {
+		List<Expense> expenses = new ArrayList<>();
+		Set<String> files = listFiles("expenses");
+		
+		for (String filename : files) {
+			String path = "resources/expenses/" + filename;
+			try (Scanner scanner = new Scanner(new File(path))) {
+				String expenseType = scanner.nextLine().strip();
+				String expenseName = scanner.nextLine().strip();
+				double expenseValue = Double.parseDouble(scanner.nextLine().strip());
+				
+				if (expenseType.equals("Recurring")) {
+					int frequency = Integer.parseInt(scanner.nextLine().strip());
+					double base = Double.parseDouble(scanner.nextLine().strip());
+					expenses.add(new RecurringExpense(expenseName, expenseValue, frequency, base));
+					
+				} else if (expenseType.equals("Salary")) {
+					
+					String personnelId = scanner.nextLine().strip();
+					Personnel personnel = findPersonnelById(personnelId); // Implement this method to find personnel
+					expenses.add(new SalaryExpense(personnel));
+				}
+			} catch (FileNotFoundException e) {
+		    	System.out.println("File not found: " + path);
+		    	e.printStackTrace();
+		    } catch (Exception e) {
+				System.out.println("Error reading " + path);
+			}
+		}
+		return expenses;
 	}
 
 	public List<Notice> getNoticeFromFiles() {
@@ -204,8 +232,26 @@ public class DAO {
 	
 
 	public void saveExpenses(List<Expense> expenses) {
-
-	}
+		for (Expense expense : expenses) {
+			String path = "resources/expenses/" + expense.getExpenseName() + ".txt"; // Use getter for expense name
+				try (FileWriter writer = new FileWriter(path)) {
+					writer.write(expense.getExpenseType() + "\n"); // Use getter for expense type
+					writer.write(expense.getExpenseName() + "\n"); // Use getter for expense name
+					writer.write(expense.getExpenseValue() + "\n"); // Use getter for expense value
+					if (expense instanceof RecurringExpense) {
+						RecurringExpense recurringExpense = (RecurringExpense) expense;
+						writer.write(recurringExpense.getFrequency() + "\n"); // Use getter for frequency
+						writer.write(recurringExpense.getBase() + "\n"); // Use getter for base
+					} else if (expense instanceof SalaryExpense) {
+						SalaryExpense salaryExpense = (SalaryExpense) expense;
+						writer.write(salaryExpense.getPersonnel().getAccount().getId() + "\n"); // Use getter for personnel ID
+					}
+				} catch (IOException e) {
+					System.out.println("Error saving expense: " + expense.getExpenseName());
+					e.printStackTrace();
+				}
+			}
+		}
 	
 	public void saveNotices(List<Notice> notices) {
 		
