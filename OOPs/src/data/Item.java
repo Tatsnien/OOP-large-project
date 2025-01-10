@@ -5,10 +5,12 @@ public abstract class Item {
     protected String barcode;          	// Unique barcode for the item
     protected float price;  			// Purchase price of the item
     protected String itemType;
+    protected int quantity;
 
-    public Item(String name, String barcode, float price) {
+    public Item(String name, String barcode, int quantity, float price) {
         this.name = name;
         this.barcode = barcode;
+        this.quantity=quantity;
         this.price = price;
     }
 
@@ -30,6 +32,10 @@ public abstract class Item {
 	public String getBarcode() {
 		return barcode;
 	}
+	
+	public int getQuantity() {
+		return quantity;
+	} 
 
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
@@ -41,7 +47,6 @@ public abstract class Item {
 
 	public String getItemType() {
 		return itemType;
-	}
 	
 }  
 
