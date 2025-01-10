@@ -23,7 +23,7 @@ public class Book extends Item {
         		", Price: " + price;
     }
 
-       public String getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
